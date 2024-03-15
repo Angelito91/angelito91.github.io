@@ -1,6 +1,6 @@
-# Mi Portfolio Web 
+# Mi Página Web 
 
-La pagina web [Aquí](https://angelito91.github.io/portfolio)
+Mira el [Sito web](https://angelito91.github.io)
 
 ![ScreenShot](./public/readme.png)
 
@@ -9,7 +9,7 @@ La pagina web [Aquí](https://angelito91.github.io/portfolio)
 
 - Descargar el repositorio
     ```
-    git clone https://github.com/Angelito91/portafolio.git
+    git clone https://github.com/Angelito91/angelito91.github.io.git
     ```
 - Instalar las dependencias
     ```
