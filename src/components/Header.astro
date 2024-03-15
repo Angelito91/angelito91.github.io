@@ -1,0 +1,52 @@
+<script>
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                const id = entry.target.getAttribute("id");
+                const link = document.querySelector(`.menu a[href="#${id}"]`);
+                if (entry.isIntersecting) {
+                    document
+                        .querySelector(".menu .active")
+                        .classList.remove("active", "bg-slate-500/20");
+                    link.classList.add("active", "bg-slate-500/20");
+                }
+            });
+        },
+        { rootMargin: "-30% 0px -70% 0px" },
+    );
+
+    const menuLinks = document.querySelectorAll(".menu a[href^='#']");
+
+    menuLinks.forEach((menuLink) => {
+        const hash = menuLink.getAttribute("href");
+        const target = document.querySelector(hash);
+        if (target) {
+            observer.observe(target);
+        }
+    });
+</script>
+
+<header class="sticky flex justify-center items-center top-0 w-full py-5 z-10">
+    <nav
+        class="menu font-bold text-sm md:text-lg flex justify-center items-center shadow rounded-full border-black backdrop-blur-lg bg-black/40 gap-1 md:gap-5 px-1 md:px-5 py-2"
+    >
+        <a
+            class="active transition rounded-full px-2 bg-slate-500/20 hover:bg-slate-500/20"
+            href="#inicio">Inicio</a
+        >
+
+        <a
+            class="transition rounded-full px-2 hover:bg-slate-500/20"
+            href="#habilidades">Habilidades</a
+        >
+
+        <a
+            class="transition rounded-full px-2 hover:bg-slate-500/20"
+            href="#proyectos">Proyectos</a
+        >
+        <a
+            class="transition rounded-full px-2 hover:bg-slate-500/20"
+            href="#sobre">Sobre mí</a
+        >
+    </nav>
+</header>

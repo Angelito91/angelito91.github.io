@@ -1,0 +1,13 @@
+---
+interface Props {
+    text: string;
+    Icon: string;
+}
+
+const { text, Icon } = Astro.props;
+---
+
+<h2 class="flex items-center gap-3 text-xl sm:text-3xl">
+    <Icon />
+    {text}
+</h2>

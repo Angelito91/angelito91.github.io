@@ -1,0 +1,19 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Inicio from "@components/sections/Inicio.astro";
+import Sobre from "@components/sections/Sobre.astro";
+import Habilidades from "@components/sections/Habilidades.astro";
+import Proyectos from "@components/sections/proyectos.astro";
+---
+
+<Layout
+	title="Angelito - Portfolio de un desarrollador"
+	descriptcion="Mi portfolio de desarrollador web full stack"
+>
+	<main class="min-h-screen w-full md:w-3/4 md:mx-auto">
+		<Inicio />
+		<Proyectos />
+		<Habilidades />
+		<Sobre />
+	</main>
+</Layout>

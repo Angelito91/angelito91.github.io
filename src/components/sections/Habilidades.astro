@@ -1,0 +1,62 @@
+---
+import Skill from "@icons/Skill.astro";
+import Title from "@components/Title.astro";
+import Html from "@icons/Html.astro";
+import Css from "@icons/Css.astro";
+import Tailwind from "@icons/Tailwind.astro";
+import JavaScript from "@icons/JavaScript.astro";
+import Express from "@icons/Express.astro";
+import Node from "@icons/Node.astro";
+import Django from "@icons/Django.astro";
+import Python from "@icons/Python.astro";
+import Sql from "@icons/Sql.astro";
+import React from "@icons/React.astro";
+import TypeScript from "@icons/TypeScript.astro";
+import Git from "@icons/Git.astro";
+import Linux from "@icons/Linux.astro";
+import Container from "@components/Container.astro";
+---
+
+<Container sectionId="habilidades">
+    <Title text="Mis habilidades" Icon={(<Skill />)} />
+
+    <p class="text-md sm:text-xl text-slate-500 my-4">
+        Estas son algunas de las tecnologías que fuí aprendiendo para la
+        creación de <span class="text-purple-400">páginas web</span> y <span
+            class="text-purple-400"
+            >aplicaciones de diversos tipos
+        </span> hasta la actualidad
+    </p>
+    <ul
+        class="flex flex-col justify-center items-center gap-10 text-sm md:text-lg"
+    >
+        <li
+            class="flex items-center justify-center gap-3 text-md p-5 rounded-full font-bold"
+        >
+            <Html />
+            <Css />
+            <Tailwind />
+            <JavaScript />
+            <React />
+            Desarrollo Web
+        </li>
+        <li
+            class="flex items-center justify-center gap-3 text-md p-5 rounded-full font-bold"
+        >
+            <TypeScript />
+            <Node />
+            <Express />
+            <Python />
+            <Django />
+            <Sql />
+            Backend
+        </li>
+        <li
+            class="flex items-center justify-center gap-3 text-md p-5 rounded-full font-bold"
+        >
+            <Git />
+            <Linux />
+            Otras ...
+        </li>
+    </ul>
+</Container>
