@@ -1,7 +1,7 @@
 ---
 interface Props {
     text: string;
-    Icon: string;
+    Icon?: (_props: Record<string, any>) => any
 }
 
 const { text, Icon } = Astro.props;
