@@ -1,0 +1,46 @@
+---
+import Title from "@components/Title.astro";
+import Badge from "@components/Badge.astro";
+
+import CodeIcon from "@icons/Code.astro";
+import WebIcon from "@icons/Web.astro";
+
+import GhProfile from "@assets/gh-profile.png";
+
+const projects = [
+    {
+        title: "Github Profile",
+        description: "Mira tu perfil de github de forma bonita 🙃",
+        img: GhProfile.src,
+        code_url: "https://github.com/Angelito91/gh-profile",
+        web_url: "https://angelito91.github.io/gh-profile/",
+    },
+];
+---
+
+<Title text="Proyectos" Icon={CodeIcon} />
+
+{
+    projects.map((project) => (
+        <article class="w-full my-4">
+            <img
+                loading="lazy"
+                class="rounded-lg w-full"
+                src={project.img}
+                alt={`${project.title}-screenshot`}
+            />
+            <p class="text-purple-400 text-xl sm:text-3xl font-bold my-5">
+                {project.title}
+            </p>
+            <p class="text-md sm:text-lg mb-5">{project.description}</p>
+            <div class="flex items-center gap-5">
+                <Badge link={project.code_url} text="Codigo fuente">
+                    <CodeIcon />
+                </Badge>
+                <Badge link={project.web_url} text="Web">
+                    <WebIcon />
+                </Badge>
+            </div>
+        </article>
+    ))
+}

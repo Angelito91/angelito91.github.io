@@ -1,0 +1,58 @@
+---
+import Title from "@components/Title.astro";
+
+import SkillIcon from "@icons/Skill.astro";
+import HtmlIcon from "@icons/Html.astro";
+import CssIcon from "@icons/Css.astro";
+import TailwindIcon from "@icons/Tailwind.astro";
+import JavaScriptIcon from "@icons/JavaScript.astro";
+import ExpressIcon from "@icons/Express.astro";
+import NodeIcon from "@icons/Node.astro";
+import DjangoIcon from "@icons/Django.astro";
+import PythonIcon from "@icons/Python.astro";
+import SqlIcon from "@icons/Sql.astro";
+import ReactIcon from "@icons/React.astro";
+import TypeScriptIcon from "@icons/TypeScript.astro";
+import GitIcon from "@icons/Git.astro";
+import LinuxIcon from "@icons/Linux.astro";
+---
+
+<Title text="Mis habilidades" Icon={SkillIcon} />
+
+<p class="text-md sm:text-xl text-slate-500 my-4">
+    Estas son algunas de las tecnologías que fuí aprendiendo para la creación de <span
+        class="text-purple-400">páginas web</span
+    > y <span class="text-purple-400">aplicaciones de diversos tipos </span> hasta
+    la actualidad
+</p>
+
+<ul class="flex flex-col justify-center items-center gap-10 text-sm md:text-lg">
+    <li
+        class="flex items-center justify-center gap-3 text-md p-5 rounded-full font-bold"
+    >
+        <HtmlIcon />
+        <CssIcon />
+        <TailwindIcon />
+        <JavaScriptIcon />
+        <ReactIcon />
+        Desarrollo Web
+    </li>
+    <li
+        class="flex items-center justify-center gap-3 text-md p-5 rounded-full font-bold"
+    >
+        <TypeScriptIcon />
+        <NodeIcon />
+        <ExpressIcon />
+        <PythonIcon />
+        <DjangoIcon />
+        <SqlIcon />
+        Backend
+    </li>
+    <li
+        class="flex items-center justify-center gap-3 text-md p-5 rounded-full font-bold"
+    >
+        <GitIcon />
+        <LinuxIcon />
+        Otras ...
+    </li>
+</ul>

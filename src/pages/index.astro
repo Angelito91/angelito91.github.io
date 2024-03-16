@@ -1,9 +1,10 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Inicio from "@components/sections/Inicio.astro";
-import Sobre from "@components/sections/Sobre.astro";
-import Habilidades from "@components/sections/Habilidades.astro";
-import Proyectos from "@components/sections/proyectos.astro";
+import Intro from "@components/Intro.astro";
+import About from "@components/About.astro";
+import Skills from "@components/Skills.astro";
+import Projects from "@components/Projects.astro";
+import SectionContainer from "@components/SectionContainer.astro";
 ---
 
 <Layout
@@ -11,9 +12,17 @@ import Proyectos from "@components/sections/proyectos.astro";
 	descriptcion="Mi portfolio de desarrollador web full stack"
 >
 	<main class="min-h-screen w-full md:w-3/4 md:mx-auto">
-		<Inicio />
-		<Proyectos />
-		<Habilidades />
-		<Sobre />
+		<SectionContainer id="inicio">
+			<Intro />
+		</SectionContainer>
+		<SectionContainer id="proyectos">
+			<Projects />
+		</SectionContainer>
+		<SectionContainer id="habilidades">
+			<Skills />
+		</SectionContainer>
+		<SectionContainer id="sobre">
+			<About />
+		</SectionContainer>
 	</main>
 </Layout>

@@ -1,0 +1,32 @@
+---
+import Title from "@components/Title.astro";
+
+import LaptopIcon from "@icons/Laptop.astro";
+import UserIcon from "@icons/User.astro";
+
+const myYears = new Date().getFullYear() - 2006;
+---
+
+<Title text="Sobre mí" Icon={UserIcon} />
+
+<div class="flex flex-col-reverse md:flex-row items-center">
+    <div>
+        <p class="my-5 md:w-3/4 text-pretty text-lg">
+            Me llamo Angel Alberto pero puedes decirme Angelito. Empecé en la
+            programación por un concurso de la escuela a los 15 años.
+            Actualmente tengo {myYears} años estoy en <span
+                class="text-purple-400"
+                >búsqueda de experencia en este sector</span
+            >
+        </p>
+        <p class="my-5 md:w-3/4 text-pretty text-lg">
+            En todo este tiempo pude crear proyectos que me gustan y me
+            apasionan, los cuales puedes ver en mis <span
+                class="text-purple-400">repositorios de GitHub</span
+            >
+        </p>
+    </div>
+    <div class="text-purple-500">
+        <LaptopIcon />
+    </div>
+</div>
