@@ -1,12 +1,13 @@
 ---
 interface Props {
-    sectionId: string;
+    id: string;
 }
 
-const {sectionId} = Astro.props
+const { id } = Astro.props;
 ---
+
 <section
-    id={sectionId}
+    id={id}
     class="flex flex-col justify-center gap-5 w-full md:w-3/4 mx-auto py-10 md:py-24 px-2 md:px-5"
 >
     <slot />
