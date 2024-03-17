@@ -1,5 +1,5 @@
 ---
-const navItems = [
+const navLinks = [
   {
     title: "Inicio",
     label: "inicio",
@@ -32,10 +32,10 @@ const navItems = [
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           navItems.forEach((item) => {
-            if (item.getAttribute("aria-label") == entry.target.id) {
-              item.classList.add("text-yellow-500  bg-slate-500/20");
+            if (item.getAttribute("aria-label") === entry.target.id) {
+              item.classList.add("text-yellow-500", "bg-slate-500/30");
             } else {
-              item.classList.remove("text-yellow-500  bg-slate-500/20");
+              item.classList.remove("text-yellow-500", "bg-slate-500/30");
             }
           });
         }
@@ -67,16 +67,16 @@ const navItems = [
 
 <header class="sticky top-0 z-10 flex items-center justify-center w-full py-5">
   <nav
-    class="md:text-lg backdrop-blur-lg md:gap-5 md:px-5 flex items-center justify-center gap-1 px-1 py-2 text-sm font-bold border-black rounded-full shadow"
+    class="md:text-lg backdrop-blur-lg md:gap-5 md:px-5 flex items-center justify-center gap-1 px-1 py-2 text-sm font-bold border-black rounded-full"
   >
     {
-      navItems.map((item) => (
+      navLinks.map((link) => (
         <a
-          class="hover:bg-slate-500/20 px-2 transition rounded-full"
-          aria-label={item.label}
-          href={item.url}
+          class="hover:bg-slate-500/30 px-2 transition rounded-full"
+          aria-label={link.label}
+          href={link.url}
         >
-          {item.title}
+          {link.title}
         </a>
       ))
     }
