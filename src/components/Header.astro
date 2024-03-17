@@ -1,52 +1,98 @@
+---
+const navItems = [
+  {
+    title: "Inicio",
+    label: "inicio",
+    url: "/#inicio",
+  },
+  {
+    title: "Proyectos",
+    label: "proyectos",
+    url: "/#proyectos",
+  },
+  {
+    title: "Habilidades",
+    label: "habilidades",
+    url: "/#habilidades",
+  },
+  {
+    title: "Sobre",
+    label: "sobre",
+    url: "/#sobre",
+  },
+];
+---
+
 <script>
-    const observer = new IntersectionObserver(
-        (entries) => {
-            entries.forEach((entry) => {
-                const id = entry.target.getAttribute("id");
-                const link = document.querySelector(`.menu a[href="#${id}"]`);
-                if (entry.isIntersecting) {
-                    document
-                        .querySelector(".menu .active")
-                        .classList.remove("active", "bg-slate-500/20");
-                    link.classList.add("active", "bg-slate-500/20");
-                }
-            });
-        },
-        { rootMargin: "-30% 0px -70% 0px" },
-    );
+  document.addEventListener("astro:page-load", () => {
+    const sections = document.querySelectorAll("section");
+    const navItems = document.querySelectorAll("header nav a");
 
-    const menuLinks = document.querySelectorAll(".menu a[href^='#']");
-
-    menuLinks.forEach((menuLink) => {
-        const hash = menuLink.getAttribute("href");
-        const target = document.querySelector(hash);
-        if (target) {
-            observer.observe(target);
+    const callback = (entries: any[]) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          navItems.forEach((item) => {
+            if (item.getAttribute("aria-label") == entry.target.id) {
+              item.classList.add("text-yellow-500  bg-slate-500/20");
+            } else {
+              item.classList.remove("text-yellow-500  bg-slate-500/20");
+            }
+          });
         }
+      });
+    };
+
+    const observer = new IntersectionObserver(callback, {
+      root: null,
+      rootMargin: "0px",
+      threshold: 0.3,
     });
+
+    sections.forEach((section) => {
+      observer.observe(section);
+    });
+
+    // Cleanup function
+    document.onvisibilitychange = () => {
+      if (document.visibilityState === "hidden") {
+        observer.disconnect();
+      } else {
+        sections.forEach((section) => {
+          observer.observe(section);
+        });
+      }
+    };
+  });
 </script>
 
-<header class="sticky flex justify-center items-center top-0 w-full py-5 z-10">
-    <nav
-        class="menu font-bold text-sm md:text-lg flex justify-center items-center shadow rounded-full border-black backdrop-blur-lg bg-black/40 gap-1 md:gap-5 px-1 md:px-5 py-2"
-    >
+<header class="sticky top-0 z-10 flex items-center justify-center w-full py-5">
+  <nav
+    class="md:text-lg backdrop-blur-lg md:gap-5 md:px-5 flex items-center justify-center gap-1 px-1 py-2 text-sm font-bold border-black rounded-full shadow"
+  >
+    {
+      navItems.map((item) => (
         <a
-            class="active transition rounded-full px-2 bg-slate-500/20 hover:bg-slate-500/20"
-            href="#inicio">Inicio</a
+          class="hover:bg-slate-500/20 px-2 transition rounded-full"
+          aria-label={item.label}
+          href={item.url}
         >
-
-        <a
-            class="transition rounded-full px-2 hover:bg-slate-500/20"
-            href="#habilidades">Habilidades</a
-        >
-
-        <a
-            class="transition rounded-full px-2 hover:bg-slate-500/20"
-            href="#proyectos">Proyectos</a
-        >
-        <a
-            class="transition rounded-full px-2 hover:bg-slate-500/20"
-            href="#sobre">Sobre mí</a
-        >
-    </nav>
+          {item.title}
+        </a>
+      ))
+    }
+  </nav>
 </header>
+
+<style>
+  nav {
+    animation: nav-shadown 1s linear both;
+    animation-timeline: scroll();
+    animation-range: 0 100px;
+  }
+
+  @keyframes nav-shadown {
+    to {
+      @apply shadow-lg ring-1 backdrop-blur bg-black/40;
+    }
+  }
+</style>
