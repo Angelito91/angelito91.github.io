@@ -5,13 +5,11 @@ import Badge from "@components/Badge.astro";
 import CodeIcon from "@icons/Code.astro";
 import WebIcon from "@icons/Web.astro";
 
-import GhProfile from "@assets/gh-profile.png";
-
 const projects = [
     {
         title: "Github Profile",
         description: "Mira tu perfil de github de forma bonita 🙃",
-        img: GhProfile.src,
+        img: "/gh-profile.webp",
         code_url: "https://github.com/Angelito91/gh-profile",
         web_url: "https://angelito91.github.io/gh-profile/",
     },
@@ -25,7 +23,7 @@ const projects = [
         <article class="w-full my-4">
             <img
                 loading="lazy"
-                class="w-full rounded-lg"
+                class="aspect-video w-full rounded-lg"
                 src={project.img}
                 alt={`${project.title}-screenshot`}
             />
