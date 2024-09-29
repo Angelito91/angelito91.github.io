@@ -13,7 +13,7 @@ const { title, descriptcion } = Astro.props;
 ---
 
 <!doctype html>
-<html class="scroll-smooth" lang="es">
+<html class="scroll-smooth dark" lang="es">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="description" content={descriptcion} />
@@ -21,11 +21,13 @@ const { title, descriptcion } = Astro.props;
 		<link rel="icon" type="image/svg+xml" href="./favicon.svg" />
 		<title>{title}</title>
 	</head>
-	<body class="dark:text-white relative text-black">
+	<body class="relative bg-slate-950">
 		<div
-			class="absolute top-0 bottom-0 z-[-2] min-h-screen w-full bg-neutral-100 dark:bg-neutral-950
-      bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(217,216,255,0.5),rgba(255,255,255,0.9))]
-      dark:bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"
+			class="-z-10 w-40 blur-[200px] top-6 h-40 rounded-full bg-brand-blue absolute pointer-events-none select-none md:top-32 left-0"
+		>
+		</div>
+		<div
+			class="-z-10 w-60 blur-[200px] h-60 rounded-full bg-brand-blue absolute pointer-events-none select-none top-80 md:top-56 right-0"
 		>
 		</div>
 		<Header />
@@ -36,7 +38,10 @@ const { title, descriptcion } = Astro.props;
 
 <style is:global>
 	:root {
-		color-scheme: dark light;
+		color-scheme: dark;
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
 	}
 	body {
 		font-family: "Nunito Variable", sans-serif;

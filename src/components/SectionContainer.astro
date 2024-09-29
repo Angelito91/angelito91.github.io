@@ -1,14 +1,16 @@
 ---
 interface Props {
     id: string;
+    background?: string;
 }
 
-const { id } = Astro.props;
+const { id, background } = Astro.props;
 ---
 
-<section
-    id={id}
-    class="md:w-3/4 md:py-24 md:px-5 flex flex-col justify-center w-full gap-5 px-2 py-10 mx-auto"
->
-    <slot />
+<section id={id} class=`${background}`>
+    <div
+        class=`flex flex-col justify-center gap-5 px-2 py-10 md:py-24 md:px-5 w-3/4 min-h-screen mx-auto`
+    >
+        <slot />
+    </div>
 </section>

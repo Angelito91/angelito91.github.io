@@ -1,4 +1,5 @@
 ---
+
 const navLinks = [
   {
     title: "Inicio",
@@ -25,16 +26,16 @@ const navLinks = [
 
 <script>
   const sections = document.querySelectorAll("section");
-  const navItems = document.querySelectorAll("header nav a");
+  const navItems = document.querySelectorAll("header nav div a");
 
   const callback = (entries: any[]) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         navItems.forEach((item) => {
           if (item.getAttribute("aria-label") === entry.target.id) {
-            item.classList.add("text-yellow-500", "bg-slate-500/30");
+            item.classList.add("text-brand-blue", "bg-slate-500/30");
           } else {
-            item.classList.remove("text-yellow-500", "bg-slate-500/30");
+            item.classList.remove("text-brand-blue", "bg-slate-500/30");
           }
         });
       }
@@ -63,26 +64,27 @@ const navLinks = [
   };
 </script>
 
-<header class="sticky top-0 z-10 flex items-center justify-center w-full py-5">
-  <nav
-    class="md:text-lg backdrop-blur-lg md:gap-5 md:px-5 flex items-center justify-center gap-1 px-1 py-2 text-sm font-bold border-black rounded-full"
-  >
-    {
-      navLinks.map((link) => (
-        <a
-          class="hover:bg-slate-500/30 px-2 transition rounded-full"
-          aria-label={link.label}
-          href={link.url}
-        >
-          {link.title}
-        </a>
-      ))
-    }
+<header class="sticky top-0 z-10 w-full bg-black/30">
+  <nav class="flex items-center justify-between w-3/4 p-5 mx-auto font-bold">
+    <a class="font-mono text-brand-blue" href="/">{"<Angelito/>"}</a>
+    <div class="flex items-center gap-1">
+      {
+        navLinks.map((link) => (
+          <a
+            class="px-2 text-center transition rounded-full hover:bg-slate-500/30"
+            aria-label={link.label}
+            href={link.url}
+          >
+            {link.title}
+          </a>
+        ))
+      }
+    </div>
   </nav>
 </header>
 
 <style>
-  nav {
+  header {
     animation: nav-shadown 1s linear both;
     animation-timeline: scroll();
     animation-range: 0 100px;
@@ -90,7 +92,7 @@ const navLinks = [
 
   @keyframes nav-shadown {
     to {
-      @apply shadow-lg ring-1 backdrop-blur bg-black/40;
+      @apply backdrop-blur-lg  shadow-sm  border-b border-neutral-800;
     }
   }
 </style>

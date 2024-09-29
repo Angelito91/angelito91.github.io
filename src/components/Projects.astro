@@ -18,27 +18,29 @@ const projects = [
 
 <Title text="Proyectos" Icon={CodeIcon} />
 
-{
-    projects.map((project) => (
-        <article class="w-full my-4">
-            <img
-                loading="lazy"
-                class="aspect-video w-full rounded-lg"
-                src={project.img}
-                alt={`${project.title}-screenshot`}
-            />
-            <p class="sm:text-3xl my-5 text-xl font-bold text-purple-400">
-                {project.title}
-            </p>
-            <p class="text-md sm:text-lg mb-5">{project.description}</p>
-            <div class="flex items-center gap-5">
-                <Badge link={project.code_url} text="Codigo fuente">
-                    <CodeIcon />
-                </Badge>
-                <Badge link={project.web_url} text="Web">
-                    <WebIcon />
-                </Badge>
-            </div>
-        </article>
-    ))
-}
+<div class="grid grid-cols-2 gap-3">
+    {
+        projects.map((project) => (
+            <article>
+                <img
+                    loading="lazy"
+                    class="w-full rounded-lg aspect-video"
+                    src={project.img}
+                    alt={`${project.title}-screenshot`}
+                />
+                <p class="my-4 text-xl font-bold text-brand-blue sm:text-3xl">
+                    {project.title}
+                </p>
+                <p class="mb-5 text-md sm:text-lg">{project.description}</p>
+                <div class="flex items-center gap-5">
+                    <Badge link={project.code_url} text="Codigo fuente">
+                        <CodeIcon />
+                    </Badge>
+                    <Badge link={project.web_url} text="Web">
+                        <WebIcon />
+                    </Badge>
+                </div>
+            </article>
+        ))
+    }
+</div>

@@ -7,41 +7,45 @@ import LinkedInIcon from "@icons/LinkedIn.astro";
 import GmailIcon from "@icons/Gmail.astro";
 ---
 
-<div class="mx-auto w-[200px] h-[200px]">
-    <img
-        class="aspect-square w-full rounded-full"
-        loading="lazy"
-        src="/avatar.webp"
-        alt="Angelito91 avatar"
-    />
-</div>
+<div class="flex flex-row-reverse items-center justify-between gap-5 ">
+    <div class="w-[300px] h-[300px] ">
+        <img
+            class="w-full rounded-lg aspect-square"
+            loading="lazy"
+            src="/avatar.webp"
+            alt="Angelito91 avatar"
+        />
+    </div>
 
-<h1 class="sm:text-5xl text-3xl font-bold text-center">
-    👋Hola, soy
-    <span class="text-purple-400">Angel</span>
-</h1>
+    <div class="flex flex-col w-3/4 gap-3 ">
+        <h1 class="text-3xl font-bold sm:text-5xl">
+            👋 Hola, soy
+            <span class="text-brand-blue">Angel</span>
+        </h1>
 
-<p class="sm:text-2xl text-pretty text-lg text-center">
-    Soy un desarrollador de <span class="text-purple-400">Software</span> de Cuba.
-    Me encanta el desarrollo de <span class="text-purple-400"
-        >aplicaciones de diversas áreas</span
-    >.
-</p>
+        <p class="text-lg sm:text-2xl text-pretty">
+            Soy un desarrollador de <span class="text-brand-blue">Software</span
+            > de Cuba. Me encanta el desarrollo de <span class="text-brand-blue"
+                >aplicaciones de diversas áreas</span
+            >.
+        </p>
 
-<div class="flex flex-wrap items-center justify-center gap-3">
-    <Badge link="https://github.com/Angelito91" text="Github">
-        <GithubIcon />
-    </Badge>
-    <Badge link="https://twitter.com/Angelito23756" text="Twitter">
-        <TwitterIcon />
-    </Badge>
-    <Badge link="mailto:portuondoangel@gmail.com" text="Di hola">
-        <GmailIcon />
-    </Badge>
-    <Badge
-        link="https://www.linkedin.com/in/angel-portuondo-7b51b62a7/"
-        text="Contratame"
-    >
-        <LinkedInIcon />
-    </Badge>
+        <div class="flex flex-wrap items-center gap-3">
+            <Badge link="https://github.com/Angelito91" text="Github">
+                <GithubIcon />
+            </Badge>
+            <Badge link="https://twitter.com/Angelito23756" text="Twitter">
+                <TwitterIcon />
+            </Badge>
+            <Badge link="mailto:portuondoangel@gmail.com" text="Di hola">
+                <GmailIcon />
+            </Badge>
+            <Badge
+                link="https://www.linkedin.com/in/angel-portuondo-7b51b62a7/"
+                text="Contratame"
+            >
+                <LinkedInIcon />
+            </Badge>
+        </div>
+    </div>
 </div>
