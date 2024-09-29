@@ -17,7 +17,7 @@ const navLinks = [
     url: "/#habilidades",
   },
   {
-    title: "Sobre",
+    title: "Sobre mi",
     label: "sobre",
     url: "/#sobre",
   },
@@ -65,13 +65,13 @@ const navLinks = [
 </script>
 
 <header class="sticky top-0 z-10 w-full bg-black/30">
-  <nav class="flex items-center justify-between w-3/4 p-5 mx-auto font-bold">
-    <a class="font-mono text-brand-blue" href="/">{"<Angelito/>"}</a>
+  <nav class="flex items-center justify-between md:w-3/4 p-5 md:mx-auto font-bold">
+    <a class="font-mono text-brand-blue md:text-lg text-xs" href="/">{"<Angelito/>"}</a>
     <div class="flex items-center gap-1">
       {
         navLinks.map((link) => (
           <a
-            class="px-2 text-center transition rounded-full hover:bg-slate-500/30"
+            class="md:text-lg text-sm px-2 text-center transition rounded-full hover:bg-slate-500/30"
             aria-label={link.label}
             href={link.url}
           >
