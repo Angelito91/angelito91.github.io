@@ -1,0 +1,90 @@
+---
+import { ExternalLink, Github } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+
+const projects = [
+    {
+        title: "E-commerce Platform",
+        description:
+            "Plataforma de comercio electrónico completa con carrito, pagos y administración.",
+        tech: ["React", "Node.js", "MongoDB", "Stripe"],
+        image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=500&h=300&fit=crop",
+    },
+    {
+        title: "Task Management App",
+        description:
+            "Aplicación de gestión de tareas con colaboración en tiempo real.",
+        tech: ["Vue.js", "Express", "Socket.io", "PostgreSQL"],
+        image: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=500&h=300&fit=crop",
+    },
+    {
+        title: "Analytics Dashboard",
+        description:
+            "Dashboard analítico con visualizaciones interactivas y reportes en tiempo real.",
+        tech: ["React", "D3.js", "Python", "FastAPI"],
+        image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500&h=300&fit=crop",
+    },
+];
+---
+
+<section id="proyectos" class="py-20 px-6 bg-muted/20">
+    <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                <span class="gradient-text">Proyectos</span>
+            </h2>
+            <p class="text-xl text-muted-foreground max-w-3xl mx-auto">
+                Una muestra de mis trabajos más recientes, donde combino
+                creatividad y tecnología para resolver problemas reales.
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {
+                projects.map((project) => (
+                    <Card className="bg-card/50 border-border/50 backdrop-blur-sm overflow-hidden group hover:bg-card/70 transition-all duration-300">
+                        <div class="aspect-video bg-gradient-to-br from-primary/20 to-accent/20 relative overflow-hidden">
+                            <img
+                                src={project.image}
+                                alt={project.title}
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            />
+                        </div>
+                        <CardContent className="p-6">
+                            <h3 class="text-xl font-semibold mb-3">
+                                {project.title}
+                            </h3>
+                            <p class="text-muted-foreground mb-4 text-sm">
+                                {project.description}
+                            </p>
+
+                            <div class="flex flex-wrap gap-2 mb-6">
+                                {project.tech.map((tech) => (
+                                    <span class="px-3 py-1 bg-primary/20 text-primary text-xs rounded-full">
+                                        {tech}
+                                    </span>
+                                ))}
+                            </div>
+
+                            <div class="flex gap-3">
+                                <Button
+                                    size="sm"
+                                    variant="outline"
+                                    className="flex-1"
+                                >
+                                    <Github className="w-4 h-4 mr-2" />
+                                    Código
+                                </Button>
+                                <Button size="sm" className="flex-1">
+                                    <ExternalLink className="w-4 h-4 mr-2" />
+                                    Demo
+                                </Button>
+                            </div>
+                        </CardContent>
+                    </Card>
+                ))
+            }
+        </div>
+    </div>
+</section>

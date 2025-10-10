@@ -1,0 +1,143 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+
+
+/* 🎨 Design System: colores, gradientes, radios y efectos.
+   Todos los colores en HSL para fácil manipulación con Tailwind.
+*/
+
+@layer base {
+  :root {
+    /* Dark Portfolio Theme */
+    --color-background: 220 25% 8%;
+    --color-foreground: 210 20% 98%;
+
+    --color-card: 220 20% 12%;
+    --color-card-foreground: 210 20% 98%;
+
+    --color-popover: 220 20% 12%;
+    --color-popover-foreground: 210 20% 98%;
+
+    --color-primary: 250 100% 70%;
+    --color-primary-foreground: 210 20% 98%;
+
+    --color-secondary: 220 15% 18%;
+    --color-secondary-foreground: 210 20% 98%;
+
+    --color-muted: 220 15% 15%;
+    --color-muted-foreground: 215 15% 65%;
+
+    --color-accent: 165 100% 45%;
+    --color-accent-foreground: 210 20% 98%;
+
+    --color-destructive: 0 84% 60%;
+    --color-destructive-foreground: 210 20% 98%;
+
+    --color-border: 220 15% 20%;
+    --color-input: 220 15% 20%;
+    --color-ring: 250 100% 70%;
+
+    --radius: 0.75rem;
+
+    /* 🌈 Gradients */
+    --gradient-start: 240 100% 70%;
+    --gradient-end: 280 100% 70%;
+    --text-gradient: linear-gradient(
+      135deg,
+      hsl(var(--gradient-start)),
+      hsl(var(--gradient-end))
+    );
+
+    /* ✨ Effects */
+    --glow-primary: 0 0 30px hsl(var(--color-primary) / 0.3);
+    --glow-accent: 0 0 20px hsl(var(--color-accent) / 0.4);
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* 📂 Sidebar tokens */
+    --sidebar-background: 220 25% 8%;
+    --sidebar-foreground: 210 20% 98%;
+    --sidebar-primary: 250 100% 70%;
+    --sidebar-primary-foreground: 210 20% 98%;
+    --sidebar-accent: 220 15% 18%;
+    --sidebar-accent-foreground: 210 20% 98%;
+    --sidebar-border: 220 15% 20%;
+    --sidebar-ring: 250 100% 70%;
+  }
+
+  .dark {
+    /* Dark mode mantiene la misma paleta */
+    --color-background: 220 25% 8%;
+    --color-foreground: 210 20% 98%;
+    --color-card: 220 20% 12%;
+    --color-card-foreground: 210 20% 98%;
+    --color-popover: 220 20% 12%;
+    --color-popover-foreground: 210 20% 98%;
+    --color-primary: 250 100% 70%;
+    --color-primary-foreground: 210 20% 98%;
+    --color-secondary: 220 15% 18%;
+    --color-secondary-foreground: 210 20% 98%;
+    --color-muted: 220 15% 15%;
+    --color-muted-foreground: 215 15% 65%;
+    --color-accent: 165 100% 45%;
+    --color-accent-foreground: 210 20% 98%;
+    --color-destructive: 0 84% 60%;
+    --color-destructive-foreground: 210 20% 98%;
+    --color-border: 220 15% 20%;
+    --color-input: 220 15% 20%;
+    --color-ring: 250 100% 70%;
+    --sidebar-background: 220 25% 8%;
+    --sidebar-foreground: 210 20% 98%;
+    --sidebar-primary: 250 100% 70%;
+    --sidebar-primary-foreground: 210 20% 98%;
+    --sidebar-accent: 220 15% 18%;
+    --sidebar-accent-foreground: 210 20% 98%;
+    --sidebar-border: 220 15% 20%;
+    --sidebar-ring: 250 100% 70%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-[hsl(var(--color-border))];
+  }
+
+  body {
+    @apply antialiased text-[hsl(var(--color-foreground))] bg-[hsl(var(--color-background))];
+    background: linear-gradient(
+      135deg,
+      hsl(var(--color-background)) 0%,
+      hsl(220 20% 10%) 100%
+    );
+    min-height: 100vh;
+  }
+
+  .gradient-text {
+    background: var(--text-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .glow-primary {
+    box-shadow: var(--glow-primary);
+  }
+
+  .glow-accent {
+    box-shadow: var(--glow-accent);
+  }
+
+  .floating-animation {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+}

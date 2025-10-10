@@ -1,0 +1,140 @@
+---
+import { Code2, Database, Globe, Smartphone, Cloud, Zap } from "lucide-react";
+
+const skillCategories = [
+    {
+        title: "Frontend",
+        icon: Code2,
+        skills: [
+            "React",
+            "Vue.js",
+            "TypeScript",
+            "Tailwind CSS",
+            "Next.js",
+            "Vite",
+        ],
+        color: "text-primary",
+        bgColor: "bg-primary/20",
+    },
+    {
+        title: "Backend",
+        icon: Database,
+        skills: [
+            "Node.js",
+            "Python",
+            "Express",
+            "FastAPI",
+            "PostgreSQL",
+            "MongoDB",
+        ],
+        color: "text-accent",
+        bgColor: "bg-accent/20",
+    },
+    {
+        title: "DevOps",
+        icon: Cloud,
+        skills: ["Docker", "AWS", "Vercel", "GitHub Actions", "Nginx", "Linux"],
+        color: "text-yellow-400",
+        bgColor: "bg-yellow-400/20",
+    },
+    {
+        title: "Mobile",
+        icon: Smartphone,
+        skills: [
+            "React Native",
+            "Flutter",
+            "Expo",
+            "PWA",
+            "Ionic",
+            "Capacitor",
+        ],
+        color: "text-purple-400",
+        bgColor: "bg-purple-400/20",
+    },
+    {
+        title: "Web APIs",
+        icon: Globe,
+        skills: [
+            "REST APIs",
+            "GraphQL",
+            "WebSockets",
+            "OAuth",
+            "JWT",
+            "Stripe",
+        ],
+        color: "text-blue-400",
+        bgColor: "bg-blue-400/20",
+    },
+    {
+        title: "Game Development",
+        icon: Zap,
+        skills: [
+            "Godot",
+            "Unreal Engine",
+            "C#",
+            "GDScript",
+            "Unity",
+            "Blender",
+        ],
+        color: "text-orange-400",
+        bgColor: "bg-orange-400/20",
+    },
+    {
+        title: "Competitive Programming",
+        icon: Code2,
+        skills: [
+            "C++",
+            "Python",
+            "Algorithms",
+            "Data Structures",
+            "Codeforces",
+            "AtCoder",
+        ],
+        color: "text-green-400",
+        bgColor: "bg-green-400/20",
+    },
+];
+---
+
+<section id="habilidades" class="py-20 px-6">
+    <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                <span class="gradient-text">Habilidades</span>
+            </h2>
+            <p class="text-xl text-muted-foreground max-w-3xl mx-auto">
+                Tecnologías y herramientas que domino para crear soluciones
+                completas y escalables.
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {
+                skillCategories.map((category) => {
+                    const Icon = category.icon;
+                    return (
+                        <div class="bg-card/50 border border-border/50 rounded-xl p-6 backdrop-blur-sm hover:bg-card/70 transition-all duration-300 group">
+                            <div
+                                class={`w-16 h-16 ${category.bgColor} rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}
+                            >
+                                <Icon className={`w-8 h-8 ${category.color}`} />
+                            </div>
+
+                            <h3 class="text-xl font-semibold mb-4">
+                                {category.title}
+                            </h3>
+
+                            <div class="flex flex-wrap gap-2">
+                                {category.skills.map((skill) => (
+                                    <span class="px-3 py-1 bg-muted/50 text-muted-foreground text-sm rounded-full border border-border/30 hover:bg-muted/70 transition-colors cursor-default">
+                                        {skill}
+                                    </span>
+                                ))}
+                            </div>
+                        </div>
+                    );
+                })
+            }
+        </div>
+    </div>
+</section>

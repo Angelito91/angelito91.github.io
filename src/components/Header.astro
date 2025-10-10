@@ -1,98 +1,76 @@
 ---
+import { Button } from "@/components/ui/button";
+import Logo from "@/components/Logo.astro";
 
-const navLinks = [
-  {
-    title: "Inicio",
-    label: "inicio",
-    url: "/#inicio",
-  },
-  {
-    title: "Proyectos",
-    label: "proyectos",
-    url: "/#proyectos",
-  },
-  {
-    title: "Habilidades",
-    label: "habilidades",
-    url: "/#habilidades",
-  },
-  {
-    title: "Sobre mi",
-    label: "sobre",
-    url: "/#sobre",
-  },
+const navItems = [
+    { href: "#inicio", label: "Inicio" },
+    { href: "#sobre-mi", label: "Sobre mí" },
+    { href: "#proyectos", label: "Proyectos" },
+    { href: "#habilidades", label: "Habilidades" },
 ];
 ---
 
-<script>
-  const sections = document.querySelectorAll("section");
-  const navItems = document.querySelectorAll("header nav div a");
+<header
+    class="fixed top-0 left-0 right-0 z-50 px-6 py-4 backdrop-blur-md bg-background/80 border-b border-border/50"
+>
+    <nav class="max-w-7xl mx-auto flex items-center justify-between">
+        <!-- Logo -->
+        <Logo />
 
-  const callback = (entries: any[]) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        navItems.forEach((item) => {
-          if (item.getAttribute("aria-label") === entry.target.id) {
-            item.classList.add("text-brand-blue", "bg-slate-500/30");
-          } else {
-            item.classList.remove("text-brand-blue", "bg-slate-500/30");
-          }
-        });
-      }
-    });
-  };
+        <!-- Navigation Links -->
+        <div class="hidden md:flex items-center gap-8">
+            {
+                navItems.map((item) => (
+                    <a
+                        key={item.href}
+                        href={item.href}
+                        class="relative text-foreground hover:text-primary transition-colors"
+                        data-nav={item.href.substring(1)}
+                    >
+                        {item.label}
+                    </a>
+                ))
+            }
+        </div>
 
-  const observer = new IntersectionObserver(callback, {
-    root: null,
-    rootMargin: "0px",
-    threshold: 0.3,
-  });
-
-  sections.forEach((section) => {
-    observer.observe(section);
-  });
-
-  // Cleanup function
-  document.onvisibilitychange = () => {
-    if (document.visibilityState === "hidden") {
-      observer.disconnect();
-    } else {
-      sections.forEach((section) => {
-        observer.observe(section);
-      });
-    }
-  };
-</script>
-
-<header class="sticky top-0 z-10 w-full bg-black/30">
-  <nav class="flex items-center justify-center md:justify-between md:w-3/4 p-5 md:mx-auto font-bold">
-    <a class="font-mono text-brand-blue md:text-lg text-xs hidden md:inline" href="/">{"<Angelito/>"}</a>
-    <div class="flex items-center gap-1">
-      {
-        navLinks.map((link) => (
-          <a
-            class="md:text-lg text-xs px-2 text-center transition rounded-full hover:bg-slate-500/30"
-            aria-label={link.label}
-            href={link.url}
-          >
-            {link.title}
-          </a>
-        ))
-      }
-    </div>
-  </nav>
+        <!-- CTA Button -->
+        <Button
+            variant="default"
+            className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-6"
+        >
+            Descargar CV
+        </Button>
+    </nav>
 </header>
 
-<style>
-  header {
-    animation: nav-shadown 1s linear both;
-    animation-timeline: scroll();
-    animation-range: 0 100px;
-  }
+<script>
+    const sections = document.querySelectorAll("section[id]");
+    const navLinks = document.querySelectorAll("a[data-nav]");
 
-  @keyframes nav-shadown {
-    to {
-      @apply backdrop-blur-lg  shadow-sm  border-b border-neutral-800;
-    }
-  }
-</style>
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                const id = entry.target.getAttribute("id");
+                const link = document.querySelector(`a[data-nav='${id}']`);
+
+                if (entry.isIntersecting) {
+                    navLinks.forEach((l) => {
+                        l.classList.remove("text-primary");
+                        l.querySelector("div")?.remove();
+                    });
+
+                    link.classList.add("text-primary");
+
+                    // Añadir subrayado animado
+                    const underline = document.createElement("div");
+                    underline.className =
+                        "absolute -bottom-1 left-0 right-0 h-0.5 bg-primary rounded-full animate-scale-in";
+                    link.appendChild(underline);
+                }
+            });
+        },
+        { threshold: 0.6 },
+    );
+
+    sections.forEach((section) => observer.observe(section));
+</script>

@@ -1,12 +1,69 @@
 ---
-const currentYear = new Date().getFullYear();
+import { Star, Github, Linkedin, Mail, Heart } from "lucide-react";
 ---
 
-<footer
-  class="flex items-center justify-center w-full gap-3 p-2 text-sm rounded-lg bg-black/20 md:p-3"
->
-  <p class="text-slate-400">
-    © {currentYear} Todos los derechos reservados
-  </p>
-  <p class="text-brand-blue">{"<Angelito />"}</p>
+<footer class="py-12 px-6 border-t border-border/50">
+    <div class="max-w-6xl mx-auto">
+        <div
+            class="flex flex-col md:flex-row items-center justify-between gap-8"
+        >
+            {/* Logo and Description */}
+            <div class="text-center md:text-left">
+                <div
+                    class="flex items-center gap-2 justify-center md:justify-start mb-4"
+                >
+                    {/* Componente de React de Lucide: Star */}
+                    <Star className="w-6 h-6 text-primary" />
+                    <span class="text-xl font-bold">Angelito</span>
+                </div>
+                <p class="text-muted-foreground max-w-md">
+                    Desarrollador Web Fullstack creando soluciones digitales
+                    innovadoras.
+                </p>
+            </div>
+
+            {/* Social Links */}
+            <div class="flex items-center gap-6">
+                <a
+                    href="#"
+                    class="w-12 h-12 bg-secondary hover:bg-secondary/80 rounded-full flex items-center justify-center transition-colors group"
+                >
+                    {/* Componente de React de Lucide: Github */}
+                    <Github
+                        className="w-5 h-5 group-hover:scale-110 transition-transform"
+                    />
+                </a>
+                <a
+                    href="#"
+                    class="w-12 h-12 bg-secondary hover:bg-secondary/80 rounded-full flex items-center justify-center transition-colors group"
+                >
+                    {/* Componente de React de Lucide: Linkedin */}
+                    <Linkedin
+                        className="w-5 h-5 group-hover:scale-110 transition-transform"
+                    />
+                </a>
+                <a
+                    href="#"
+                    class="w-12 h-12 bg-secondary hover:bg-secondary/80 rounded-full flex items-center justify-center transition-colors group"
+                >
+                    {/* Componente de React de Lucide: Mail */}
+                    <Mail
+                        className="w-5 h-5 group-hover:scale-110 transition-transform"
+                    />
+                </a>
+            </div>
+        </div>
+
+        {/* Copyright */}
+        <div class="mt-8 pt-8 border-t border-border/30 text-center">
+            <p
+                class="text-muted-foreground flex items-center justify-center gap-2"
+            >
+                © 2024 Angelito. Hecho con
+                {/* Componente de React de Lucide: Heart */}
+                <Heart className="w-4 h-4 text-red-400" />
+                y mucho código
+            </p>
+        </div>
+    </div>
 </footer>

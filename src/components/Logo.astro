@@ -1,0 +1,29 @@
+---
+interface Props {
+  className?: string;
+}
+
+const { className = "" } = Astro.props;
+---
+
+<div class={`flex items-center gap-2 ${className}`}>
+  <div class="relative">
+    <div class="w-8 h-8 relative">
+      <div class="absolute top-0 left-1 w-4 h-4 rounded-full bg-primary/80"></div>
+      <div class="absolute top-1 right-0 w-4 h-4 rounded-full bg-accent/80"></div>
+      <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-gradient-to-br from-primary to-accent"></div>
+      
+      <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-background border-2 border-primary/30"></div>
+    </div>
+  </div>
+  
+  <div class="flex items-center">
+    <span class="text-xl font-light text-foreground">
+      angel
+    </span>
+    <span class="text-xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+      ito
+    </span>
+    <div class="w-1 h-1 rounded-full bg-primary ml-1 animate-pulse"></div>
+  </div>
+</div>

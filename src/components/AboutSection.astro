@@ -1,0 +1,81 @@
+---
+import { Code, Lightbulb, Target } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
+---
+
+<section id="sobre-mi" class="py-20 px-6">
+    <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                <span class="gradient-text">Sobre mí</span>
+            </h2>
+            <p class="text-xl text-muted-foreground max-w-3xl mx-auto">
+                Estudiante de Ciencias de la Computación con experiencia en
+                desarrollo web, programación competitiva y creación de
+                videojuegos. He trabajado en la industria del gaming con Godot y
+                Unreal Engine, combinando mi pasión por la tecnología con la
+                creatividad.
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+            <Card
+                className="bg-card/50 border-border/50 backdrop-blur-sm hover:bg-card/70 transition-all duration-300"
+            >
+                <CardContent className="p-8 text-center">
+                    <div
+                        class="w-16 h-16 mx-auto mb-6 bg-primary/20 rounded-full flex items-center justify-center"
+                    >
+                        <Code className="w-8 h-8 text-primary" />
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">
+                        Desarrollo Frontend
+                    </h3>
+                    <p class="text-muted-foreground">
+                        Experto en React, TypeScript, y frameworks modernos para
+                        crear interfaces intuitivas y responsivas.
+                    </p>
+                </CardContent>
+            </Card>
+
+            <Card
+                className="bg-card/50 border-border/50 backdrop-blur-sm hover:bg-card/70 transition-all duration-300"
+            >
+                <CardContent className="p-8 text-center">
+                    <div
+                        class="w-16 h-16 mx-auto mb-6 bg-accent/20 rounded-full flex items-center justify-center"
+                    >
+                        <Lightbulb className="w-8 h-8 text-accent" />
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">
+                        Desarrollo Backend
+                    </h3>
+                    <p class="text-muted-foreground">
+                        Construcción de APIs robustas y escalables con Node.js,
+                        bases de datos y arquitecturas modernas.
+                    </p>
+                </CardContent>
+            </Card>
+
+            <Card
+                className="bg-card/50 border-border/50 backdrop-blur-sm hover:bg-card/70 transition-all duration-300"
+            >
+                <CardContent className="p-8 text-center">
+                    <div
+                        class="w-16 h-16 mx-auto mb-6 bg-yellow-400/20 rounded-full flex items-center justify-center"
+                    >
+                        <Target className="w-8 h-8 text-yellow-400" />
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">
+                        Desarrollo de Videojuegos
+                    </h3>
+                    <p class="text-muted-foreground">
+                        Experiencia en la industria del gaming con Godot y
+                        Unreal Engine, creando experiencias interactivas
+                        inmersivas.
+                    </p>
+                </CardContent>
+            </Card>
+        </div>
+    </div>
+</section>

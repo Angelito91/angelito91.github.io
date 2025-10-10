@@ -1,0 +1,77 @@
+---
+import { Star, Laptop, Github, CheckCircle } from "lucide-react";
+import { Button } from "@/components/ui/button";
+---
+
+<section
+    id="inicio"
+    class="relative min-h-screen flex items-center justify-center px-6 pt-20"
+>
+    {/* Decorative Elements */}
+    <div class="absolute top-32 left-20 floating-animation">
+        <Star className="w-8 h-8 text-primary/60" />
+    </div>
+    <div
+        class="absolute top-60 right-32 floating-animation"
+        style="animation-delay: 1s"
+    >
+        <Star className="w-6 h-6 text-accent/70" />
+    </div>
+    <div
+        class="absolute bottom-32 left-16 floating-animation"
+        style="animation-delay: 2s"
+    >
+        <Laptop className="w-12 h-12 text-yellow-400/60" />
+    </div>
+    <div
+        class="absolute bottom-40 right-20 floating-animation"
+        style="animation-delay: 0.5s"
+    >
+        <CheckCircle className="w-10 h-10 text-accent/60" />
+    </div>
+
+    {/* Main Content */}
+    <div class="text-center max-w-4xl mx-auto">
+        {/* Subtitle */}
+        <p class="text-muted-foreground text-lg mb-6 tracking-wide">
+            ANGEL ALBERTO PORTUONDO HIERREZUELO
+        </p>
+
+        {/* Main Title */}
+        <h1 class="text-6xl md:text-8xl font-bold mb-8 leading-tight">
+            <span class="gradient-text">Desarrollador Web</span>
+            <br />
+            <span class="gradient-text">Fullstack</span>
+        </h1>
+
+        {/* Description */}
+        <p class="text-xl text-muted-foreground mb-12 max-w-2xl mx-auto">
+            Estudiante de Ciencias de la Computación apasionado por la
+            programación competitiva y el desarrollo de videojuegos
+        </p>
+
+        {/* GitHub Button */}
+        <Button
+            variant="secondary"
+            size="lg"
+            className="bg-secondary hover:bg-secondary/80 border border-border rounded-xl px-8 py-4 text-lg"
+        >
+            <Github className="w-6 h-6 mr-3" />
+            Ver en GitHub
+        </Button>
+    </div>
+
+    {/* Additional Decorative Stars */}
+    <div
+        class="absolute top-1/2 left-10 floating-animation"
+        style="animation-delay: 1.5s"
+    >
+        <Star className="w-4 h-4 text-primary/40" />
+    </div>
+    <div
+        class="absolute top-1/3 right-10 floating-animation"
+        style="animation-delay: 2.5s"
+    >
+        <Star className="w-5 h-5 text-accent/50" />
+    </div>
+</section>
