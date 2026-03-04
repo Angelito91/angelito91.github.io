@@ -41,56 +41,6 @@ Portafolio de Angel Alberto Portuondo Hierrezuelo. Desarrollador de Videojuegos 
     bun run preview
     ```
 
-## 🌍 Internacionalización
-
-El sitio soporta dos idiomas:
-- 🇪🇸 Español (idioma por defecto) — `/`
-- 🇬🇧 English — `/en/`
-
-## 📌 Tecnologías
-
-### Game Development
-- [Unreal Engine 5](https://www.unrealengine.com) — Game Engine (C++, Blueprint)
-- [Godot Engine](https://godotengine.org) — Game Engine (GDScript)
-
-### Web Development
-- [Astro](https://astro.build) — Framework web
-- [React](https://react.dev) — UI Library
-- [Svelte](https://svelte.dev) — Reactive framework
-- [TypeScript](https://www.typescriptlang.org) — Tipado estático
-- [Tailwind CSS v4](https://tailwindcss.com) — Estilos utilitarios
-
-### Backend & Systems
-- [Node.js](https://nodejs.org) — JavaScript runtime
-- [Express.js](https://expressjs.com) — Web framework
-- [Rust](https://www.rust-lang.org) — Systems programming
-- [Python](https://www.python.org) — Scripting & tools
-
-### Deployment & Hosting
-- [Cloudflare Workers](https://workers.cloudflare.com) — Deploy & hosting
-- [Vercel](https://vercel.com) — Frontend deployment
-- [Docker](https://www.docker.com) — Containerization
-
-## 📁 Estructura del Proyecto
-
-```
-src/
-├── components/     # Componentes Astro
-├── data/           # Datos estáticos (proyectos, etc.)
-├── i18n/           # Traducciones y utilidades i18n
-├── layouts/        # Layout principal (SEO, meta, scripts)
-├── pages/          # Rutas del sitio
-│   └── en/         # Páginas en inglés
-└── styles/         # Estilos globales
-```
-
-## 🎯 Proyectos Destacados
-
-- **NeoRift Engine** — Juego 3D de ciencia ficción con Unreal Engine 5
-- **MythosWorld** — RPG de mundo abierto desarrollado en Godot Engine
-- **VirtualLab** — Simulador educativo interactivo con Godot
-- **Xitry Games** — Sitio web profesional para empresa de desarrollo de videojuegos
-
 ## 📄 Licencia
 
 © Angel Portuondo. Todos los derechos reservados.
