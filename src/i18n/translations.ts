@@ -23,13 +23,17 @@ export const ui = {
     "cv.download": "Descargar CV",
     "cv.link":
       "https://docs.google.com/document/d/1NaoBaaDtAc2L0FIMPwNHXwQSh7QI9WcQ/edit?usp=drive_link&ouid=109799712322136287398&rtpof=true&sd=true",
+    "cv.es":
+      "https://docs.google.com/document/d/1NaoBaaDtAc2L0FIMPwNHXwQSh7QI9WcQ/edit?usp=drive_link&ouid=109799712322136287398&rtpof=true&sd=true",
+    "cv.en":
+      "https://docs.google.com/document/d/1Sh-SpWT8JD3F4h_WDIcjj8un0KwDLMHb/edit?usp=drive_link&ouid=109799712322136287398&rtpof=true&sd=true",
 
     // Hero
     "hero.greeting": "Hola, soy",
     "hero.name": "Angel Portuondo",
     "hero.role": "Desarrollador de Videojuegos & Full Stack",
     "hero.description":
-      "Estudiante de Ciencias de la Computación especializado en desarrollo de videojuegos con Unreal Engine 5 y Godot. También experto en desarrollo web fullstack, sistemas y herramientas. Combino creatividad, tecnología y código limpio.",
+      "Desarrollador Full Stack con más de 2 años de experiencia. Especializado en Unreal Engine para desarrollo de juegos y herramientas. Experto en web con Astro, React y Svelte. Combino rendimiento, diseño y código limpio.",
     "hero.cta.projects": "Ver proyectos",
     "hero.cta.contact": "Contactar",
     "hero.scroll": "Scroll para explorar",
@@ -38,16 +42,16 @@ export const ui = {
     "about.title": "Sobre mí",
     "about.subtitle": "Un poco sobre quién soy y qué hago",
     "about.description":
-      "Soy estudiante de Ciencias de la Computación especializado en desarrollo de videojuegos. He creado juegos inmersivos con Unreal Engine 5 (C++ y Blueprint) y Godot Engine (GDScript), combinando mecánicas complejas con narrativas envolventes. También tengo sólida experiencia en desarrollo web fullstack (Astro, React, Svelte), sistemas en Rust, bots de Telegram y aplicaciones de escritorio. En Xitry Games ayudé a impulsar proyectos creativos con tecnología de punta.",
-    "about.card1.title": "Desarrollo de Videojuegos",
+      "Más de 2 años de experiencia como Desarrollador Full Stack. En Xitry Games, trabajé con Unreal Engine creando herramientas, gameplay y la página web oficial del estudio. He construido soluciones frontend y backend combinando diseño, rendimiento y funcionalidad. Actualmente estudiante de Licenciatura en Ciencias de la Computación en la Universidad de Oriente.",
+    "about.card1.title": "Unreal Engine & Desarrollo de Juegos",
     "about.card1.description":
-      "Juegos 3D con Unreal Engine 5 (C++, Blueprint) y Godot Engine (GDScript). Sistemas de IA avanzada, física realista, ray tracing y diseño de niveles. Del concepto a la publicación con excelente rendimiento.",
-    "about.card2.title": "Desarrollo Web & Full Stack",
+      "Desarrollo de funcionalidades y sistemas en Unreal Engine. Creación de herramientas internas y lógica de gameplay. Colaboración con equipos de arte y diseño para coherencia visual entre juego y web.",
+    "about.card2.title": "Desarrollo Web Full Stack",
     "about.card2.description":
-      "Sitios web modernos con Astro, React, Svelte y TypeScript. APIs REST con Node.js, bots de Telegram, compiladores educativos en Rust. Experiencia profesional en Xitry Games.",
-    "about.card3.title": "Herramientas & Aplicaciones",
+      "Diseño y desarrollo de sitios web con Astro, React y Svelte. TypeScript, Node.js, Tailwind CSS. Despliegue en Cloudflare Pages con CI/CD. Experiencia profesional creando la web oficial de Xitry Games.",
+    "about.card3.title": "Tecnologías & Herramientas",
     "about.card3.description":
-      "Aplicaciones interactivas con Flet, simuladores educativos, editores especializados. Desde herramientas de línea de comandos hasta soluciones multiplataforma de escritorio.",
+      "JavaScript, TypeScript, C++, Python, HTML, CSS, SQL. React, Node, Git, GitHub, Linux. Español nativo, Inglés intermedio (B1). Rendimiento optimizado y diseño responsivo.",
     "about.stats.experience": "Años de experiencia",
     "about.stats.projects": "Proyectos completados",
     "about.stats.technologies": "Tecnologías",
@@ -111,13 +115,17 @@ export const ui = {
     "cv.download": "Download CV",
     "cv.link":
       "https://docs.google.com/document/d/1Sh-SpWT8JD3F4h_WDIcjj8un0KwDLMHb/edit?usp=drive_link&ouid=109799712322136287398&rtpof=true&sd=true",
+    "cv.es":
+      "https://docs.google.com/document/d/1NaoBaaDtAc2L0FIMPwNHXwQSh7QI9WcQ/edit?usp=drive_link&ouid=109799712322136287398&rtpof=true&sd=true",
+    "cv.en":
+      "https://docs.google.com/document/d/1Sh-SpWT8JD3F4h_WDIcjj8un0KwDLMHb/edit?usp=drive_link&ouid=109799712322136287398&rtpof=true&sd=true",
 
     // Hero
     "hero.greeting": "Hi, I'm",
     "hero.name": "Angel Portuondo",
     "hero.role": "Game Developer & Full Stack Developer",
     "hero.description":
-      "Computer Science student specializing in game development with Unreal Engine 5 and Godot. Expert in fullstack web development, systems programming and creative tools. I combine innovation, technology and clean code.",
+      "Full Stack Developer with more than 2 years of experience. Specialized in Unreal Engine for game and tools development. Expert in web with Astro, React and Svelte. I combine performance, design and clean code.",
     "hero.cta.projects": "View projects",
     "hero.cta.contact": "Get in touch",
     "hero.scroll": "Scroll to explore",
@@ -126,16 +134,16 @@ export const ui = {
     "about.title": "About me",
     "about.subtitle": "A bit about who I am and what I do",
     "about.description":
-      "I'm a Computer Science student specializing in game development. I create immersive games with Unreal Engine 5 (C++ and Blueprint) and Godot Engine (GDScript), combining complex mechanics with engaging narratives. I also have solid fullstack web development experience (Astro, React, Svelte), systems programming in Rust, Telegram bots, and desktop applications. At Xitry Games I helped drive creative projects with cutting-edge technology.",
-    "about.card1.title": "Game Development",
+      "More than 2 years of experience as a Full Stack Developer. At Xitry Games, I worked with Unreal Engine creating tools, gameplay and the studio's official website. I've built frontend and backend solutions combining design, performance and functionality. Currently pursuing a Bachelor's degree in Computer Science at Universidad de Oriente.",
+    "about.card1.title": "Unreal Engine & Game Development",
     "about.card1.description":
-      "3D games with Unreal Engine 5 (C++, Blueprint) and Godot Engine (GDScript). Advanced AI systems, realistic physics, ray tracing and level design. From concept to publication with excellent performance.",
-    "about.card2.title": "Web & Full Stack Development",
+      "Development of features and systems in Unreal Engine. Creation of internal tools and gameplay logic. Collaboration with art and design teams for visual coherence between game and web.",
+    "about.card2.title": "Full Stack Web Development",
     "about.card2.description":
-      "Modern websites with Astro, React, Svelte and TypeScript. REST APIs with Node.js, Telegram bots, educational compilers in Rust. Professional experience at Xitry Games.",
-    "about.card3.title": "Tools & Applications",
+      "Website design and development with Astro, React and Svelte. TypeScript, Node.js, Tailwind CSS. Deployment on Cloudflare Pages with CI/CD. Professional experience creating Xitry Games official website.",
+    "about.card3.title": "Technologies & Tools",
     "about.card3.description":
-      "Interactive applications with Flet, educational simulators, specialized editors. From command-line tools to cross-platform desktop solutions.",
+      "JavaScript, TypeScript, C++, Python, HTML, CSS, SQL. React, Node, Git, GitHub, Linux. Native Spanish, Intermediate English (B1). Optimized performance and responsive design.",
     "about.stats.experience": "Years of experience",
     "about.stats.projects": "Projects completed",
     "about.stats.technologies": "Technologies",

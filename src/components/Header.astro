@@ -1,5 +1,6 @@
 ---
 import Logo from "@/components/Logo.astro";
+import CVDownloadButton from "@/components/CVDownloadButton.astro";
 import {
     getLangFromUrl,
     useTranslations,
@@ -84,26 +85,8 @@ const allLangs = [
                 }
             </div>
 
-            <!-- CTA Button (desktop) -->
-            <a
-                href="#contacto"
-                class="hidden md:inline-flex items-center gap-2 px-5 py-2.5 text-[0.8125rem] font-semibold rounded-full bg-[hsl(var(--color-primary)/0.12)] text-[hsl(var(--color-primary))] border border-[hsl(var(--color-primary)/0.2)] hover:bg-[hsl(var(--color-primary)/0.2)] hover:border-[hsl(var(--color-primary)/0.35)] transition-all duration-300"
-            >
-                <svg
-                    class="w-3.5 h-3.5"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                >
-                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                    <polyline points="7 10 12 15 17 10"></polyline>
-                    <line x1="12" y1="15" x2="12" y2="3"></line>
-                </svg>
-                {t("nav.resume")}
-            </a>
+            <!-- CTA Button (desktop) with CV options -->
+            <CVDownloadButton variant="desktop" />
 
             <!-- Hamburger (mobile) -->
             <button
@@ -171,26 +154,7 @@ const allLangs = [
                     }
                 </div>
 
-                <a
-                    href="#contacto"
-                    class="inline-flex items-center gap-2 px-4 py-2 text-xs font-semibold rounded-full bg-[hsl(var(--color-primary)/0.12)] text-[hsl(var(--color-primary))] border border-[hsl(var(--color-primary)/0.2)]"
-                >
-                    <svg
-                        class="w-3.5 h-3.5"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2.5"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                    >
-                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"
-                        ></path>
-                        <polyline points="7 10 12 15 17 10"></polyline>
-                        <line x1="12" y1="15" x2="12" y2="3"></line>
-                    </svg>
-                    {t("nav.resume")}
-                </a>
+                <CVDownloadButton variant="mobile" />
             </div>
         </div>
     </div>

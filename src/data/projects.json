@@ -31,99 +31,7 @@
       "github": null,
       "demo": "https://xitry-game.com/"
     },
-    "year": 2024
-  },
-  {
-    "id": "neorift-engine",
-    "title": {
-      "es": "NeoRift Engine",
-      "en": "NeoRift Engine",
-      "fr": "Moteur NeoRift"
-    },
-    "description": {
-      "es": "Motor de juegos 3D desarrollado con Unreal Engine 5. Videojuego de ciencia ficción con mecánicas de combate avanzadas, sistemas de física dinámicos y entornos visualmente impresionantes. Optimizado para PC y consolas con ray tracing en tiempo real.",
-      "en": "3D game engine developed with Unreal Engine 5. Science fiction game with advanced combat mechanics, dynamic physics systems and visually stunning environments. Optimized for PC and consoles with real-time ray tracing.",
-      "fr": "Moteur de jeu 3D développé avec Unreal Engine 5. Jeu de science-fiction avec des mécaniques de combat avancées, des systèmes de physique dynamiques et des environnements visuellement impressionnants. Optimisé pour PC et consoles avec ray tracing en temps réel."
-    },
-    "image": "/images/projects/neorift.svg",
-    "tech": [
-      "Unreal Engine 5",
-      "C++",
-      "Blueprint",
-      "3D Graphics",
-      "Physics",
-      "Ray Tracing",
-      "Game Design",
-      "Asset Management"
-    ],
-    "category": "game",
-    "featured": true,
-    "links": {
-      "github": null,
-      "demo": null
-    },
-    "year": 2024
-  },
-  {
-    "id": "mythos-world",
-    "title": {
-      "es": "MythosWorld",
-      "en": "MythosWorld",
-      "fr": "MythosWorld"
-    },
-    "description": {
-      "es": "RPG de mundo abierto desarrollado con Godot Engine. Explora un universo mitológico con sistemas de magia, inventario dinámico y NPCs con IA avanzada. Diseñado para multiplataforma con excelente rendimiento en dispositivos de gama media.",
-      "en": "Open-world RPG developed with Godot Engine. Explore a mythological universe with magic systems, dynamic inventory and NPCs with advanced AI. Designed for cross-platform with excellent performance on mid-range devices.",
-      "fr": "RPG en monde ouvert développé avec Godot Engine. Explorez un univers mythologique avec des systèmes de magie, un inventaire dynamique et des PNJ avec une IA avancée. Conçu pour multiplateforme avec d'excellentes performances sur les appareils d'entrée de gamme."
-    },
-    "image": "/images/projects/mythosworld.svg",
-    "tech": [
-      "Godot Engine",
-      "GDScript",
-      "2D/3D Graphics",
-      "AI Systems",
-      "Inventory Management",
-      "Cross-Platform",
-      "Quest System",
-      "Audio Design"
-    ],
-    "category": "game",
-    "featured": true,
-    "links": {
-      "github": "https://github.com/Angelito91/MythosWorld",
-      "demo": null
-    },
-    "year": 2024
-  },
-  {
-    "id": "virtuallab",
-    "title": {
-      "es": "VirtualLab",
-      "en": "VirtualLab",
-      "fr": "VirtualLab"
-    },
-    "description": {
-      "es": "Simulador educativo interactivo desarrollado con Godot. Entorno virtual para experimentar con física, química y biología. Interfaz intuitiva con herramientas de laboratorio realistas y retroalimentación visual inmediata para el aprendizaje práctico.",
-      "en": "Interactive educational simulator developed with Godot. Virtual environment to experiment with physics, chemistry and biology. Intuitive interface with realistic laboratory tools and immediate visual feedback for hands-on learning.",
-      "fr": "Simulateur éducatif interactif développé avec Godot. Environnement virtuel pour expérimenter la physique, la chimie et la biologie. Interface intuitive avec des outils de laboratoire réalistes et une rétroaction visuelle immédiate pour l'apprentissage pratique."
-    },
-    "image": "/images/projects/virtuallab.svg",
-    "tech": [
-      "Godot Engine",
-      "GDScript",
-      "Educational Tools",
-      "Physics Simulation",
-      "Interactive UI",
-      "Data Visualization",
-      "Web Export"
-    ],
-    "category": "game",
-    "featured": true,
-    "links": {
-      "github": "https://github.com/Angelito91/VirtualLab",
-      "demo": "https://angelito91.github.io/virtuallab/"
-    },
-    "year": 2024
+    "year": 2025
   },
   {
     "id": "halo",
@@ -152,7 +60,7 @@
       "github": "https://github.com/Angelito91/halo",
       "demo": null
     },
-    "year": 2025
+    "year": 2026
   },
   {
     "id": "tasacubot",
