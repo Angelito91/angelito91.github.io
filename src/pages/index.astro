@@ -1,34 +1,25 @@
 ---
-import "../styles/global.css";
+import Layout from "@/layouts/main.astro";
 
 import Header from "@/components/Header.astro";
 import HeroSection from "@/components/HeroSection.astro";
 import AboutSection from "@/components/AboutSection.astro";
 import SkillSection from "@/components/SkillSection.astro";
 import ProjectSection from "@/components/ProjectSection.astro";
+import ContactSection from "@/components/ContactSection.astro";
 import Footer from "@/components/Footer.astro";
-
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro + TailwindCSS</title>
-	</head>
+<Layout canonicalPath="/">
+    <Header />
 
-	<body>
-		<div class="min-h-screen">
-			<Header />
-			<main>
-				<HeroSection />
-				<AboutSection />
-				<ProjectSection />
-				<SkillSection />
-			</main>
-			<Footer />
-		</div>
-	</body>
-</html>
+    <main>
+        <HeroSection />
+        <AboutSection />
+        <ProjectSection />
+        <SkillSection />
+        <ContactSection />
+    </main>
+
+    <Footer />
+</Layout>

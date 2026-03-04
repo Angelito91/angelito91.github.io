@@ -1,16 +1,195 @@
 ---
-import '../styles/global.css';
-const { content } = Astro.props;
+import "../styles/global.css";
+import { getLangFromUrl, useTranslations } from "@/i18n/utils";
+
+interface Props {
+    title?: string;
+    description?: string;
+    canonicalPath?: string;
+    ogImage?: string;
+    noindex?: boolean;
+}
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const {
+    title = t("meta.title"),
+    description = t("meta.description"),
+    canonicalPath,
+    ogImage = "/og-image.svg",
+    noindex = false,
+} = Astro.props;
+
+const site = "https://angelito.me";
+
+// Build canonical URL dynamically
+const canonical = canonicalPath
+    ? `${site}${canonicalPath}`
+    : `${site}${Astro.url.pathname}`;
+
+// Build og:url (same as canonical)
+const ogUrl = canonical;
+
+// Locale mapping
+const localeMap: Record<string, string> = {
+    es: "es_ES",
+    en: "en_US",
+    fr: "fr_FR",
+};
+const ogLocale = localeMap[lang] || "es_ES";
+
+// Absolute OG image URL
+const ogImageAbsolute = ogImage.startsWith("http")
+    ? ogImage
+    : `${site}${ogImage}`;
+
+// JSON-LD structured data
+const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "Angel Portuondo",
+    alternateName: "angelito",
+    url: site,
+    description: t("meta.description"),
+    author: {
+        "@type": "Person",
+        name: "Angel Alberto Portuondo Hierrezuelo",
+        url: site,
+        jobTitle: "Fullstack Developer",
+        sameAs: [
+            "https://github.com/angelito91",
+            "https://linkedin.com/in/angelito91",
+        ],
+    },
+    inLanguage: lang,
+};
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<title>{content.title}</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+<html lang={lang}>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <!-- SEO -->
+        <title>{title}</title>
+        <meta name="description" content={description} />
+        <meta name="author" content="Angel Alberto Portuondo Hierrezuelo" />
+        {noindex && <meta name="robots" content="noindex, nofollow" />}
+
+        <!-- Open Graph -->
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={ogUrl} />
+        <meta property="og:locale" content={ogLocale} />
+        <meta property="og:image" content={ogImageAbsolute} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:site_name" content="Angel Portuondo" />
+
+        <!-- Twitter Card -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content={ogImageAbsolute} />
+
+        <!-- Alternate languages -->
+        <link rel="alternate" hreflang="es" href={`${site}/`} />
+        <link rel="alternate" hreflang="en" href={`${site}/en/`} />
+        <link rel="alternate" hreflang="fr" href={`${site}/fr/`} />
+        <link rel="alternate" hreflang="x-default" href={`${site}/`} />
+
+        <!-- Canonical -->
+        <link rel="canonical" href={canonical} />
+
+        <!-- Favicon -->
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+        <!-- Google Fonts: Syne (display) + Outfit (body) + JetBrains Mono (code) -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+            rel="stylesheet"
+        />
+
+        <!-- Theme color -->
+        <meta name="theme-color" content="#0e0f14" />
+
+        <!-- JSON-LD Structured Data -->
+        <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    </head>
+
+    <body class="grain-overlay">
+        <div class="min-h-screen relative">
+            <slot />
+        </div>
+
+        <!-- ═══ Global Scripts ═══ -->
+        <script>
+            // ── Scroll Reveal Observer ──
+            const revealObserver = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add("revealed");
+                            revealObserver.unobserve(entry.target);
+                        }
+                    });
+                },
+                {
+                    threshold: 0.08,
+                    rootMargin: "0px 0px -40px 0px",
+                },
+            );
+
+            function initRevealObserver() {
+                const revealElements = document.querySelectorAll(
+                    ".reveal, .reveal-left, .reveal-right, .reveal-scale",
+                );
+                revealElements.forEach((el) => revealObserver.observe(el));
+            }
+
+            initRevealObserver();
+            document.addEventListener("astro:after-swap", initRevealObserver);
+
+            // ── Smooth Scroll for anchor links ──
+            document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+                anchor.addEventListener("click", (e) => {
+                    const href = (anchor as HTMLAnchorElement).getAttribute(
+                        "href",
+                    );
+                    if (!href || href === "#") return;
+
+                    const target = document.querySelector(href);
+                    if (target) {
+                        e.preventDefault();
+                        target.scrollIntoView({
+                            behavior: "smooth",
+                            block: "start",
+                        });
+                        history.pushState(null, "", href);
+                    }
+                });
+            });
+
+            // ── Mouse position tracker for gradient glow ──
+            let rafId: number | null = null;
+            document.addEventListener("mousemove", (e) => {
+                if (rafId) return;
+                rafId = requestAnimationFrame(() => {
+                    document.documentElement.style.setProperty(
+                        "--mouse-x",
+                        `${e.clientX}px`,
+                    );
+                    document.documentElement.style.setProperty(
+                        "--mouse-y",
+                        `${e.clientY}px`,
+                    );
+                    rafId = null;
+                });
+            });
+        </script>
+    </body>
 </html>
