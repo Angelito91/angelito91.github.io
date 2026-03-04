@@ -1,77 +1,321 @@
 ---
-import { Star, Laptop, Github, CheckCircle } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { getLangFromUrl, useTranslations } from "@/i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <section
     id="inicio"
-    class="relative min-h-screen flex items-center justify-center px-6 pt-20"
+    class="relative min-h-dvh flex items-center overflow-hidden"
 >
-    {/* Decorative Elements */}
-    <div class="absolute top-32 left-20 floating-animation">
-        <Star className="w-8 h-8 text-primary/60" />
+    <!-- ═══ Ambient Orbs ═══ -->
+    <div
+        class="orb orb-primary w-[500px] h-[500px] -top-40 -right-40 floating"
+        style="animation-duration: 8s;"
+        aria-hidden="true"
+    >
     </div>
     <div
-        class="absolute top-60 right-32 floating-animation"
-        style="animation-delay: 1s"
+        class="orb orb-accent w-[350px] h-[350px] bottom-20 -left-32 floating"
+        style="animation-duration: 11s; animation-delay: -3s;"
+        aria-hidden="true"
     >
-        <Star className="w-6 h-6 text-accent/70" />
     </div>
     <div
-        class="absolute bottom-32 left-16 floating-animation"
-        style="animation-delay: 2s"
+        class="orb orb-warm w-[250px] h-[250px] top-1/3 right-1/4 floating"
+        style="animation-duration: 14s; animation-delay: -6s;"
+        aria-hidden="true"
     >
-        <Laptop className="w-12 h-12 text-yellow-400/60" />
-    </div>
-    <div
-        class="absolute bottom-40 right-20 floating-animation"
-        style="animation-delay: 0.5s"
-    >
-        <CheckCircle className="w-10 h-10 text-accent/60" />
     </div>
 
-    {/* Main Content */}
-    <div class="text-center max-w-4xl mx-auto">
-        {/* Subtitle */}
-        <p class="text-muted-foreground text-lg mb-6 tracking-wide">
-            ANGEL ALBERTO PORTUONDO HIERREZUELO
-        </p>
-
-        {/* Main Title */}
-        <h1 class="text-6xl md:text-8xl font-bold mb-8 leading-tight">
-            <span class="gradient-text">Desarrollador Web</span>
-            <br />
-            <span class="gradient-text">Fullstack</span>
-        </h1>
-
-        {/* Description */}
-        <p class="text-xl text-muted-foreground mb-12 max-w-2xl mx-auto">
-            Estudiante de Ciencias de la Computación apasionado por la
-            programación competitiva y el desarrollo de videojuegos
-        </p>
-
-        {/* GitHub Button */}
-        <Button
-            variant="secondary"
-            size="lg"
-            className="bg-secondary hover:bg-secondary/80 border border-border rounded-xl px-8 py-4 text-lg"
+    <!-- ═══ Grid Lines (decorative) ═══ -->
+    <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+        <!-- Vertical line left -->
+        <div
+            class="absolute top-0 bottom-0 left-[8%] w-px bg-linear-to-b from-transparent via-[hsl(225_10%_16%/0.4)] to-transparent"
         >
-            <Github className="w-6 h-6 mr-3" />
-            Ver en GitHub
-        </Button>
+        </div>
+        <!-- Vertical line right -->
+        <div
+            class="absolute top-0 bottom-0 right-[12%] w-px bg-linear-to-b from-transparent via-[hsl(225_10%_16%/0.25)] to-transparent hidden lg:block"
+        >
+        </div>
+        <!-- Horizontal line -->
+        <div
+            class="absolute left-0 right-0 top-[38%] h-px bg-linear-to-r from-transparent via-[hsl(225_10%_16%/0.3)] to-transparent hidden md:block"
+        >
+        </div>
     </div>
 
-    {/* Additional Decorative Stars */}
-    <div
-        class="absolute top-1/2 left-10 floating-animation"
-        style="animation-delay: 1.5s"
-    >
-        <Star className="w-4 h-4 text-primary/40" />
+    <!-- ═══ Main Content ═══ -->
+    <div class="relative z-10 w-full max-w-7xl mx-auto px-6 py-20 lg:py-0">
+        <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+            <!-- Left Column — Text -->
+            <div class="flex-1">
+                <!-- Greeting badge -->
+                <div class="hero-text-reveal mb-6">
+                    <div
+                        class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full border border-[hsl(225_10%_16%/0.6)] bg-[hsl(225_12%_9%/0.5)] backdrop-blur-sm"
+                        style="--delay: 100ms;"
+                    >
+                        <span class="cursor-dot shrink-0"></span>
+                        <span
+                            class="text-xs font-medium tracking-widest uppercase text-[hsl(var(--color-muted-foreground))]"
+                            style="font-family: 'Outfit', system-ui, sans-serif;"
+                        >
+                            {t("hero.greeting")}
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Name — display -->
+                <div class="hero-text-reveal mb-4">
+                    <h1
+                        class="text-[clamp(2rem,5vw,3.5rem)] font-extrabold leading-[1] tracking-tight"
+                        style="--delay: 250ms; font-family: 'Syne', system-ui, sans-serif;"
+                    >
+                        <span class="text-[hsl(var(--color-foreground))]"
+                            >Angel Alberto<br /></span
+                        ><span class="gradient-text">Portuondo</span>
+                    </h1>
+                </div>
+
+                <!-- Role -->
+                <div class="hero-text-reveal mb-4">
+                    <p
+                        class="text-base md:text-lg font-medium text-[hsl(var(--color-muted-foreground))]"
+                        style="--delay: 520ms; font-family: 'Syne', system-ui, sans-serif; letter-spacing: -0.01em;"
+                    >
+                        {t("hero.role")}
+                    </p>
+                </div>
+
+                <!-- Description -->
+                <div class="hero-text-reveal mb-8 lg:mb-10">
+                    <p
+                        class="text-base leading-relaxed text-[hsl(var(--color-muted-foreground)/0.75)] max-w-lg text-pretty"
+                        style="--delay: 650ms;"
+                    >
+                        {t("hero.description")}
+                    </p>
+                </div>
+
+                <!-- CTAs -->
+                <div class="hero-text-reveal">
+                    <div
+                        class="flex flex-wrap items-center gap-4"
+                        style="--delay: 800ms;"
+                    >
+                        <!-- Primary CTA -->
+                        <a
+                            href="#proyectos"
+                            class="group relative inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full text-sm font-semibold text-[hsl(var(--color-primary-foreground))] overflow-hidden transition-all duration-500 hover:shadow-[0_0_40px_hsl(258_85%_68%/0.25)]"
+                            style="font-family: 'Outfit', system-ui, sans-serif;"
+                        >
+                            <!-- Gradient background -->
+                            <div
+                                class="absolute inset-0 bg-linear-to-r from-[hsl(258_85%_68%)] to-[hsl(290_70%_60%)] transition-opacity duration-300"
+                            >
+                            </div>
+                            <div
+                                class="absolute inset-0 bg-linear-to-r from-[hsl(290_70%_60%)] to-[hsl(340_75%_62%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                            >
+                            </div>
+                            <span class="relative z-10"
+                                >{t("hero.cta.projects")}</span
+                            >
+                            <svg
+                                class="relative z-10 w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2.5"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            >
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </a>
+
+                        <!-- Secondary CTA -->
+                        <a
+                            href="#contacto"
+                            class="group inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-semibold border border-[hsl(225_10%_20%)] text-[hsl(var(--color-foreground)/0.85)] hover:border-[hsl(var(--color-primary)/0.3)] hover:text-[hsl(var(--color-primary))] transition-all duration-400"
+                            style="font-family: 'Outfit', system-ui, sans-serif;"
+                        >
+                            <span>{t("hero.cta.contact")}</span>
+                            <svg
+                                class="w-4 h-4 transition-transform duration-300 group-hover:-translate-y-px"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2.5"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            >
+                                <path
+                                    d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                                ></path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column — Abstract Visual / Stats -->
+            <div class="hidden lg:flex flex-col items-end gap-6">
+                <!-- Abstract composition -->
+                <div
+                    class="relative w-full hero-text-reveal"
+                    style="--delay: 600ms;"
+                >
+                    <!-- Main visual block -->
+                    <div class="relative flex flex-col items-end">
+                        <!-- Large decorative number -->
+                        <div
+                            class="text-[8rem] md:text-[10rem] font-extrabold leading-none text-[hsl(225_10%_10%)] select-none"
+                            style="font-family: 'Syne', system-ui, sans-serif; letter-spacing: -0.06em;"
+                            aria-hidden="true"
+                        >
+                            91
+                        </div>
+
+                        <!-- Floating card overlay -->
+                        <div class="glass-card rounded-2xl p-5 w-full max-w-xs">
+                            <div class="flex items-center gap-3 mb-3">
+                                <div
+                                    class="w-2.5 h-2.5 rounded-full bg-[hsl(168_70%_52%)]"
+                                >
+                                </div>
+                                <span
+                                    class="text-xs font-semibold uppercase tracking-widest text-[hsl(168_70%_60%)]"
+                                    style="font-family: 'Outfit', system-ui, sans-serif;"
+                                >
+                                    Status
+                                </span>
+                            </div>
+                            <p
+                                class="text-xs text-[hsl(var(--color-muted-foreground))] leading-relaxed"
+                            >
+                                {
+                                    lang === "en"
+                                        ? "Open to opportunities & collaborations"
+                                        : "Abierto a oportunidades y colaboraciones"
+                                }
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mini stat bar -->
+                <div
+                    class="hero-text-reveal flex items-center gap-4 md:gap-6 text-right w-full justify-end"
+                    style="--delay: 900ms;"
+                >
+                    <div>
+                        <div
+                            class="text-2xl font-bold text-[hsl(var(--color-foreground))] tabular-nums"
+                            style="font-family: 'Syne', system-ui, sans-serif;"
+                        >
+                            2+
+                        </div>
+                        <div
+                            class="text-[0.6875rem] text-[hsl(var(--color-muted-foreground))] uppercase tracking-widest mt-0.5"
+                        >
+                            {t("about.stats.experience")}
+                        </div>
+                    </div>
+                    <div
+                        class="w-px h-10 bg-[hsl(225_10%_16%)]"
+                        aria-hidden="true"
+                    >
+                    </div>
+                    <div>
+                        <div
+                            class="text-2xl font-bold text-[hsl(var(--color-foreground))] tabular-nums"
+                            style="font-family: 'Syne', system-ui, sans-serif;"
+                        >
+                            10+
+                        </div>
+                        <div
+                            class="text-[0.6875rem] text-[hsl(var(--color-muted-foreground))] uppercase tracking-widest mt-0.5"
+                        >
+                            {t("about.stats.projects")}
+                        </div>
+                    </div>
+                    <div
+                        class="w-px h-10 bg-[hsl(225_10%_16%)]"
+                        aria-hidden="true"
+                    >
+                    </div>
+                    <div>
+                        <div
+                            class="text-2xl font-bold text-[hsl(var(--color-foreground))] tabular-nums"
+                            style="font-family: 'Syne', system-ui, sans-serif;"
+                        >
+                            20+
+                        </div>
+                        <div
+                            class="text-[0.6875rem] text-[hsl(var(--color-muted-foreground))] uppercase tracking-widest mt-0.5"
+                        >
+                            {t("about.stats.technologies")}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
+    <!-- ═══ Scroll Indicator ═══ -->
     <div
-        class="absolute top-1/3 right-10 floating-animation"
-        style="animation-delay: 2.5s"
+        class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 hero-text-reveal"
+        style="--delay: 1200ms;"
     >
-        <Star className="w-5 h-5 text-accent/50" />
+        <span
+            class="text-[0.625rem] uppercase tracking-[0.25em] text-[hsl(var(--color-muted-foreground)/0.5)] font-medium"
+            style="font-family: 'Outfit', system-ui, sans-serif;"
+        >
+            {t("hero.scroll")}
+        </span>
+        <div
+            class="relative w-5 h-8 rounded-full border border-[hsl(225_10%_20%)]"
+        >
+            <div
+                class="absolute top-1.5 left-1/2 -translate-x-1/2 w-1 h-2 rounded-full bg-[hsl(var(--color-primary)/0.6)]"
+                style="animation: scrollPulse 2s ease-in-out infinite;"
+            >
+            </div>
+        </div>
     </div>
 </section>
+
+<style>
+    @keyframes scrollPulse {
+        0%,
+        100% {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+        50% {
+            opacity: 0.3;
+            transform: translateX(-50%) translateY(10px);
+        }
+    }
+
+    .floating {
+        animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+        0%,
+        100% {
+            transform: translateY(0px);
+        }
+        50% {
+            transform: translateY(-10px);
+        }
+    }
+</style>

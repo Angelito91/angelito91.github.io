@@ -1,81 +1,313 @@
 ---
-import { Code, Lightbulb, Target } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
+import { getLangFromUrl, useTranslations } from "@/i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const cards = [
+    {
+        title: t("about.card1.title"),
+        description: t("about.card1.description"),
+        icon: "frontend",
+        accent: "258 85% 68%",
+        label: "01",
+    },
+    {
+        title: t("about.card2.title"),
+        description: t("about.card2.description"),
+        icon: "backend",
+        accent: "168 70% 52%",
+        label: "02",
+    },
+    {
+        title: t("about.card3.title"),
+        description: t("about.card3.description"),
+        icon: "gamedev",
+        accent: "35 90% 62%",
+        label: "03",
+    },
+];
 ---
 
-<section id="sobre-mi" class="py-20 px-6">
-    <div class="max-w-6xl mx-auto">
-        <div class="text-center mb-16">
-            <h2 class="text-4xl md:text-5xl font-bold mb-6">
-                <span class="gradient-text">Sobre mí</span>
-            </h2>
-            <p class="text-xl text-muted-foreground max-w-3xl mx-auto">
-                Estudiante de Ciencias de la Computación con experiencia en
-                desarrollo web, programación competitiva y creación de
-                videojuegos. He trabajado en la industria del gaming con Godot y
-                Unreal Engine, combinando mi pasión por la tecnología con la
-                creatividad.
-            </p>
+<section
+    id="sobre-mi"
+    class="relative section-divider"
+    style={`padding-top: var(--section-gap); padding-bottom: var(--section-gap);`}
+>
+    <!-- Ambient orb -->
+    <div
+        class="orb orb-accent w-[400px] h-[400px] top-0 right-0 floating"
+        style="animation-duration: 13s; animation-delay: -4s;"
+        aria-hidden="true"
+    >
+    </div>
+
+    <div class="relative z-10 max-w-6xl mx-auto px-6">
+        <!-- ═══ Section Header — Asymmetric layout ═══ -->
+        <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 mb-16 lg:mb-24">
+            <!-- Left: Label + Title -->
+            <div class="lg:col-span-5 reveal">
+                <!-- Section label -->
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="w-8 h-px bg-[hsl(258_85%_68%/0.5)]"></div>
+                    <span
+                        class="text-[0.6875rem] font-semibold uppercase tracking-[0.2em] text-[hsl(258_85%_68%)]"
+                        style="font-family: 'Outfit', system-ui, sans-serif;"
+                    >
+                        {t("about.title")}
+                    </span>
+                </div>
+
+                <!-- Title -->
+                <h2
+                    class="text-[clamp(2rem,4.5vw,3.5rem)] font-bold leading-[1.05] tracking-tight text-[hsl(var(--color-foreground))]"
+                    style="font-family: 'Syne', system-ui, sans-serif;"
+                >
+                    {
+                        lang === "en" ? (
+                            <>
+                                Building the
+                                <br />
+                                <span class="gradient-text">
+                                    digital future
+                                </span>
+                            </>
+                        ) : (
+                            <>
+                                Construyendo el
+                                <br />
+                                <span class="gradient-text">
+                                    futuro digital
+                                </span>
+                            </>
+                        )
+                    }
+                </h2>
+            </div>
+
+            <!-- Right: Description -->
+            <div
+                class="lg:col-span-7 lg:pt-16 reveal"
+                style="transition-delay: 150ms;"
+            >
+                <p
+                    class="text-base md:text-lg leading-[1.8] text-[hsl(var(--color-muted-foreground))] text-pretty max-w-2xl"
+                >
+                    {t("about.description")}
+                </p>
+
+                <!-- Mini stats row (mobile visible, desktop hidden since hero has it) -->
+                <div class="flex items-center gap-8 mt-8 lg:hidden">
+                    <div>
+                        <div
+                            class="text-2xl font-bold text-[hsl(var(--color-foreground))] tabular-nums"
+                            style="font-family: 'Syne', system-ui, sans-serif;"
+                        >
+                            2+
+                        </div>
+                        <div
+                            class="text-[0.6875rem] text-[hsl(var(--color-muted-foreground))] uppercase tracking-widest mt-0.5"
+                        >
+                            {t("about.stats.experience")}
+                        </div>
+                    </div>
+                    <div
+                        class="w-px h-10 bg-[hsl(225_10%_16%)]"
+                        aria-hidden="true"
+                    >
+                    </div>
+                    <div>
+                        <div
+                            class="text-2xl font-bold text-[hsl(var(--color-foreground))] tabular-nums"
+                            style="font-family: 'Syne', system-ui, sans-serif;"
+                        >
+                            10+
+                        </div>
+                        <div
+                            class="text-[0.6875rem] text-[hsl(var(--color-muted-foreground))] uppercase tracking-widest mt-0.5"
+                        >
+                            {t("about.stats.projects")}
+                        </div>
+                    </div>
+                    <div
+                        class="w-px h-10 bg-[hsl(225_10%_16%)]"
+                        aria-hidden="true"
+                    >
+                    </div>
+                    <div>
+                        <div
+                            class="text-2xl font-bold text-[hsl(var(--color-foreground))] tabular-nums"
+                            style="font-family: 'Syne', system-ui, sans-serif;"
+                        >
+                            20+
+                        </div>
+                        <div
+                            class="text-[0.6875rem] text-[hsl(var(--color-muted-foreground))] uppercase tracking-widest mt-0.5"
+                        >
+                            {t("about.stats.technologies")}
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div class="grid md:grid-cols-3 gap-8">
-            <Card
-                className="bg-card/50 border-border/50 backdrop-blur-sm hover:bg-card/70 transition-all duration-300"
-            >
-                <CardContent className="p-8 text-center">
-                    <div
-                        class="w-16 h-16 mx-auto mb-6 bg-primary/20 rounded-full flex items-center justify-center"
-                    >
-                        <Code className="w-8 h-8 text-primary" />
-                    </div>
-                    <h3 class="text-xl font-semibold mb-4">
-                        Desarrollo Frontend
-                    </h3>
-                    <p class="text-muted-foreground">
-                        Experto en React, TypeScript, y frameworks modernos para
-                        crear interfaces intuitivas y responsivas.
-                    </p>
-                </CardContent>
-            </Card>
+        <!-- ═══ Specialty Cards ═══ -->
+        <div class="grid md:grid-cols-3 gap-5 lg:gap-6 stagger-children">
+            {
+                cards.map((card) => (
+                    <div class="reveal group glass-card rounded-2xl p-7 lg:p-8 relative overflow-hidden">
+                        {/* Top accent line */}
+                        <div
+                            class="absolute top-0 left-0 right-0 h-px opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                            style={`background: linear-gradient(90deg, transparent, hsl(${card.accent}), transparent);`}
+                        />
 
-            <Card
-                className="bg-card/50 border-border/50 backdrop-blur-sm hover:bg-card/70 transition-all duration-300"
-            >
-                <CardContent className="p-8 text-center">
-                    <div
-                        class="w-16 h-16 mx-auto mb-6 bg-accent/20 rounded-full flex items-center justify-center"
-                    >
-                        <Lightbulb className="w-8 h-8 text-accent" />
-                    </div>
-                    <h3 class="text-xl font-semibold mb-4">
-                        Desarrollo Backend
-                    </h3>
-                    <p class="text-muted-foreground">
-                        Construcción de APIs robustas y escalables con Node.js,
-                        bases de datos y arquitecturas modernas.
-                    </p>
-                </CardContent>
-            </Card>
+                        {/* Number label */}
+                        <div class="flex items-center justify-between mb-8">
+                            <span
+                                class="text-[0.6875rem] font-bold tracking-[0.15em] uppercase"
+                                style={`color: hsl(${card.accent}); font-family: 'JetBrains Mono', monospace;`}
+                            >
+                                {card.label}
+                            </span>
 
-            <Card
-                className="bg-card/50 border-border/50 backdrop-blur-sm hover:bg-card/70 transition-all duration-300"
-            >
-                <CardContent className="p-8 text-center">
-                    <div
-                        class="w-16 h-16 mx-auto mb-6 bg-yellow-400/20 rounded-full flex items-center justify-center"
-                    >
-                        <Target className="w-8 h-8 text-yellow-400" />
+                            {/* Icon */}
+                            <div
+                                class="w-10 h-10 rounded-xl flex items-center justify-center transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-3"
+                                style={`background: hsl(${card.accent} / 0.1); border: 1px solid hsl(${card.accent} / 0.15);`}
+                            >
+                                {card.icon === "frontend" && (
+                                    <svg
+                                        class="w-5 h-5"
+                                        style={`color: hsl(${card.accent});`}
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="1.8"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    >
+                                        <polyline points="16 18 22 12 16 6" />
+                                        <polyline points="8 6 2 12 8 18" />
+                                        <line x1="14" y1="4" x2="10" y2="20" />
+                                    </svg>
+                                )}
+                                {card.icon === "backend" && (
+                                    <svg
+                                        class="w-5 h-5"
+                                        style={`color: hsl(${card.accent});`}
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="1.8"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    >
+                                        <ellipse cx="12" cy="5" rx="9" ry="3" />
+                                        <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3" />
+                                        <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" />
+                                    </svg>
+                                )}
+                                {card.icon === "gamedev" && (
+                                    <svg
+                                        class="w-5 h-5"
+                                        style={`color: hsl(${card.accent});`}
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="1.8"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    >
+                                        <line x1="6" y1="12" x2="10" y2="12" />
+                                        <line x1="8" y1="10" x2="8" y2="14" />
+                                        <line
+                                            x1="15"
+                                            y1="13"
+                                            x2="15.01"
+                                            y2="13"
+                                        />
+                                        <line
+                                            x1="18"
+                                            y1="11"
+                                            x2="18.01"
+                                            y2="11"
+                                        />
+                                        <rect
+                                            x="2"
+                                            y="6"
+                                            width="20"
+                                            height="12"
+                                            rx="2"
+                                        />
+                                    </svg>
+                                )}
+                            </div>
+                        </div>
+
+                        {/* Content */}
+                        <h3
+                            class="text-lg font-bold mb-3 text-[hsl(var(--color-foreground))]"
+                            style="font-family: 'Syne', system-ui, sans-serif; letter-spacing: -0.02em;"
+                        >
+                            {card.title}
+                        </h3>
+                        <p class="text-sm leading-relaxed text-[hsl(var(--color-muted-foreground))]">
+                            {card.description}
+                        </p>
+
+                        {/* Bottom decorative corner */}
+                        <div
+                            class="absolute bottom-0 right-0 w-20 h-20 opacity-[0.03] group-hover:opacity-[0.06] transition-opacity duration-500 pointer-events-none"
+                            aria-hidden="true"
+                        >
+                            <svg viewBox="0 0 80 80" fill="none">
+                                <circle
+                                    cx="80"
+                                    cy="80"
+                                    r="60"
+                                    stroke={`hsl(${card.accent})`}
+                                    stroke-width="1"
+                                />
+                                <circle
+                                    cx="80"
+                                    cy="80"
+                                    r="40"
+                                    stroke={`hsl(${card.accent})`}
+                                    stroke-width="0.5"
+                                />
+                                <circle
+                                    cx="80"
+                                    cy="80"
+                                    r="20"
+                                    stroke={`hsl(${card.accent})`}
+                                    stroke-width="0.5"
+                                />
+                            </svg>
+                        </div>
                     </div>
-                    <h3 class="text-xl font-semibold mb-4">
-                        Desarrollo de Videojuegos
-                    </h3>
-                    <p class="text-muted-foreground">
-                        Experiencia en la industria del gaming con Godot y
-                        Unreal Engine, creando experiencias interactivas
-                        inmersivas.
-                    </p>
-                </CardContent>
-            </Card>
+                ))
+            }
+        </div>
+
+        <!-- ═══ Bottom accent line ═══ -->
+        <div class="mt-16 lg:mt-24 reveal flex items-center gap-4">
+            <div
+                class="flex-1 h-px bg-linear-to-r from-[hsl(225_10%_16%)] to-transparent"
+            >
+            </div>
+            <div class="flex gap-1.5" aria-hidden="true">
+                <div class="w-1 h-1 rounded-full bg-[hsl(258_85%_68%/0.4)]">
+                </div>
+                <div class="w-1 h-1 rounded-full bg-[hsl(258_85%_68%/0.25)]">
+                </div>
+                <div class="w-1 h-1 rounded-full bg-[hsl(258_85%_68%/0.12)]">
+                </div>
+            </div>
+            <div
+                class="flex-1 h-px bg-linear-to-l from-[hsl(225_10%_16%)] to-transparent"
+            >
+            </div>
         </div>
     </div>
 </section>

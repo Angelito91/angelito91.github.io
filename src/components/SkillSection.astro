@@ -1,140 +1,285 @@
 ---
-import { Code2, Database, Globe, Smartphone, Cloud, Zap } from "lucide-react";
+import { getLangFromUrl, useTranslations } from "@/i18n/utils";
 
-const skillCategories = [
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+// Skills organized in rows for marquee effect
+// Each row scrolls in alternating directions
+const skillRows = [
     {
-        title: "Frontend",
-        icon: Code2,
+        direction: "normal",
+        speed: "40s",
         skills: [
-            "React",
-            "Vue.js",
-            "TypeScript",
-            "Tailwind CSS",
-            "Next.js",
-            "Vite",
+            { name: "Unreal Engine 5", color: "35 90% 62%" },
+            { name: "Godot Engine", color: "168 70% 52%" },
+            { name: "C++", color: "0 72% 56%" },
+            { name: "GDScript", color: "168 70% 52%" },
+            { name: "Blueprint", color: "35 90% 62%" },
+            { name: "3D Graphics", color: "340 75% 62%" },
+            { name: "Game Physics", color: "258 85% 68%" },
+            { name: "Ray Tracing", color: "35 90% 62%" },
+            { name: "Level Design", color: "205 85% 60%" },
+            { name: "Game AI", color: "258 85% 68%" },
+            { name: "Asset Management", color: "340 75% 62%" },
         ],
-        color: "text-primary",
-        bgColor: "bg-primary/20",
     },
     {
-        title: "Backend",
-        icon: Database,
+        direction: "reverse",
+        speed: "45s",
         skills: [
-            "Node.js",
-            "Python",
-            "Express",
-            "FastAPI",
-            "PostgreSQL",
-            "MongoDB",
+            { name: "JavaScript", color: "205 85% 60%" },
+            { name: "TypeScript", color: "205 85% 60%" },
+            { name: "React", color: "205 85% 60%" },
+            { name: "Astro", color: "340 75% 62%" },
+            { name: "Svelte", color: "340 75% 62%" },
+            { name: "Tailwind CSS", color: "205 85% 60%" },
+            { name: "HTML/CSS", color: "35 90% 62%" },
+            { name: "Vite", color: "258 85% 68%" },
+            { name: "Responsive Design", color: "205 85% 60%" },
+            { name: "Web APIs", color: "258 85% 68%" },
+            { name: "DOM", color: "35 90% 62%" },
         ],
-        color: "text-accent",
-        bgColor: "bg-accent/20",
     },
     {
-        title: "DevOps",
-        icon: Cloud,
-        skills: ["Docker", "AWS", "Vercel", "GitHub Actions", "Nginx", "Linux"],
-        color: "text-yellow-400",
-        bgColor: "bg-yellow-400/20",
+        direction: "normal",
+        speed: "50s",
+        skills: [
+            { name: "Python", color: "35 90% 62%" },
+            { name: "Rust", color: "258 85% 68%" },
+            { name: "Node.js", color: "168 70% 52%" },
+            { name: "Telegram Bot API", color: "205 85% 60%" },
+            { name: "REST APIs", color: "258 85% 68%" },
+            { name: "Express.js", color: "168 70% 52%" },
+            { name: "Async Programming", color: "168 70% 52%" },
+            { name: "MySQL", color: "205 85% 60%" },
+            { name: "Flet Framework", color: "340 75% 62%" },
+            { name: "Desktop Apps", color: "340 75% 62%" },
+        ],
     },
     {
-        title: "Mobile",
-        icon: Smartphone,
+        direction: "reverse",
+        speed: "42s",
         skills: [
-            "React Native",
-            "Flutter",
-            "Expo",
-            "PWA",
-            "Ionic",
-            "Capacitor",
+            { name: "Git & GitHub", color: "340 75% 62%" },
+            { name: "Linux", color: "35 90% 62%" },
+            { name: "Compiler Design", color: "258 85% 68%" },
+            { name: "Data Structures", color: "205 85% 60%" },
+            { name: "Algorithms", color: "258 85% 68%" },
+            { name: "OOP Design", color: "0 72% 56%" },
+            { name: "Game Optimization", color: "35 90% 62%" },
+            { name: "Particle Systems", color: "340 75% 62%" },
+            { name: "Audio Design", color: "168 70% 52%" },
+            { name: "Quest Systems", color: "205 85% 60%" },
+            { name: "Inventory Management", color: "258 85% 68%" },
+            { name: "Cross-Platform", color: "340 75% 62%" },
         ],
-        color: "text-purple-400",
-        bgColor: "bg-purple-400/20",
     },
     {
-        title: "Web APIs",
-        icon: Globe,
+        direction: "normal",
+        speed: "48s",
         skills: [
-            "REST APIs",
-            "GraphQL",
-            "WebSockets",
-            "OAuth",
-            "JWT",
-            "Stripe",
+            { name: "Git", color: "340 75% 62%" },
+            { name: "Docker", color: "205 85% 60%" },
+            { name: "Cloudflare", color: "35 90% 62%" },
+            { name: "Vercel", color: "225 8% 50%" },
+            { name: "Supabase", color: "0 72% 56%" },
+            { name: "Cargo", color: "35 90% 62%" },
+            { name: "Bun", color: "258 85% 68%" },
+            { name: "SEO & Performance", color: "205 85% 60%" },
         ],
-        color: "text-blue-400",
-        bgColor: "bg-blue-400/20",
+    },
+];
+
+// Category labels for the legend
+const categories = [
+    {
+        label: "Game Engines",
+        color: "35 90% 62%",
+        icon: "gamepad",
     },
     {
-        title: "Game Development",
-        icon: Zap,
-        skills: [
-            "Godot",
-            "Unreal Engine",
-            "C#",
-            "GDScript",
-            "Unity",
-            "Blender",
-        ],
-        color: "text-orange-400",
-        bgColor: "bg-orange-400/20",
+        label: "Game Development",
+        color: "168 70% 52%",
+        icon: "cube",
     },
     {
-        title: "Competitive Programming",
-        icon: Code2,
-        skills: [
-            "C++",
-            "Python",
-            "Algorithms",
-            "Data Structures",
-            "Codeforces",
-            "AtCoder",
-        ],
-        color: "text-green-400",
-        bgColor: "bg-green-400/20",
+        label: "Web Development",
+        color: "205 85% 60%",
+        icon: "code",
+    },
+    {
+        label: "Backend & Systems",
+        color: "258 85% 68%",
+        icon: "server",
+    },
+    {
+        label: "Tools & DevOps",
+        color: "0 72% 56%",
+        icon: "wrench",
     },
 ];
 ---
 
-<section id="habilidades" class="py-20 px-6">
-    <div class="max-w-6xl mx-auto">
-        <div class="text-center mb-16">
-            <h2 class="text-4xl md:text-5xl font-bold mb-6">
-                <span class="gradient-text">Habilidades</span>
+<section
+    id="habilidades"
+    class="relative section-divider overflow-hidden"
+    style={`padding-top: var(--section-gap); padding-bottom: var(--section-gap);`}
+>
+    <!-- Ambient orbs -->
+    <div
+        class="orb orb-primary w-[350px] h-[350px] top-1/4 -right-20 floating"
+        style="animation-duration: 11s; animation-delay: -3s;"
+        aria-hidden="true"
+    >
+    </div>
+    <div
+        class="orb orb-accent w-[300px] h-[300px] bottom-20 -left-20 floating"
+        style="animation-duration: 14s; animation-delay: -7s;"
+        aria-hidden="true"
+    >
+    </div>
+
+    <div class="relative z-10 max-w-6xl mx-auto px-6">
+        <!-- ═══ Section Header ═══ -->
+        <div class="max-w-2xl mb-12 lg:mb-16">
+            <!-- Section label -->
+            <div class="flex items-center gap-3 mb-6 reveal">
+                <div class="w-8 h-px bg-[hsl(258_85%_68%/0.5)]"></div>
+                <span
+                    class="text-[0.6875rem] font-semibold uppercase tracking-[0.2em] text-[hsl(258_85%_68%)]"
+                    style="font-family: 'Outfit', system-ui, sans-serif;"
+                >
+                    {t("skills.title")}
+                </span>
+            </div>
+
+            <!-- Title -->
+            <h2
+                class="text-[clamp(2rem,4.5vw,3.5rem)] font-bold leading-[1.05] tracking-tight text-[hsl(var(--color-foreground))] mb-5 reveal"
+                style="font-family: 'Syne', system-ui, sans-serif; transition-delay: 80ms;"
+            >
+                {
+                    lang === "en" ? (
+                        <>
+                            Tools &{" "}
+                            <span class="gradient-text">technologies</span>
+                        </>
+                    ) : lang === "fr" ? (
+                        <>
+                            Outils &{" "}
+                            <span class="gradient-text">technologies</span>
+                        </>
+                    ) : (
+                        <>
+                            Herramientas y{" "}
+                            <span class="gradient-text">tecnologías</span>
+                        </>
+                    )
+                }
             </h2>
-            <p class="text-xl text-muted-foreground max-w-3xl mx-auto">
-                Tecnologías y herramientas que domino para crear soluciones
-                completas y escalables.
+
+            <p
+                class="text-base md:text-lg leading-relaxed text-[hsl(var(--color-muted-foreground))] text-pretty reveal"
+                style="transition-delay: 160ms;"
+            >
+                {t("skills.subtitle")}
             </p>
         </div>
 
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- ═══ Category Legend ═══ -->
+        <div
+            class="flex flex-wrap items-center gap-5 mb-10 lg:mb-14 reveal"
+            style="transition-delay: 200ms;"
+        >
             {
-                skillCategories.map((category) => {
-                    const Icon = category.icon;
-                    return (
-                        <div class="bg-card/50 border border-border/50 rounded-xl p-6 backdrop-blur-sm hover:bg-card/70 transition-all duration-300 group">
-                            <div
-                                class={`w-16 h-16 ${category.bgColor} rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}
-                            >
-                                <Icon className={`w-8 h-8 ${category.color}`} />
-                            </div>
-
-                            <h3 class="text-xl font-semibold mb-4">
-                                {category.title}
-                            </h3>
-
-                            <div class="flex flex-wrap gap-2">
-                                {category.skills.map((skill) => (
-                                    <span class="px-3 py-1 bg-muted/50 text-muted-foreground text-sm rounded-full border border-border/30 hover:bg-muted/70 transition-colors cursor-default">
-                                        {skill}
-                                    </span>
-                                ))}
-                            </div>
-                        </div>
-                    );
-                })
+                categories.map((cat) => (
+                    <div class="flex items-center gap-2.5">
+                        <div
+                            class="w-2 h-2 rounded-full"
+                            style={`background: hsl(${cat.color});`}
+                        />
+                        <span
+                            class="text-xs font-medium text-[hsl(var(--color-muted-foreground))]"
+                            style="font-family: 'Outfit', system-ui, sans-serif;"
+                        >
+                            {cat.label}
+                        </span>
+                    </div>
+                ))
             }
+        </div>
+    </div>
+
+    <!-- ═══ Marquee Rows — Full bleed ═══ -->
+    <div class="flex flex-col gap-4 reveal" style="transition-delay: 250ms;">
+        {
+            skillRows.map((row) => (
+                <div class="marquee-container">
+                    <div
+                        class={
+                            row.direction === "reverse"
+                                ? "marquee-track-reverse"
+                                : "marquee-track"
+                        }
+                        style={`animation-duration: ${row.speed};`}
+                    >
+                        {/* Duplicate skills array for seamless loop */}
+                        {[...row.skills, ...row.skills].map((skill) => (
+                            <div
+                                class="group/skill shrink-0 flex items-center gap-3 px-5 py-3 rounded-xl border transition-all duration-300 cursor-default select-none hover:scale-[1.03]"
+                                style={`
+                                    background: hsl(${skill.color} / 0.04);
+                                    border-color: hsl(${skill.color} / 0.08);
+                                `}
+                            >
+                                {/* Color dot */}
+                                <div
+                                    class="w-1.5 h-1.5 rounded-full shrink-0 transition-transform duration-300 group-hover/skill:scale-150"
+                                    style={`background: hsl(${skill.color});`}
+                                />
+
+                                {/* Skill name */}
+                                <span
+                                    class="text-sm font-medium whitespace-nowrap transition-colors duration-300"
+                                    style={`
+                                        color: hsl(${skill.color} / 0.75);
+                                        font-family: 'JetBrains Mono', monospace;
+                                        letter-spacing: 0.01em;
+                                    `}
+                                >
+                                    {skill.name}
+                                </span>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            ))
+        }
+    </div>
+
+    <!-- ═══ Bottom decorative element ═══ -->
+    <div class="max-w-6xl mx-auto px-6">
+        <div
+            class="mt-16 lg:mt-24 reveal flex items-center gap-4"
+            style="transition-delay: 100ms;"
+        >
+            <div
+                class="flex-1 h-px bg-linear-to-r from-[hsl(225_10%_16%)] to-transparent"
+            >
+            </div>
+            <div class="flex gap-1.5" aria-hidden="true">
+                <div class="w-1 h-1 rounded-full bg-[hsl(168_70%_52%/0.4)]">
+                </div>
+                <div class="w-1 h-1 rounded-full bg-[hsl(168_70%_52%/0.25)]">
+                </div>
+                <div class="w-1 h-1 rounded-full bg-[hsl(168_70%_52%/0.12)]">
+                </div>
+            </div>
+            <div
+                class="flex-1 h-px bg-linear-to-l from-[hsl(225_10%_16%)] to-transparent"
+            >
+            </div>
         </div>
     </div>
 </section>

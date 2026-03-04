@@ -1,29 +1,54 @@
 ---
 interface Props {
-  className?: string;
+    className?: string;
 }
 
 const { className = "" } = Astro.props;
 ---
 
-<div class={`flex items-center gap-2 ${className}`}>
-  <div class="relative">
-    <div class="w-8 h-8 relative">
-      <div class="absolute top-0 left-1 w-4 h-4 rounded-full bg-primary/80"></div>
-      <div class="absolute top-1 right-0 w-4 h-4 rounded-full bg-accent/80"></div>
-      <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-gradient-to-br from-primary to-accent"></div>
-      
-      <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-background border-2 border-primary/30"></div>
+<a
+    href="#inicio"
+    class:list={["group flex items-center gap-2.5 no-underline", className]}
+>
+    <!-- Monogram mark -->
+    <div class="relative w-9 h-9 flex items-center justify-center">
+        <!-- Outer ring -->
+        <div
+            class="absolute inset-0 rounded-lg border border-[hsl(258_85%_68%/0.3)] group-hover:border-[hsl(258_85%_68%/0.5)] transition-colors duration-500"
+            style="transform: rotate(3deg);"
+        >
+        </div>
+        <!-- Inner filled square -->
+        <div
+            class="absolute inset-[3px] rounded-[5px] bg-[hsl(258_85%_68%/0.08)] group-hover:bg-[hsl(258_85%_68%/0.14)] transition-all duration-500"
+        >
+        </div>
+        <!-- Letter -->
+        <span
+            class="relative text-base font-bold tracking-tight text-[hsl(258_85%_68%)] group-hover:text-[hsl(258_85%_75%)] transition-colors duration-300"
+            style="font-family: 'Syne', system-ui, sans-serif; line-height: 1;"
+        >
+            A
+        </span>
+        <!-- Accent dot -->
+        <div
+            class="absolute -top-0.5 -right-0.5 w-[5px] h-[5px] rounded-full bg-[hsl(168_70%_52%)] opacity-80 group-hover:opacity-100 transition-opacity duration-300"
+        >
+        </div>
     </div>
-  </div>
-  
-  <div class="flex items-center">
-    <span class="text-xl font-light text-foreground">
-      angel
-    </span>
-    <span class="text-xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-      ito
-    </span>
-    <div class="w-1 h-1 rounded-full bg-primary ml-1 animate-pulse"></div>
-  </div>
-</div>
+
+    <!-- Wordmark -->
+    <div
+        class="flex items-baseline gap-0"
+        style="font-family: 'Syne', system-ui, sans-serif;"
+    >
+        <span
+            class="text-[1.05rem] font-medium tracking-tight text-[hsl(var(--color-foreground))] opacity-90 group-hover:opacity-100 transition-opacity duration-300"
+        >
+            angel
+        </span>
+        <span class="text-[1.05rem] font-bold tracking-tight gradient-text">
+            ito
+        </span>
+    </div>
+</a>

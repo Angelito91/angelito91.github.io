@@ -1,69 +1,320 @@
 ---
-import { Star, Github, Linkedin, Mail, Heart } from "lucide-react";
+import { getLangFromUrl, useTranslations } from "@/i18n/utils";
+import Logo from "@/components/Logo.astro";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const currentYear = new Date().getFullYear();
+
+// Email split into parts to prevent static scraping by bots
+const emailUser = "angel";
+const emailDomain = "angelito.me";
+
+const socials = [
+    {
+        name: "GitHub",
+        href: "https://github.com/angelito91",
+        icon: "github",
+    },
+    {
+        name: "LinkedIn",
+        href: "https://linkedin.com/in/angelito91",
+        icon: "linkedin",
+    },
+    {
+        name: "Email",
+        href: "#contacto",
+        icon: "mail",
+        obfuscated: true,
+    },
+];
+
+const navItems = [
+    { href: "#inicio", label: t("nav.home") },
+    { href: "#sobre-mi", label: t("nav.about") },
+    { href: "#proyectos", label: t("nav.projects") },
+    { href: "#habilidades", label: t("nav.skills") },
+    { href: "#contacto", label: t("nav.contact") },
+];
 ---
 
-<footer class="py-12 px-6 border-t border-border/50">
-    <div class="max-w-6xl mx-auto">
+<footer class="relative border-t border-[hsl(225_10%_12%)]">
+    <!-- Subtle top gradient line -->
+    <div
+        class="absolute top-0 left-1/2 -translate-x-1/2 w-[min(60%,400px)] h-px bg-linear-to-r from-transparent via-[hsl(258_85%_68%/0.2)] to-transparent"
+        aria-hidden="true"
+    >
+    </div>
+
+    <div class="max-w-6xl mx-auto px-6">
+        <!-- ═══ Main Footer Content ═══ -->
         <div
-            class="flex flex-col md:flex-row items-center justify-between gap-8"
+            class="py-14 lg:py-16 grid grid-cols-1 md:grid-cols-12 gap-10 lg:gap-16"
         >
-            {/* Logo and Description */}
-            <div class="text-center md:text-left">
-                <div
-                    class="flex items-center gap-2 justify-center md:justify-start mb-4"
-                >
-                    {/* Componente de React de Lucide: Star */}
-                    <Star className="w-6 h-6 text-primary" />
-                    <span class="text-xl font-bold">Angelito</span>
+            <!-- Left: Logo + Tagline -->
+            <div class="md:col-span-5 lg:col-span-4">
+                <div class="mb-5">
+                    <Logo />
                 </div>
-                <p class="text-muted-foreground max-w-md">
-                    Desarrollador Web Fullstack creando soluciones digitales
-                    innovadoras.
+                <p
+                    class="text-sm leading-relaxed text-[hsl(var(--color-muted-foreground)/0.6)] max-w-xs"
+                >
+                    {t("footer.tagline")}
                 </p>
+
+                <!-- Social icons row (compact) -->
+                <div class="flex items-center gap-2 mt-6">
+                    {
+                        socials.map((social) => (
+                            <a
+                                href={social.href}
+                                target={
+                                    social.icon === "mail"
+                                        ? undefined
+                                        : "_blank"
+                                }
+                                rel={
+                                    social.icon === "mail"
+                                        ? undefined
+                                        : "noopener noreferrer"
+                                }
+                                class:list={[
+                                    "group w-9 h-9 flex items-center justify-center rounded-lg bg-[hsl(225_10%_10%)] border border-[hsl(225_10%_14%/0.6)] hover:border-[hsl(258_85%_68%/0.25)] hover:bg-[hsl(225_10%_12%)] transition-all duration-300",
+                                    { "js-email-link": social.obfuscated },
+                                ]}
+                                aria-label={social.name}
+                                {...(social.obfuscated
+                                    ? {
+                                          "data-user": emailUser,
+                                          "data-domain": emailDomain,
+                                      }
+                                    : {})}
+                            >
+                                {social.icon === "github" && (
+                                    <svg
+                                        class="w-4 h-4 text-[hsl(var(--color-muted-foreground)/0.5)] group-hover:text-[hsl(var(--color-foreground)/0.8)] transition-colors duration-300"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="1.8"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    >
+                                        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+                                    </svg>
+                                )}
+                                {social.icon === "linkedin" && (
+                                    <svg
+                                        class="w-4 h-4 text-[hsl(var(--color-muted-foreground)/0.5)] group-hover:text-[hsl(var(--color-foreground)/0.8)] transition-colors duration-300"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="1.8"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    >
+                                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                                        <rect
+                                            x="2"
+                                            y="9"
+                                            width="4"
+                                            height="12"
+                                        />
+                                        <circle cx="4" cy="4" r="2" />
+                                    </svg>
+                                )}
+                                {social.icon === "mail" && (
+                                    <svg
+                                        class="w-4 h-4 text-[hsl(var(--color-muted-foreground)/0.5)] group-hover:text-[hsl(var(--color-foreground)/0.8)] transition-colors duration-300"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="1.8"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    >
+                                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                                        <polyline points="22,6 12,13 2,6" />
+                                    </svg>
+                                )}
+                            </a>
+                        ))
+                    }
+                </div>
             </div>
 
-            {/* Social Links */}
-            <div class="flex items-center gap-6">
-                <a
-                    href="#"
-                    class="w-12 h-12 bg-secondary hover:bg-secondary/80 rounded-full flex items-center justify-center transition-colors group"
+            <!-- Center: Navigation -->
+            <div class="md:col-span-3 lg:col-span-4">
+                <h4
+                    class="text-[0.6875rem] font-semibold uppercase tracking-[0.2em] text-[hsl(var(--color-muted-foreground)/0.4)] mb-5"
+                    style="font-family: 'Outfit', system-ui, sans-serif;"
                 >
-                    {/* Componente de React de Lucide: Github */}
-                    <Github
-                        className="w-5 h-5 group-hover:scale-110 transition-transform"
-                    />
-                </a>
-                <a
-                    href="#"
-                    class="w-12 h-12 bg-secondary hover:bg-secondary/80 rounded-full flex items-center justify-center transition-colors group"
+                    {t("footer.nav")}
+                </h4>
+                <nav class="flex flex-col gap-2.5">
+                    {
+                        navItems.map((item) => (
+                            <a
+                                href={item.href}
+                                class="text-sm text-[hsl(var(--color-muted-foreground)/0.6)] hover:text-[hsl(var(--color-foreground)/0.85)] transition-colors duration-250 w-fit"
+                                style="font-family: 'Outfit', system-ui, sans-serif;"
+                            >
+                                {item.label}
+                            </a>
+                        ))
+                    }
+                </nav>
+            </div>
+
+            <!-- Right: Status + Info -->
+            <div class="md:col-span-4 lg:col-span-4">
+                <h4
+                    class="text-[0.6875rem] font-semibold uppercase tracking-[0.2em] text-[hsl(var(--color-muted-foreground)/0.4)] mb-5"
+                    style="font-family: 'Outfit', system-ui, sans-serif;"
                 >
-                    {/* Componente de React de Lucide: Linkedin */}
-                    <Linkedin
-                        className="w-5 h-5 group-hover:scale-110 transition-transform"
-                    />
-                </a>
-                <a
-                    href="#"
-                    class="w-12 h-12 bg-secondary hover:bg-secondary/80 rounded-full flex items-center justify-center transition-colors group"
-                >
-                    {/* Componente de React de Lucide: Mail */}
-                    <Mail
-                        className="w-5 h-5 group-hover:scale-110 transition-transform"
-                    />
-                </a>
+                    {t("footer.status")}
+                </h4>
+
+                <!-- Availability indicator -->
+                <div class="flex items-center gap-2.5 mb-4">
+                    <span class="relative flex h-2.5 w-2.5">
+                        <span
+                            class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[hsl(168_70%_52%/0.4)]"
+                        ></span>
+                        <span
+                            class="relative inline-flex rounded-full h-2.5 w-2.5 bg-[hsl(168_70%_52%)]"
+                        ></span>
+                    </span>
+                    <span
+                        class="text-sm text-[hsl(168_70%_60%/0.8)]"
+                        style="font-family: 'Outfit', system-ui, sans-serif;"
+                    >
+                        {t("footer.available")}
+                    </span>
+                </div>
+
+                <!-- Location -->
+                <div class="flex items-center gap-2.5 mb-4">
+                    <svg
+                        class="w-3.5 h-3.5 text-[hsl(var(--color-muted-foreground)/0.35)]"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    >
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"
+                        ></path>
+                        <circle cx="12" cy="10" r="3"></circle>
+                    </svg>
+                    <span
+                        class="text-sm text-[hsl(var(--color-muted-foreground)/0.5)]"
+                        style="font-family: 'Outfit', system-ui, sans-serif;"
+                    >
+                        Cuba 🇨🇺
+                    </span>
+                </div>
+
+                <!-- Timezone -->
+                <div class="flex items-center gap-2.5">
+                    <svg
+                        class="w-3.5 h-3.5 text-[hsl(var(--color-muted-foreground)/0.35)]"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    >
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                    <span
+                        class="text-sm text-[hsl(var(--color-muted-foreground)/0.5)] tabular-nums"
+                        style="font-family: 'Outfit', system-ui, sans-serif;"
+                        id="footer-time"
+                    >
+                        UTC-5 · --:--
+                    </span>
+                </div>
             </div>
         </div>
 
-        {/* Copyright */}
-        <div class="mt-8 pt-8 border-t border-border/30 text-center">
-            <p
-                class="text-muted-foreground flex items-center justify-center gap-2"
+        <!-- ═══ Bottom Bar ═══ -->
+        <div class="py-6 border-t border-[hsl(225_10%_12%)]">
+            <div
+                class="flex flex-col sm:flex-row items-center justify-between gap-4"
             >
-                © 2024 Angelito. Hecho con
-                {/* Componente de React de Lucide: Heart */}
-                <Heart className="w-4 h-4 text-red-400" />
-                y mucho código
-            </p>
+                <!-- Copyright -->
+                <p
+                    class="text-[0.6875rem] text-[hsl(var(--color-muted-foreground)/0.35)]"
+                    style="font-family: 'Outfit', system-ui, sans-serif; letter-spacing: 0.02em;"
+                >
+                    © {currentYear} Angel Portuondo. {t("footer.rights")}
+                </p>
+
+                <!-- Built with -->
+                <p
+                    class="flex items-center gap-1.5 text-[0.6875rem] text-[hsl(var(--color-muted-foreground)/0.3)]"
+                    style="font-family: 'Outfit', system-ui, sans-serif; letter-spacing: 0.02em;"
+                >
+                    {t("footer.built")}
+                    <!-- Heart icon -->
+                    <svg
+                        class="w-3 h-3 text-[hsl(340_75%_55%/0.6)]"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        stroke="none"
+                    >
+                        <path
+                            d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
+                        ></path>
+                    </svg>
+                    {t("footer.and")}
+                    <span class="text-[hsl(var(--color-muted-foreground)/0.45)]"
+                        >{t("footer.code")}</span
+                    >
+                </p>
+            </div>
         </div>
     </div>
 </footer>
+
+<script>
+    // Live clock for footer
+    function updateFooterTime() {
+        const el = document.getElementById("footer-time");
+        if (!el) return;
+
+        const now = new Date();
+        const options: Intl.DateTimeFormatOptions = {
+            hour: "2-digit",
+            minute: "2-digit",
+            hour12: false,
+            timeZone: "America/Havana",
+        };
+        const time = new Intl.DateTimeFormat("en-GB", options).format(now);
+        el.textContent = `UTC-5 · ${time}`;
+    }
+
+    updateFooterTime();
+    setInterval(updateFooterTime, 30_000);
+
+    // Obfuscated email: assembled at runtime so bots can't scrape it
+    function initFooterEmailLinks() {
+        document
+            .querySelectorAll<HTMLAnchorElement>("footer .js-email-link")
+            .forEach((link) => {
+                const u = link.dataset.user;
+                const d = link.dataset.domain;
+                if (!u || !d) return;
+                link.href = `mailto:${u}@${d}`;
+                link.removeAttribute("data-user");
+                link.removeAttribute("data-domain");
+            });
+    }
+
+    initFooterEmailLinks();
+    document.addEventListener("astro:after-swap", initFooterEmailLinks);
+</script>

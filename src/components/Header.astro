@@ -1,30 +1,54 @@
 ---
-import { Button } from "@/components/ui/button";
 import Logo from "@/components/Logo.astro";
+import {
+    getLangFromUrl,
+    useTranslations,
+    getAlternateLanguages,
+} from "@/i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const alternates = getAlternateLanguages(Astro.url.pathname, lang);
 
 const navItems = [
-    { href: "#inicio", label: "Inicio" },
-    { href: "#sobre-mi", label: "Sobre mí" },
-    { href: "#proyectos", label: "Proyectos" },
-    { href: "#habilidades", label: "Habilidades" },
+    { href: "#inicio", label: t("nav.home") },
+    { href: "#sobre-mi", label: t("nav.about") },
+    { href: "#proyectos", label: t("nav.projects") },
+    { href: "#habilidades", label: t("nav.skills") },
+    { href: "#contacto", label: t("nav.contact") },
+];
+
+const allLangs = [
+    { code: "es", label: "ES" },
+    { code: "en", label: "EN" },
 ];
 ---
 
 <header
-    class="fixed top-0 left-0 right-0 z-50 px-6 py-4 backdrop-blur-md bg-background/80 border-b border-border/50"
+    id="site-header"
+    class="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
+    style="--ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);"
 >
-    <nav class="max-w-7xl mx-auto flex items-center justify-between">
+    <!-- Glass background — fades in on scroll -->
+    <div
+        class="absolute inset-0 bg-[hsl(225_15%_6%/0.65)] backdrop-blur-xl border-b border-[hsl(225_10%_16%/0)] transition-all duration-500 pointer-events-none"
+        id="header-glass"
+    >
+    </div>
+
+    <nav
+        class="relative max-w-6xl mx-auto flex items-center justify-between px-6 py-3 lg:py-4"
+    >
         <!-- Logo -->
         <Logo />
 
-        <!-- Navigation Links -->
-        <div class="hidden md:flex items-center gap-8">
+        <!-- Desktop Navigation -->
+        <div class="hidden lg:flex items-center gap-1">
             {
                 navItems.map((item) => (
                     <a
-                        key={item.href}
                         href={item.href}
-                        class="relative text-foreground hover:text-primary transition-colors"
+                        class="link-underline relative px-3.5 py-2 text-[0.8125rem] font-medium text-[hsl(var(--color-muted-foreground))] hover:text-[hsl(var(--color-foreground))] transition-colors duration-300"
                         data-nav={item.href.substring(1)}
                     >
                         {item.label}
@@ -33,44 +57,257 @@ const navItems = [
             }
         </div>
 
-        <!-- CTA Button -->
-        <Button
-            variant="default"
-            className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-6"
-        >
-            Descargar CV
-        </Button>
+        <!-- Right side: Lang switcher + CTA + Hamburger -->
+        <div class="flex items-center gap-3">
+            <!-- Language Switcher -->
+            <div class="lang-switcher hidden sm:inline-flex">
+                {
+                    allLangs.map((l) => {
+                        const isActive = l.code === lang;
+                        const alternate = alternates.find(
+                            (a) => a.lang === l.code,
+                        );
+                        const href = isActive ? "#" : alternate?.href || "/";
+                        return (
+                            <a
+                                href={href}
+                                class:list={[
+                                    "lang-option",
+                                    { active: isActive },
+                                ]}
+                                aria-current={isActive ? "true" : undefined}
+                            >
+                                {l.label}
+                            </a>
+                        );
+                    })
+                }
+            </div>
+
+            <!-- CTA Button (desktop) -->
+            <a
+                href="#contacto"
+                class="hidden md:inline-flex items-center gap-2 px-5 py-2.5 text-[0.8125rem] font-semibold rounded-full bg-[hsl(var(--color-primary)/0.12)] text-[hsl(var(--color-primary))] border border-[hsl(var(--color-primary)/0.2)] hover:bg-[hsl(var(--color-primary)/0.2)] hover:border-[hsl(var(--color-primary)/0.35)] transition-all duration-300"
+            >
+                <svg
+                    class="w-3.5 h-3.5"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                >
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                {t("nav.resume")}
+            </a>
+
+            <!-- Hamburger (mobile) -->
+            <button
+                id="hamburger-btn"
+                class="hamburger lg:hidden relative w-10 h-10 flex flex-col items-center justify-center gap-[5px] rounded-lg hover:bg-[hsl(225_10%_13%)] transition-colors focus-ring"
+                aria-label="Toggle menu"
+                aria-expanded="false"
+            >
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+        </div>
     </nav>
+
+    <!-- Mobile Menu -->
+    <div
+        id="mobile-menu"
+        class="mobile-menu lg:hidden absolute top-full left-0 right-0"
+    >
+        <div
+            class="mx-4 mt-2 p-4 rounded-2xl bg-[hsl(225_12%_9%/0.95)] backdrop-blur-2xl border border-[hsl(225_10%_16%/0.5)] shadow-lg"
+        >
+            <div class="flex flex-col gap-1">
+                {
+                    navItems.map((item) => (
+                        <a
+                            href={item.href}
+                            class="mobile-nav-link block px-4 py-3 text-[0.9375rem] font-medium text-[hsl(var(--color-muted-foreground))] hover:text-[hsl(var(--color-foreground))] hover:bg-[hsl(225_10%_13%)] rounded-xl transition-all duration-200"
+                            data-nav={item.href.substring(1)}
+                        >
+                            {item.label}
+                        </a>
+                    ))
+                }
+            </div>
+
+            <!-- Mobile lang + CTA -->
+            <div
+                class="mt-4 pt-4 border-t border-[hsl(225_10%_16%/0.5)] flex items-center justify-between"
+            >
+                <div class="lang-switcher">
+                    {
+                        allLangs.map((l) => {
+                            const isActive = l.code === lang;
+                            const alternate = alternates.find(
+                                (a) => a.lang === l.code,
+                            );
+                            const href = isActive
+                                ? "#"
+                                : alternate?.href || "/";
+                            return (
+                                <a
+                                    href={href}
+                                    class:list={[
+                                        "lang-option",
+                                        { active: isActive },
+                                    ]}
+                                    aria-current={isActive ? "true" : undefined}
+                                >
+                                    {l.label}
+                                </a>
+                            );
+                        })
+                    }
+                </div>
+
+                <a
+                    href="#contacto"
+                    class="inline-flex items-center gap-2 px-4 py-2 text-xs font-semibold rounded-full bg-[hsl(var(--color-primary)/0.12)] text-[hsl(var(--color-primary))] border border-[hsl(var(--color-primary)/0.2)]"
+                >
+                    <svg
+                        class="w-3.5 h-3.5"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    >
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"
+                        ></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    {t("nav.resume")}
+                </a>
+            </div>
+        </div>
+    </div>
 </header>
 
 <script>
+    // ── Header scroll effect ──
+    const header = document.getElementById("site-header")!;
+    const glass = document.getElementById("header-glass")!;
+    let lastScroll = 0;
+    let ticking = false;
+
+    function onScroll() {
+        const scrollY = window.scrollY;
+
+        // Glass morphism effect
+        if (scrollY > 50) {
+            glass.style.borderBottomColor = "hsl(225 10% 16% / 0.3)";
+            glass.style.background = "hsl(225 15% 6% / 0.82)";
+        } else {
+            glass.style.borderBottomColor = "hsl(225 10% 16% / 0)";
+            glass.style.background = "hsl(225 15% 6% / 0.65)";
+        }
+
+        // Hide on scroll down, show on scroll up
+        if (scrollY > 400) {
+            if (scrollY > lastScroll + 5) {
+                header.style.transform = "translateY(-100%)";
+            } else if (scrollY < lastScroll - 5) {
+                header.style.transform = "translateY(0)";
+            }
+        } else {
+            header.style.transform = "translateY(0)";
+        }
+
+        lastScroll = scrollY;
+        ticking = false;
+    }
+
+    window.addEventListener("scroll", () => {
+        if (!ticking) {
+            requestAnimationFrame(onScroll);
+            ticking = true;
+        }
+    });
+
+    // ── Active section tracking ──
     const sections = document.querySelectorAll("section[id]");
     const navLinks = document.querySelectorAll("a[data-nav]");
 
     const observer = new IntersectionObserver(
         (entries) => {
             entries.forEach((entry) => {
-                const id = entry.target.getAttribute("id");
-                const link = document.querySelector(`a[data-nav='${id}']`);
-
                 if (entry.isIntersecting) {
-                    navLinks.forEach((l) => {
-                        l.classList.remove("text-primary");
-                        l.querySelector("div")?.remove();
+                    const id = entry.target.getAttribute("id");
+                    navLinks.forEach((link) => {
+                        const isActive = link.getAttribute("data-nav") === id;
+                        if (isActive) {
+                            link.classList.add(
+                                "active",
+                                "text-[hsl(var(--color-foreground))]",
+                            );
+                            link.classList.remove(
+                                "text-[hsl(var(--color-muted-foreground))]",
+                            );
+                        } else {
+                            link.classList.remove(
+                                "active",
+                                "text-[hsl(var(--color-foreground))]",
+                            );
+                            link.classList.add(
+                                "text-[hsl(var(--color-muted-foreground))]",
+                            );
+                        }
                     });
-
-                    link.classList.add("text-primary");
-
-                    // Añadir subrayado animado
-                    const underline = document.createElement("div");
-                    underline.className =
-                        "absolute -bottom-1 left-0 right-0 h-0.5 bg-primary rounded-full animate-scale-in";
-                    link.appendChild(underline);
                 }
             });
         },
-        { threshold: 0.6 },
+        { threshold: 0.3, rootMargin: "-80px 0px -40% 0px" },
     );
 
     sections.forEach((section) => observer.observe(section));
+
+    // ── Mobile menu toggle ──
+    const hamburgerBtn = document.getElementById("hamburger-btn")!;
+    const mobileMenu = document.getElementById("mobile-menu")!;
+    let menuOpen = false;
+
+    hamburgerBtn.addEventListener("click", () => {
+        menuOpen = !menuOpen;
+        hamburgerBtn.classList.toggle("active", menuOpen);
+        hamburgerBtn.setAttribute("aria-expanded", String(menuOpen));
+        mobileMenu.classList.toggle("open", menuOpen);
+
+        // Prevent body scroll when menu is open
+        document.body.style.overflow = menuOpen ? "hidden" : "";
+    });
+
+    // Close mobile menu on nav link click
+    mobileMenu.querySelectorAll("a[data-nav]").forEach((link) => {
+        link.addEventListener("click", () => {
+            menuOpen = false;
+            hamburgerBtn.classList.remove("active");
+            hamburgerBtn.setAttribute("aria-expanded", "false");
+            mobileMenu.classList.remove("open");
+            document.body.style.overflow = "";
+        });
+    });
+
+    // Close mobile menu on escape
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && menuOpen) {
+            menuOpen = false;
+            hamburgerBtn.classList.remove("active");
+            hamburgerBtn.setAttribute("aria-expanded", "false");
+            mobileMenu.classList.remove("open");
+            document.body.style.overflow = "";
+        }
+    });
 </script>

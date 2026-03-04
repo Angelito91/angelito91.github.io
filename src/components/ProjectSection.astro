@@ -1,90 +1,540 @@
 ---
-import { ExternalLink, Github } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import { getLangFromUrl, useTranslations } from "@/i18n/utils";
+import type { Language } from "@/i18n/translations";
+import projectsData from "@/data/projects.json";
 
-const projects = [
-    {
-        title: "E-commerce Platform",
-        description:
-            "Plataforma de comercio electrónico completa con carrito, pagos y administración.",
-        tech: ["React", "Node.js", "MongoDB", "Stripe"],
-        image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=500&h=300&fit=crop",
-    },
-    {
-        title: "Task Management App",
-        description:
-            "Aplicación de gestión de tareas con colaboración en tiempo real.",
-        tech: ["Vue.js", "Express", "Socket.io", "PostgreSQL"],
-        image: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=500&h=300&fit=crop",
-    },
-    {
-        title: "Analytics Dashboard",
-        description:
-            "Dashboard analítico con visualizaciones interactivas y reportes en tiempo real.",
-        tech: ["React", "D3.js", "Python", "FastAPI"],
-        image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500&h=300&fit=crop",
-    },
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+interface ProjectLink {
+    github: string | null;
+    demo: string | null;
+}
+
+interface ProjectData {
+    id: string;
+    title: Record<string, string>;
+    description: Record<string, string>;
+    image: string;
+    tech: string[];
+    category: string;
+    featured: boolean;
+    links: ProjectLink;
+    year: number;
+}
+
+const projects = projectsData as ProjectData[];
+
+const categories = [
+    { key: "all", label: t("projects.filter.all") },
+    { key: "web", label: t("projects.filter.web") },
+    { key: "game", label: t("projects.filter.game") },
+    { key: "tool", label: t("projects.filter.tool") },
 ];
+
+// Color mapping for tech tags
+const techColors: Record<string, string> = {
+    "Unreal Engine 5": "0 72% 56%",
+    "Godot Engine": "168 70% 52%",
+    Blueprint: "0 72% 56%",
+    GDScript: "168 70% 52%",
+    "3D Graphics": "35 90% 62%",
+    Physics: "258 85% 68%",
+    "Ray Tracing": "0 72% 56%",
+    "Level Design": "205 85% 60%",
+    "Game AI": "258 85% 68%",
+    "Asset Management": "340 75% 62%",
+    "2D/3D Hybrid": "35 90% 62%",
+    "Puzzle Design": "258 85% 68%",
+    "Interactive Storytelling": "340 75% 62%",
+    "Physics Simulation": "258 85% 68%",
+    "Educational Design": "205 85% 60%",
+    "Interactive UI": "35 90% 62%",
+    "Data Visualization": "205 85% 60%",
+    "Web Export": "205 85% 60%",
+    "Educational Tools": "258 85% 68%",
+    "Quest System": "168 70% 52%",
+    "Inventory Management": "340 75% 62%",
+    "Audio Design": "258 85% 68%",
+    "AI Systems": "35 90% 62%",
+    "Game Design": "340 75% 62%",
+    "Game Optimization": "0 72% 56%",
+    "Particle Systems": "258 85% 68%",
+    "C++": "168 70% 52%",
+    OpenGL: "258 85% 68%",
+    ImGui: "258 85% 68%",
+    CMake: "258 85% 68%",
+    React: "205 85% 60%",
+    "Node.js": "168 70% 52%",
+    "Express.js": "168 70% 52%",
+    PostgreSQL: "205 85% 60%",
+    "D3.js": "35 90% 62%",
+    "Godot 4": "35 90% 62%",
+    GDScript: "35 90% 62%",
+    Blender: "35 90% 62%",
+    GLSL: "258 85% 68%",
+    "Vue.js": "168 70% 52%",
+    Express: "168 70% 52%",
+    "Socket.io": "340 75% 62%",
+    MongoDB: "168 70% 52%",
+    TypeScript: "205 85% 60%",
+    "Canvas API": "258 85% 68%",
+    "Tailwind CSS": "205 85% 60%",
+    Rust: "35 90% 62%",
+    TOML: "35 90% 62%",
+    Shell: "168 70% 52%",
+    "GitHub Actions": "258 85% 68%",
+    Python: "35 90% 62%",
+    FastAPI: "168 70% 52%",
+    Stripe: "258 85% 68%",
+    Docker: "35 90% 62%",
+    Linux: "258 85% 68%",
+    Supabase: "340 75% 62%",
+    DSA: "258 85% 68%",
+    Algorithms: "168 70% 52%",
+    "Compiler Design": "35 90% 62%",
+    Parser: "258 85% 68%",
+    AST: "258 85% 68%",
+    "Type Checking": "340 75% 62%",
+    Async: "168 70% 52%",
+    "Async Programming": "168 70% 52%",
+    "API Integration": "205 85% 60%",
+    Caching: "258 85% 68%",
+    "Cross-Platform": "340 75% 62%",
+    "REST API": "258 85% 68%",
+    "Responsive Design": "205 85% 60%",
+    "DOM API": "258 85% 68%",
+    "File System API": "258 85% 68%",
+    "Web APIs": "258 85% 68%",
+    "Web Security": "0 72% 56%",
+    Cryptography: "0 72% 56%",
+    "Backend Development": "168 70% 52%",
+    "Email Integration": "35 90% 62%",
+    Automation: "340 75% 62%",
+    "Text Processing": "205 85% 60%",
+    "Text-to-Speech": "205 85% 60%",
+    "Audio Processing": "340 75% 62%",
+    Libraries: "340 75% 62%",
+    Middleware: "168 70% 52%",
+    "Data Visualization": "205 85% 60%",
+    Security: "0 72% 56%",
+    "File Management": "258 85% 68%",
+    Astro: "340 75% 62%",
+    HTML5: "35 90% 62%",
+    CSS3: "205 85% 60%",
+    JavaScript: "205 85% 60%",
+    pnpm: "258 85% 68%",
+    "Game Development": "340 75% 62%",
+    "3D Modeling": "35 90% 62%",
+    Animations: "258 85% 68%",
+};
 ---
 
-<section id="proyectos" class="py-20 px-6 bg-muted/20">
-    <div class="max-w-6xl mx-auto">
-        <div class="text-center mb-16">
-            <h2 class="text-4xl md:text-5xl font-bold mb-6">
-                <span class="gradient-text">Proyectos</span>
+<section
+    id="proyectos"
+    class="relative section-divider"
+    style={`padding-top: var(--section-gap); padding-bottom: var(--section-gap);`}
+>
+    <!-- Ambient orbs -->
+    <div
+        class="orb orb-primary w-[450px] h-[450px] -top-20 -left-40 floating"
+        style="animation-duration: 12s; animation-delay: -2s;"
+        aria-hidden="true"
+    >
+    </div>
+    <div
+        class="orb orb-warm w-[300px] h-[300px] bottom-40 right-0 floating"
+        style="animation-duration: 15s; animation-delay: -5s;"
+        aria-hidden="true"
+    >
+    </div>
+
+    <div class="relative z-10 max-w-6xl mx-auto px-6">
+        <!-- ═══ Section Header ═══ -->
+        <div class="max-w-2xl mb-12 lg:mb-16">
+            <!-- Section label -->
+            <div class="flex items-center gap-3 mb-6 reveal">
+                <div class="w-8 h-px bg-[hsl(258_85%_68%/0.5)]"></div>
+                <span
+                    class="text-[0.6875rem] font-semibold uppercase tracking-[0.2em] text-[hsl(258_85%_68%)]"
+                    style="font-family: 'Outfit', system-ui, sans-serif;"
+                >
+                    {t("projects.title")}
+                </span>
+            </div>
+
+            <!-- Title -->
+            <h2
+                class="text-[clamp(2rem,4.5vw,3.5rem)] font-bold leading-[1.05] tracking-tight text-[hsl(var(--color-foreground))] mb-5 reveal"
+                style="font-family: 'Syne', system-ui, sans-serif; transition-delay: 80ms;"
+            >
+                {
+                    lang === "en" ? (
+                        <>
+                            Selected <span class="gradient-text">works</span>
+                        </>
+                    ) : lang === "fr" ? (
+                        <>
+                            Travaux{" "}
+                            <span class="gradient-text">sélectionnés</span>
+                        </>
+                    ) : (
+                        <>
+                            Trabajos{" "}
+                            <span class="gradient-text">seleccionados</span>
+                        </>
+                    )
+                }
             </h2>
-            <p class="text-xl text-muted-foreground max-w-3xl mx-auto">
-                Una muestra de mis trabajos más recientes, donde combino
-                creatividad y tecnología para resolver problemas reales.
+
+            <p
+                class="text-base md:text-lg leading-relaxed text-[hsl(var(--color-muted-foreground))] text-pretty reveal"
+                style="transition-delay: 160ms;"
+            >
+                {t("projects.subtitle")}
             </p>
         </div>
 
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- ═══ Filter Tabs ═══ -->
+        <div
+            class="flex flex-wrap gap-2.5 mb-10 lg:mb-14 reveal"
+            style="transition-delay: 200ms;"
+        >
             {
-                projects.map((project) => (
-                    <Card className="bg-card/50 border-border/50 backdrop-blur-sm overflow-hidden group hover:bg-card/70 transition-all duration-300">
-                        <div class="aspect-video bg-gradient-to-br from-primary/20 to-accent/20 relative overflow-hidden">
-                            <img
-                                src={project.image}
-                                alt={project.title}
-                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                            />
-                        </div>
-                        <CardContent className="p-6">
-                            <h3 class="text-xl font-semibold mb-3">
-                                {project.title}
-                            </h3>
-                            <p class="text-muted-foreground mb-4 text-sm">
-                                {project.description}
-                            </p>
-
-                            <div class="flex flex-wrap gap-2 mb-6">
-                                {project.tech.map((tech) => (
-                                    <span class="px-3 py-1 bg-primary/20 text-primary text-xs rounded-full">
-                                        {tech}
-                                    </span>
-                                ))}
-                            </div>
-
-                            <div class="flex gap-3">
-                                <Button
-                                    size="sm"
-                                    variant="outline"
-                                    className="flex-1"
-                                >
-                                    <Github className="w-4 h-4 mr-2" />
-                                    Código
-                                </Button>
-                                <Button size="sm" className="flex-1">
-                                    <ExternalLink className="w-4 h-4 mr-2" />
-                                    Demo
-                                </Button>
-                            </div>
-                        </CardContent>
-                    </Card>
+                categories.map((cat) => (
+                    <button
+                        class:list={[
+                            "filter-tab",
+                            { active: cat.key === "all" },
+                        ]}
+                        data-filter={cat.key}
+                        type="button"
+                    >
+                        {cat.label}
+                    </button>
                 ))
             }
         </div>
+
+        <!-- ═══ Projects Grid ═══ -->
+        <div
+            id="projects-grid"
+            class="grid gap-6 lg:gap-8"
+            style="grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr));"
+        >
+            {
+                projects.map((project, index) => {
+                    const title = project.title[lang] || project.title["es"];
+                    const description =
+                        project.description[lang] || project.description["es"];
+                    const isFeatured = project.featured;
+
+                    return (
+                        <article
+                            class:list={[
+                                "project-card reveal group relative glass-card rounded-2xl overflow-hidden",
+                                {
+                                    "md:col-span-2 md:grid md:grid-cols-2":
+                                        isFeatured && index === 0,
+                                },
+                            ]}
+                            data-category={project.category}
+                            style={`transition-delay: ${Math.min(index * 80, 400)}ms;`}
+                        >
+                            {/* ── Image Section ── */}
+                            <div
+                                class:list={[
+                                    "relative overflow-hidden",
+                                    isFeatured && index === 0
+                                        ? "aspect-4/3 md:aspect-auto md:min-h-full"
+                                        : "aspect-16/10",
+                                ]}
+                            >
+                                {/* Placeholder pattern (shown until real images exist) */}
+                                <div class="absolute inset-0 image-placeholder">
+                                    {/* Decorative project icon */}
+                                    <div class="absolute inset-0 flex items-center justify-center">
+                                        <div class="relative">
+                                            {/* Large faded project initial */}
+                                            <span
+                                                class="text-[6rem] font-extrabold text-[hsl(var(--color-foreground)/0.03)] select-none leading-none"
+                                                style="font-family: 'Syne', system-ui, sans-serif;"
+                                            >
+                                                {title.charAt(0)}
+                                            </span>
+                                            {/* Year badge */}
+                                            <div class="absolute -bottom-2 -right-4 px-2.5 py-1 rounded-md bg-[hsl(225_12%_9%/0.8)] border border-[hsl(225_10%_16%/0.4)]">
+                                                <span class="text-[0.625rem] font-mono font-medium text-[hsl(var(--color-muted-foreground)/0.6)]">
+                                                    {project.year}
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* Gradient overlay */}
+                                <div class="project-image-overlay" />
+
+                                {/* Category badge */}
+                                <div class="absolute top-4 left-4 z-10">
+                                    <span
+                                        class="px-2.5 py-1 text-[0.625rem] font-semibold uppercase tracking-widest rounded-full bg-[hsl(225_15%_6%/0.7)] backdrop-blur-md border border-[hsl(225_10%_16%/0.4)] text-[hsl(var(--color-muted-foreground))]"
+                                        style="font-family: 'Outfit', system-ui, sans-serif;"
+                                    >
+                                        {project.category === "web"
+                                            ? "Web"
+                                            : project.category === "game"
+                                              ? lang === "fr"
+                                                  ? "Jeu"
+                                                  : lang === "en"
+                                                    ? "Game"
+                                                    : "Juego"
+                                              : lang === "fr"
+                                                ? "Outil"
+                                                : lang === "en"
+                                                  ? "Tool"
+                                                  : "Herramienta"}
+                                    </span>
+                                </div>
+
+                                {/* Hover reveal: action buttons */}
+                                <div class="absolute inset-0 z-10 flex items-center justify-center gap-3 opacity-0 group-hover:opacity-100 transition-all duration-400">
+                                    {project.links.github && (
+                                        <a
+                                            href={project.links.github}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            class="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-[hsl(225_15%_6%/0.85)] backdrop-blur-md border border-[hsl(225_10%_20%/0.5)] text-[hsl(var(--color-foreground))] text-xs font-semibold hover:border-[hsl(var(--color-primary)/0.4)] transition-colors duration-200"
+                                            style="font-family: 'Outfit', system-ui, sans-serif;"
+                                        >
+                                            <svg
+                                                class="w-3.5 h-3.5"
+                                                viewBox="0 0 24 24"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                stroke-width="2"
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                            >
+                                                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+                                            </svg>
+                                            {t("projects.viewCode")}
+                                        </a>
+                                    )}
+                                    {project.links.demo && (
+                                        <a
+                                            href={project.links.demo}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            class="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-[hsl(var(--color-primary)/0.15)] backdrop-blur-md border border-[hsl(var(--color-primary)/0.25)] text-[hsl(var(--color-primary))] text-xs font-semibold hover:bg-[hsl(var(--color-primary)/0.25)] transition-colors duration-200"
+                                            style="font-family: 'Outfit', system-ui, sans-serif;"
+                                        >
+                                            <svg
+                                                class="w-3.5 h-3.5"
+                                                viewBox="0 0 24 24"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                stroke-width="2"
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                            >
+                                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                                                <polyline points="15 3 21 3 21 9" />
+                                                <line
+                                                    x1="10"
+                                                    y1="14"
+                                                    x2="21"
+                                                    y2="3"
+                                                />
+                                            </svg>
+                                            {t("projects.viewDemo")}
+                                        </a>
+                                    )}
+                                </div>
+                            </div>
+
+                            {/* ── Content Section ── */}
+                            <div
+                                class:list={[
+                                    "p-6 lg:p-7 flex flex-col",
+                                    isFeatured && index === 0
+                                        ? "justify-center"
+                                        : "",
+                                ]}
+                            >
+                                {/* Title + year */}
+                                <div class="flex items-start justify-between gap-3 mb-3">
+                                    <h3
+                                        class="text-lg font-bold text-[hsl(var(--color-foreground))] group-hover:text-[hsl(var(--color-primary))] transition-colors duration-300"
+                                        style="font-family: 'Syne', system-ui, sans-serif; letter-spacing: -0.02em;"
+                                    >
+                                        {title}
+                                    </h3>
+                                    <span class="shrink-0 text-[0.6875rem] font-mono text-[hsl(var(--color-muted-foreground)/0.5)] pt-1">
+                                        {project.year}
+                                    </span>
+                                </div>
+
+                                {/* Description */}
+                                <p class="text-sm leading-relaxed text-[hsl(var(--color-muted-foreground))] mb-5 flex-1">
+                                    {description}
+                                </p>
+
+                                {/* Tech tags */}
+                                <div class="flex flex-wrap gap-1.5">
+                                    {project.tech.map((techName) => {
+                                        const color =
+                                            techColors[techName] ||
+                                            "225 10% 50%";
+                                        return (
+                                            <span
+                                                class="inline-flex items-center px-2.5 py-0.5 text-[0.6875rem] font-medium rounded-full border transition-colors duration-200"
+                                                style={`
+                                                    font-family: 'JetBrains Mono', monospace;
+                                                    letter-spacing: 0.01em;
+                                                    background: hsl(${color} / 0.06);
+                                                    color: hsl(${color});
+                                                    border-color: hsl(${color} / 0.1);
+                                                `}
+                                            >
+                                                {techName}
+                                            </span>
+                                        );
+                                    })}
+                                </div>
+
+                                {/* Mobile-only action links */}
+                                <div class="flex items-center gap-4 mt-5 pt-5 border-t border-[hsl(225_10%_14%/0.5)] md:hidden">
+                                    {project.links.github && (
+                                        <a
+                                            href={project.links.github}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            class="inline-flex items-center gap-1.5 text-xs font-medium text-[hsl(var(--color-muted-foreground))] hover:text-[hsl(var(--color-foreground))] transition-colors"
+                                        >
+                                            <svg
+                                                class="w-3.5 h-3.5"
+                                                viewBox="0 0 24 24"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                stroke-width="2"
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                            >
+                                                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+                                            </svg>
+                                            {t("projects.viewCode")}
+                                        </a>
+                                    )}
+                                    {project.links.demo && (
+                                        <a
+                                            href={project.links.demo}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            class="inline-flex items-center gap-1.5 text-xs font-medium text-[hsl(var(--color-primary)/0.8)] hover:text-[hsl(var(--color-primary))] transition-colors"
+                                        >
+                                            <svg
+                                                class="w-3.5 h-3.5"
+                                                viewBox="0 0 24 24"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                stroke-width="2"
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                            >
+                                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                                                <polyline points="15 3 21 3 21 9" />
+                                                <line
+                                                    x1="10"
+                                                    y1="14"
+                                                    x2="21"
+                                                    y2="3"
+                                                />
+                                            </svg>
+                                            {t("projects.viewDemo")}
+                                        </a>
+                                    )}
+                                </div>
+                            </div>
+                        </article>
+                    );
+                })
+            }
+        </div>
+
+        <!-- ═══ View All Link ═══ -->
+        <div
+            class="mt-12 lg:mt-16 flex justify-center reveal"
+            style="transition-delay: 300ms;"
+        >
+            <a
+                href="https://github.com/angelito91"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="group inline-flex items-center gap-3 px-6 py-3 rounded-full border border-[hsl(225_10%_18%)] text-sm font-medium text-[hsl(var(--color-muted-foreground))] hover:text-[hsl(var(--color-foreground))] hover:border-[hsl(var(--color-primary)/0.3)] transition-all duration-400"
+                style="font-family: 'Outfit', system-ui, sans-serif;"
+            >
+                <span>{t("projects.viewAll")}</span>
+                <svg
+                    class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                >
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+            </a>
+        </div>
     </div>
 </section>
+
+<script>
+    // ── Category Filter Logic ──
+    const filterButtons =
+        document.querySelectorAll<HTMLButtonElement>("[data-filter]");
+    const projectCards =
+        document.querySelectorAll<HTMLElement>(".project-card");
+
+    filterButtons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+            const filter = btn.dataset.filter;
+
+            // Update active state
+            filterButtons.forEach((b) => b.classList.remove("active"));
+            btn.classList.add("active");
+
+            // Filter cards with animation
+            projectCards.forEach((card, i) => {
+                const category = card.dataset.category;
+                const shouldShow = filter === "all" || category === filter;
+
+                if (shouldShow) {
+                    card.style.display = "";
+                    // Stagger re-entrance
+                    card.style.opacity = "0";
+                    card.style.transform = "translateY(16px)";
+                    requestAnimationFrame(() => {
+                        setTimeout(() => {
+                            card.style.transition =
+                                "opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1)";
+                            card.style.opacity = "1";
+                            card.style.transform = "translateY(0)";
+                        }, i * 60);
+                    });
+                } else {
+                    card.style.transition =
+                        "opacity 0.25s ease, transform 0.25s ease";
+                    card.style.opacity = "0";
+                    card.style.transform = "translateY(8px)";
+                    setTimeout(() => {
+                        card.style.display = "none";
+                    }, 250);
+                }
+            });
+        });
+    });
+</script>
