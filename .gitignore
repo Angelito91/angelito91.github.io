@@ -24,3 +24,9 @@ pnpm-debug.log*
 .idea/
 
 bun.lock
+
+# cloudflare wrangler local state
+.wrangler/
+
+# AI skill prompts (not project content)
+skills/

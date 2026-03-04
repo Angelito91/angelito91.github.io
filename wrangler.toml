@@ -1,7 +1,7 @@
 name = "angelito91"
 main = "./dist/_worker.js/index.js"
 
-compatibility_date = "2025-09-15"
+compatibility_date = "2025-06-15"
 compatibility_flags = ["nodejs_compat"]
 
 workers_dev = false
@@ -13,9 +13,9 @@ directory = "./dist"
 not_found_handling = "404-page"
 
 [observability]
-enabled = false
+enabled = true
 
 [observability.logs]
 enabled = true
-head_sampling_rate = 1
+head_sampling_rate = 0.1
 invocation_logs = true
