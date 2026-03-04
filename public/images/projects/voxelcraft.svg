@@ -1,0 +1,113 @@
+<svg width="800" height="450" viewBox="0 0 800 450" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="800" y2="450" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0e0f14"/>
+      <stop offset="100%" stop-color="#121320"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="40%" r="40%">
+      <stop offset="0%" stop-color="#f59e42" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#f59e42" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="voxelTop" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2dd4a8" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#2dd4a8" stop-opacity="0.18"/>
+    </linearGradient>
+    <linearGradient id="voxelLeft" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2dd4a8" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#2dd4a8" stop-opacity="0.08"/>
+    </linearGradient>
+    <linearGradient id="voxelRight" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2dd4a8" stop-opacity="0.14"/>
+      <stop offset="100%" stop-color="#2dd4a8" stop-opacity="0.04"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="450" rx="12" fill="url(#bg)"/>
+  <rect x="0.5" y="0.5" width="799" height="449" rx="11.5" fill="none" stroke="#1e1f2e" stroke-opacity="0.6"/>
+
+  <!-- Ambient glow -->
+  <ellipse cx="400" cy="170" rx="320" ry="200" fill="url(#glow)"/>
+
+  <!-- Grid lines -->
+  <line x1="64" y1="0" x2="64" y2="450" stroke="#1e1f2e" stroke-opacity="0.3"/>
+  <line x1="736" y1="0" x2="736" y2="450" stroke="#1e1f2e" stroke-opacity="0.2"/>
+  <line x1="0" y1="180" x2="800" y2="180" stroke="#1e1f2e" stroke-opacity="0.15"/>
+
+  <!-- Isometric voxel cluster -->
+  <!-- Back row -->
+  <g transform="translate(400, 120)">
+    <!-- Cube 1 (back-left) -->
+    <g transform="translate(-60, 0)">
+      <polygon points="0,-24 36,-6 0,12 -36,-6" fill="url(#voxelTop)" stroke="#2dd4a8" stroke-width="0.8" stroke-opacity="0.4"/>
+      <polygon points="-36,-6 0,12 0,48 -36,30" fill="url(#voxelLeft)" stroke="#2dd4a8" stroke-width="0.6" stroke-opacity="0.25"/>
+      <polygon points="36,-6 0,12 0,48 36,30" fill="url(#voxelRight)" stroke="#2dd4a8" stroke-width="0.6" stroke-opacity="0.2"/>
+    </g>
+    <!-- Cube 2 (back-center) -->
+    <g transform="translate(0, 0)">
+      <polygon points="0,-24 36,-6 0,12 -36,-6" fill="url(#voxelTop)" stroke="#f59e42" stroke-width="0.8" stroke-opacity="0.4"/>
+      <polygon points="-36,-6 0,12 0,48 -36,30" fill="#f59e42" fill-opacity="0.12" stroke="#f59e42" stroke-width="0.6" stroke-opacity="0.25"/>
+      <polygon points="36,-6 0,12 0,48 36,30" fill="#f59e42" fill-opacity="0.06" stroke="#f59e42" stroke-width="0.6" stroke-opacity="0.2"/>
+    </g>
+    <!-- Cube 3 (back-right) -->
+    <g transform="translate(60, 0)">
+      <polygon points="0,-24 36,-6 0,12 -36,-6" fill="url(#voxelTop)" stroke="#2dd4a8" stroke-width="0.8" stroke-opacity="0.4"/>
+      <polygon points="-36,-6 0,12 0,48 -36,30" fill="url(#voxelLeft)" stroke="#2dd4a8" stroke-width="0.6" stroke-opacity="0.25"/>
+      <polygon points="36,-6 0,12 0,48 36,30" fill="url(#voxelRight)" stroke="#2dd4a8" stroke-width="0.6" stroke-opacity="0.2"/>
+    </g>
+  </g>
+
+  <!-- Front row -->
+  <g transform="translate(400, 158)">
+    <!-- Cube 4 (front-left) -->
+    <g transform="translate(-30, 0)">
+      <polygon points="0,-24 36,-6 0,12 -36,-6" fill="url(#voxelTop)" stroke="#2dd4a8" stroke-width="0.8" stroke-opacity="0.4"/>
+      <polygon points="-36,-6 0,12 0,48 -36,30" fill="url(#voxelLeft)" stroke="#2dd4a8" stroke-width="0.6" stroke-opacity="0.25"/>
+      <polygon points="36,-6 0,12 0,48 36,30" fill="url(#voxelRight)" stroke="#2dd4a8" stroke-width="0.6" stroke-opacity="0.2"/>
+    </g>
+    <!-- Cube 5 (front-right) -->
+    <g transform="translate(30, 0)">
+      <polygon points="0,-24 36,-6 0,12 -36,-6" fill="#f59e42" fill-opacity="0.25" stroke="#f59e42" stroke-width="0.8" stroke-opacity="0.45"/>
+      <polygon points="-36,-6 0,12 0,48 -36,30" fill="#f59e42" fill-opacity="0.12" stroke="#f59e42" stroke-width="0.6" stroke-opacity="0.25"/>
+      <polygon points="36,-6 0,12 0,48 36,30" fill="#f59e42" fill-opacity="0.06" stroke="#f59e42" stroke-width="0.6" stroke-opacity="0.2"/>
+    </g>
+  </g>
+
+  <!-- Stacked cube on top-center -->
+  <g transform="translate(400, 84)">
+    <polygon points="0,-24 36,-6 0,12 -36,-6" fill="#8b5cf6" fill-opacity="0.25" stroke="#8b5cf6" stroke-width="0.8" stroke-opacity="0.5"/>
+    <polygon points="-36,-6 0,12 0,48 -36,30" fill="#8b5cf6" fill-opacity="0.12" stroke="#8b5cf6" stroke-width="0.6" stroke-opacity="0.3"/>
+    <polygon points="36,-6 0,12 0,48 36,30" fill="#8b5cf6" fill-opacity="0.06" stroke="#8b5cf6" stroke-width="0.6" stroke-opacity="0.2"/>
+  </g>
+
+  <!-- Floating particles around voxels -->
+  <circle cx="320" cy="110" r="2" fill="#2dd4a8" opacity="0.5"/>
+  <circle cx="340" cy="85" r="1.5" fill="#f59e42" opacity="0.4"/>
+  <circle cx="470" cy="95" r="1.5" fill="#8b5cf6" opacity="0.45"/>
+  <circle cx="490" cy="130" r="2" fill="#2dd4a8" opacity="0.35"/>
+  <circle cx="355" cy="220" r="1.5" fill="#f59e42" opacity="0.3"/>
+  <circle cx="450" cy="225" r="1.5" fill="#8b5cf6" opacity="0.3"/>
+
+  <!-- Shadow underneath -->
+  <ellipse cx="400" cy="250" rx="80" ry="12" fill="#2dd4a8" fill-opacity="0.04"/>
+
+  <!-- Project title -->
+  <text x="400" y="300" text-anchor="middle" font-family="'Syne', 'Inter', system-ui, sans-serif" font-size="24" font-weight="700" fill="#ece8e1" letter-spacing="-0.02em">VoxelCraft</text>
+
+  <!-- Tech stack -->
+  <text x="400" y="330" text-anchor="middle" font-family="'JetBrains Mono', 'Fira Code', monospace" font-size="13" fill="#7a7a8e" fill-opacity="0.7" letter-spacing="0.04em">Godot 4 · GDScript · Blender · GLSL</text>
+
+  <!-- Decorative dots -->
+  <circle cx="352" cy="360" r="2.5" fill="#f59e42" opacity="0.45"/>
+  <circle cx="368" cy="360" r="2.5" fill="#f59e42" opacity="0.28"/>
+  <circle cx="384" cy="360" r="2.5" fill="#f59e42" opacity="0.14"/>
+
+  <!-- Bottom accent line -->
+  <line x1="320" y1="380" x2="480" y2="380" stroke="#f59e42" stroke-opacity="0.15" stroke-width="1"/>
+
+  <!-- Corner accents -->
+  <line x1="24" y1="24" x2="48" y2="24" stroke="#1e1f2e" stroke-opacity="0.5"/>
+  <line x1="24" y1="24" x2="24" y2="48" stroke="#1e1f2e" stroke-opacity="0.5"/>
+  <line x1="776" y1="426" x2="752" y2="426" stroke="#1e1f2e" stroke-opacity="0.5"/>
+  <line x1="776" y1="426" x2="776" y2="402" stroke="#1e1f2e" stroke-opacity="0.5"/>
+</svg>

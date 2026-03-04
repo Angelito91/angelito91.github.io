@@ -1,0 +1,85 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0e0f14"/>
+      <stop offset="100%" stop-color="#121320"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="400" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#8b5cf6"/>
+      <stop offset="50%" stop-color="#a855f7"/>
+      <stop offset="100%" stop-color="#d946a8"/>
+    </linearGradient>
+    <linearGradient id="orb1" cx="0.5" cy="0.5" r="0.5" gradientUnits="objectBoundingBox">
+      <stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#8b5cf6" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="orb2" cx="0.5" cy="0.5" r="0.5" gradientUnits="objectBoundingBox">
+      <stop offset="0%" stop-color="#2dd4a8" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#2dd4a8" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="orb1r" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#8b5cf6" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="orb2r" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#2dd4a8" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#2dd4a8" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="orb3r" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#f59e42" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#f59e42" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- Grid lines (subtle) -->
+  <line x1="96" y1="0" x2="96" y2="630" stroke="#1e1f2e" stroke-opacity="0.5" stroke-width="1"/>
+  <line x1="1104" y1="0" x2="1104" y2="630" stroke="#1e1f2e" stroke-opacity="0.3" stroke-width="1"/>
+  <line x1="0" y1="240" x2="1200" y2="240" stroke="#1e1f2e" stroke-opacity="0.25" stroke-width="1"/>
+
+  <!-- Ambient orbs -->
+  <ellipse cx="950" cy="120" rx="300" ry="280" fill="url(#orb1r)"/>
+  <ellipse cx="200" cy="500" rx="260" ry="240" fill="url(#orb2r)"/>
+  <ellipse cx="700" cy="400" rx="180" ry="180" fill="url(#orb3r)"/>
+
+  <!-- Monogram box -->
+  <g transform="translate(96, 180)">
+    <rect x="0" y="0" width="64" height="64" rx="12" fill="none" stroke="#8b5cf6" stroke-opacity="0.35" stroke-width="1.5" transform="rotate(3, 32, 32)"/>
+    <rect x="5" y="5" width="54" height="54" rx="9" fill="#8b5cf6" fill-opacity="0.08"/>
+    <text x="32" y="42" text-anchor="middle" font-family="'Syne', 'Inter', system-ui, sans-serif" font-size="28" font-weight="700" fill="#8b5cf6" letter-spacing="-0.02em">A</text>
+    <circle cx="60" cy="4" r="4" fill="#2dd4a8" opacity="0.85"/>
+  </g>
+
+  <!-- Name -->
+  <text x="96" y="310" font-family="'Syne', 'Inter', system-ui, sans-serif" font-size="72" font-weight="800" fill="#ece8e1" letter-spacing="-0.03em">Angel</text>
+  <text x="96" y="390" font-family="'Syne', 'Inter', system-ui, sans-serif" font-size="72" font-weight="800" fill="url(#accent)" letter-spacing="-0.03em">Portuondo</text>
+
+  <!-- Role -->
+  <text x="96" y="440" font-family="'Outfit', 'Inter', system-ui, sans-serif" font-size="24" font-weight="500" fill="#7a7a8e" letter-spacing="0.02em">Fullstack Developer</text>
+
+  <!-- Decorative dot cluster -->
+  <circle cx="96" cy="475" r="3" fill="#8b5cf6" opacity="0.5"/>
+  <circle cx="110" cy="475" r="3" fill="#8b5cf6" opacity="0.3"/>
+  <circle cx="124" cy="475" r="3" fill="#8b5cf6" opacity="0.15"/>
+
+  <!-- URL -->
+  <text x="96" y="560" font-family="'JetBrains Mono', 'Fira Code', monospace" font-size="16" font-weight="400" fill="#7a7a8e" fill-opacity="0.5" letter-spacing="0.08em">angelito.me</text>
+
+  <!-- Decorative geometric shape top-right -->
+  <rect x="1040" y="60" width="48" height="48" rx="8" fill="none" stroke="#8b5cf6" stroke-opacity="0.15" stroke-width="1" transform="rotate(12, 1064, 84)"/>
+
+  <!-- Accent dots top-right -->
+  <circle cx="1000" cy="56" r="3" fill="#8b5cf6" opacity="0.4"/>
+  <circle cx="1012" cy="56" r="3" fill="#8b5cf6" opacity="0.25"/>
+  <circle cx="1024" cy="56" r="3" fill="#8b5cf6" opacity="0.12"/>
+
+  <!-- Bottom-left decorative lines -->
+  <line x1="48" y1="580" x2="80" y2="580" stroke="#1e1f2e" stroke-opacity="0.5" stroke-width="1"/>
+  <line x1="48" y1="588" x2="64" y2="588" stroke="#1e1f2e" stroke-opacity="0.3" stroke-width="1"/>
+
+  <!-- Bottom-right decorative lines -->
+  <line x1="1120" y1="580" x2="1152" y2="580" stroke="#1e1f2e" stroke-opacity="0.5" stroke-width="1"/>
+  <line x1="1136" y1="588" x2="1152" y2="588" stroke="#1e1f2e" stroke-opacity="0.3" stroke-width="1"/>
+</svg>

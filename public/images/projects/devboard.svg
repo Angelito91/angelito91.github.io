@@ -1,0 +1,125 @@
+<svg width="800" height="450" viewBox="0 0 800 450" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="800" y2="450" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0e0f14"/>
+      <stop offset="100%" stop-color="#121320"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="40%" r="40%">
+      <stop offset="0%" stop-color="#2dd4a8" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#2dd4a8" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="450" rx="12" fill="url(#bg)"/>
+  <rect x="0.5" y="0.5" width="799" height="449" rx="11.5" fill="none" stroke="#1e1f2e" stroke-opacity="0.6"/>
+
+  <!-- Ambient glow -->
+  <ellipse cx="400" cy="170" rx="320" ry="200" fill="url(#glow)"/>
+
+  <!-- Grid lines -->
+  <line x1="64" y1="0" x2="64" y2="450" stroke="#1e1f2e" stroke-opacity="0.3"/>
+  <line x1="736" y1="0" x2="736" y2="450" stroke="#1e1f2e" stroke-opacity="0.2"/>
+  <line x1="0" y1="180" x2="800" y2="180" stroke="#1e1f2e" stroke-opacity="0.15"/>
+
+  <!-- Kanban Board -->
+  <!-- Column 1: To Do -->
+  <g transform="translate(200, 60)">
+    <rect x="0" y="0" width="120" height="180" rx="8" fill="#161722" stroke="#1e1f2e" stroke-opacity="0.5"/>
+    <rect x="0" y="0" width="120" height="28" rx="8" fill="#1e1f2e" fill-opacity="0.5"/>
+    <rect x="0" y="14" width="120" height="14" fill="#1e1f2e" fill-opacity="0.5"/>
+    <circle cx="16" cy="14" r="4" fill="#d946a8" fill-opacity="0.6"/>
+    <text x="28" y="18" font-family="'Outfit', system-ui, sans-serif" font-size="10" font-weight="600" fill="#7a7a8e" fill-opacity="0.8">To Do</text>
+    <text x="100" y="18" text-anchor="end" font-family="'JetBrains Mono', monospace" font-size="9" fill="#7a7a8e" fill-opacity="0.4">3</text>
+    <!-- Card 1 -->
+    <rect x="8" y="36" width="104" height="38" rx="6" fill="#1a1b28" stroke="#2dd4a8" stroke-width="0.6" stroke-opacity="0.2"/>
+    <rect x="16" y="44" width="52" height="4" rx="2" fill="#7a7a8e" fill-opacity="0.3"/>
+    <rect x="16" y="54" width="36" height="4" rx="2" fill="#7a7a8e" fill-opacity="0.15"/>
+    <circle cx="100" cy="62" r="6" fill="#8b5cf6" fill-opacity="0.15" stroke="#8b5cf6" stroke-width="0.6" stroke-opacity="0.3"/>
+    <!-- Card 2 -->
+    <rect x="8" y="82" width="104" height="38" rx="6" fill="#1a1b28" stroke="#d946a8" stroke-width="0.6" stroke-opacity="0.2"/>
+    <rect x="16" y="90" width="60" height="4" rx="2" fill="#7a7a8e" fill-opacity="0.3"/>
+    <rect x="16" y="100" width="40" height="4" rx="2" fill="#7a7a8e" fill-opacity="0.15"/>
+    <circle cx="100" cy="108" r="6" fill="#f59e42" fill-opacity="0.15" stroke="#f59e42" stroke-width="0.6" stroke-opacity="0.3"/>
+    <!-- Card 3 -->
+    <rect x="8" y="128" width="104" height="38" rx="6" fill="#1a1b28" stroke="#1e1f2e" stroke-width="0.6" stroke-opacity="0.4"/>
+    <rect x="16" y="136" width="48" height="4" rx="2" fill="#7a7a8e" fill-opacity="0.3"/>
+    <rect x="16" y="146" width="32" height="4" rx="2" fill="#7a7a8e" fill-opacity="0.15"/>
+    <circle cx="100" cy="154" r="6" fill="#2dd4a8" fill-opacity="0.15" stroke="#2dd4a8" stroke-width="0.6" stroke-opacity="0.3"/>
+  </g>
+
+  <!-- Column 2: In Progress -->
+  <g transform="translate(340, 60)">
+    <rect x="0" y="0" width="120" height="180" rx="8" fill="#161722" stroke="#1e1f2e" stroke-opacity="0.5"/>
+    <rect x="0" y="0" width="120" height="28" rx="8" fill="#1e1f2e" fill-opacity="0.5"/>
+    <rect x="0" y="14" width="120" height="14" fill="#1e1f2e" fill-opacity="0.5"/>
+    <circle cx="16" cy="14" r="4" fill="#3b82f6" fill-opacity="0.6"/>
+    <text x="28" y="18" font-family="'Outfit', system-ui, sans-serif" font-size="10" font-weight="600" fill="#7a7a8e" fill-opacity="0.8">In Progress</text>
+    <text x="100" y="18" text-anchor="end" font-family="'JetBrains Mono', monospace" font-size="9" fill="#7a7a8e" fill-opacity="0.4">2</text>
+    <!-- Card 1 (active, highlighted) -->
+    <rect x="8" y="36" width="104" height="44" rx="6" fill="#1a1b28" stroke="#3b82f6" stroke-width="1" stroke-opacity="0.4"/>
+    <rect x="16" y="44" width="56" height="4" rx="2" fill="#ece8e1" fill-opacity="0.25"/>
+    <rect x="16" y="54" width="72" height="4" rx="2" fill="#7a7a8e" fill-opacity="0.2"/>
+    <!-- Progress bar -->
+    <rect x="16" y="66" width="80" height="3" rx="1.5" fill="#1e1f2e"/>
+    <rect x="16" y="66" width="52" height="3" rx="1.5" fill="#3b82f6" fill-opacity="0.6"/>
+    <circle cx="100" cy="68" r="6" fill="#8b5cf6" fill-opacity="0.15" stroke="#8b5cf6" stroke-width="0.6" stroke-opacity="0.3"/>
+    <!-- Card 2 -->
+    <rect x="8" y="88" width="104" height="38" rx="6" fill="#1a1b28" stroke="#2dd4a8" stroke-width="0.6" stroke-opacity="0.25"/>
+    <rect x="16" y="96" width="44" height="4" rx="2" fill="#7a7a8e" fill-opacity="0.3"/>
+    <rect x="16" y="106" width="56" height="4" rx="2" fill="#7a7a8e" fill-opacity="0.15"/>
+    <circle cx="100" cy="114" r="6" fill="#2dd4a8" fill-opacity="0.15" stroke="#2dd4a8" stroke-width="0.6" stroke-opacity="0.3"/>
+  </g>
+
+  <!-- Column 3: Done -->
+  <g transform="translate(480, 60)">
+    <rect x="0" y="0" width="120" height="180" rx="8" fill="#161722" stroke="#1e1f2e" stroke-opacity="0.5"/>
+    <rect x="0" y="0" width="120" height="28" rx="8" fill="#1e1f2e" fill-opacity="0.5"/>
+    <rect x="0" y="14" width="120" height="14" fill="#1e1f2e" fill-opacity="0.5"/>
+    <circle cx="16" cy="14" r="4" fill="#2dd4a8" fill-opacity="0.6"/>
+    <text x="28" y="18" font-family="'Outfit', system-ui, sans-serif" font-size="10" font-weight="600" fill="#7a7a8e" fill-opacity="0.8">Done</text>
+    <text x="100" y="18" text-anchor="end" font-family="'JetBrains Mono', monospace" font-size="9" fill="#7a7a8e" fill-opacity="0.4">4</text>
+    <!-- Card 1 -->
+    <rect x="8" y="36" width="104" height="32" rx="6" fill="#1a1b28" stroke="#2dd4a8" stroke-width="0.6" stroke-opacity="0.2"/>
+    <rect x="16" y="46" width="48" height="4" rx="2" fill="#2dd4a8" fill-opacity="0.2"/>
+    <line x1="16" y1="48" x2="64" y2="48" stroke="#2dd4a8" stroke-width="0.5" stroke-opacity="0.3"/>
+    <!-- Card 2 -->
+    <rect x="8" y="76" width="104" height="32" rx="6" fill="#1a1b28" stroke="#2dd4a8" stroke-width="0.6" stroke-opacity="0.15"/>
+    <rect x="16" y="86" width="56" height="4" rx="2" fill="#2dd4a8" fill-opacity="0.15"/>
+    <line x1="16" y1="88" x2="72" y2="88" stroke="#2dd4a8" stroke-width="0.5" stroke-opacity="0.25"/>
+    <!-- Card 3 -->
+    <rect x="8" y="116" width="104" height="32" rx="6" fill="#1a1b28" stroke="#2dd4a8" stroke-width="0.6" stroke-opacity="0.15"/>
+    <rect x="16" y="126" width="40" height="4" rx="2" fill="#2dd4a8" fill-opacity="0.15"/>
+    <!-- Card 4 -->
+    <rect x="8" y="156" width="104" height="16" rx="6" fill="#1a1b28" stroke="#1e1f2e" stroke-width="0.6" stroke-opacity="0.3"/>
+  </g>
+
+  <!-- Realtime cursor indicator -->
+  <g transform="translate(435, 95)">
+    <path d="M0,0 L0,14 L5,10 L10,16" fill="none" stroke="#f59e42" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
+    <circle cx="0" cy="0" r="3" fill="#f59e42" fill-opacity="0.4"/>
+  </g>
+
+  <!-- Connection line between columns (drag indicator) -->
+  <path d="M330,148 C350,148 350,120 370,120" fill="none" stroke="#3b82f6" stroke-width="1" stroke-opacity="0.2" stroke-dasharray="3 3"/>
+
+  <!-- Project title -->
+  <text x="400" y="300" text-anchor="middle" font-family="'Syne', 'Inter', system-ui, sans-serif" font-size="24" font-weight="700" fill="#ece8e1" letter-spacing="-0.02em">DevBoard</text>
+
+  <!-- Tech stack -->
+  <text x="400" y="330" text-anchor="middle" font-family="'JetBrains Mono', 'Fira Code', monospace" font-size="13" fill="#7a7a8e" fill-opacity="0.7" letter-spacing="0.04em">Vue.js · Express · Socket.io · MongoDB</text>
+
+  <!-- Decorative dots -->
+  <circle cx="352" cy="360" r="2.5" fill="#2dd4a8" opacity="0.45"/>
+  <circle cx="368" cy="360" r="2.5" fill="#2dd4a8" opacity="0.28"/>
+  <circle cx="384" cy="360" r="2.5" fill="#2dd4a8" opacity="0.14"/>
+
+  <!-- Bottom accent line -->
+  <line x1="320" y1="380" x2="480" y2="380" stroke="#2dd4a8" stroke-opacity="0.15" stroke-width="1"/>
+
+  <!-- Corner accents -->
+  <line x1="24" y1="24" x2="48" y2="24" stroke="#1e1f2e" stroke-opacity="0.5"/>
+  <line x1="24" y1="24" x2="24" y2="48" stroke="#1e1f2e" stroke-opacity="0.5"/>
+  <line x1="776" y1="426" x2="752" y2="426" stroke="#1e1f2e" stroke-opacity="0.5"/>
+  <line x1="776" y1="426" x2="776" y2="402" stroke="#1e1f2e" stroke-opacity="0.5"/>
+</svg>
