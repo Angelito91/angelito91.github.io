@@ -3,6 +3,7 @@ import { getLangFromUrl, useTranslations } from "@/i18n/utils";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+const cvLink = t("cv.link");
 
 const cards = [
     {
@@ -95,6 +96,32 @@ const cards = [
                 >
                     {t("about.description")}
                 </p>
+
+                <!-- CV Download Button -->
+                <div class="mt-8">
+                    <a
+                        href={cvLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[hsl(258_85%_68%)] text-[hsl(225_10%_3%)] font-semibold hover:bg-[hsl(258_85%_73%)] transition-colors duration-300"
+                    >
+                        <svg
+                            class="w-4 h-4"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        >
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"
+                            ></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                        {t("about.cta.resume")}
+                    </a>
+                </div>
 
                 <!-- Mini stats row (mobile visible, desktop hidden since hero has it) -->
                 <div class="flex items-center gap-8 mt-8 lg:hidden">

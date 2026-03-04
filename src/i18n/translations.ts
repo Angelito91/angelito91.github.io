@@ -20,6 +20,9 @@ export const ui = {
     "nav.skills": "Habilidades",
     "nav.contact": "Contacto",
     "nav.resume": "Descargar CV",
+    "cv.download": "Descargar CV",
+    "cv.link":
+      "https://docs.google.com/document/d/1NaoBaaDtAc2L0FIMPwNHXwQSh7QI9WcQ/edit?usp=drive_link&ouid=109799712322136287398&rtpof=true&sd=true",
 
     // Hero
     "hero.greeting": "Hola, soy",
@@ -48,6 +51,7 @@ export const ui = {
     "about.stats.experience": "Años de experiencia",
     "about.stats.projects": "Proyectos completados",
     "about.stats.technologies": "Tecnologías",
+    "about.cta.resume": "Descargar mi CV",
 
     // Projects
     "projects.title": "Proyectos",
@@ -104,6 +108,9 @@ export const ui = {
     "nav.skills": "Skills",
     "nav.contact": "Contact",
     "nav.resume": "Download CV",
+    "cv.download": "Download CV",
+    "cv.link":
+      "https://docs.google.com/document/d/1Sh-SpWT8JD3F4h_WDIcjj8un0KwDLMHb/edit?usp=drive_link&ouid=109799712322136287398&rtpof=true&sd=true",
 
     // Hero
     "hero.greeting": "Hi, I'm",
@@ -132,6 +139,7 @@ export const ui = {
     "about.stats.experience": "Years of experience",
     "about.stats.projects": "Projects completed",
     "about.stats.technologies": "Technologies",
+    "about.cta.resume": "Download my CV",
 
     // Projects
     "projects.title": "Projects",
