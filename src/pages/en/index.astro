@@ -1,0 +1,25 @@
+---
+import Layout from "@/layouts/main.astro";
+
+import Header from "@/components/Header.astro";
+import HeroSection from "@/components/HeroSection.astro";
+import AboutSection from "@/components/AboutSection.astro";
+import SkillSection from "@/components/SkillSection.astro";
+import ProjectSection from "@/components/ProjectSection.astro";
+import ContactSection from "@/components/ContactSection.astro";
+import Footer from "@/components/Footer.astro";
+---
+
+<Layout canonicalPath="/en/">
+    <Header />
+
+    <main>
+        <HeroSection />
+        <AboutSection />
+        <ProjectSection />
+        <SkillSection />
+        <ContactSection />
+    </main>
+
+    <Footer />
+</Layout>

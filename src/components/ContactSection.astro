@@ -1,0 +1,361 @@
+---
+import { getLangFromUrl, useTranslations } from "@/i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+// Email split into parts to prevent static scraping by bots
+const emailUser = "angel";
+const emailDomain = "angelito.me";
+
+const socials = [
+    {
+        name: "GitHub",
+        href: "https://github.com/angelito91",
+        icon: "github",
+    },
+    {
+        name: "LinkedIn",
+        href: "https://linkedin.com/in/angelito91",
+        icon: "linkedin",
+    },
+    {
+        name: "Email",
+        href: "#contacto",
+        icon: "mail",
+        obfuscated: true,
+    },
+];
+---
+
+<section
+    id="contacto"
+    class="relative section-divider overflow-hidden"
+    style={`padding-top: var(--section-gap); padding-bottom: var(--section-gap);`}
+>
+    <!-- Ambient orbs -->
+    <div
+        class="orb orb-primary w-[500px] h-[500px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 floating"
+        style="animation-duration: 16s; animation-delay: -4s; opacity: 0.5;"
+        aria-hidden="true"
+    >
+    </div>
+    <div
+        class="orb orb-accent w-[300px] h-[300px] bottom-0 right-0 floating"
+        style="animation-duration: 12s; animation-delay: -2s;"
+        aria-hidden="true"
+    >
+    </div>
+
+    <div class="relative z-10 max-w-6xl mx-auto px-6">
+        <div class="max-w-3xl mx-auto text-center">
+            <!-- ═══ Section Label ═══ -->
+            <div class="flex items-center justify-center gap-3 mb-8 reveal">
+                <div class="w-8 h-px bg-[hsl(258_85%_68%/0.5)]"></div>
+                <span
+                    class="text-[0.6875rem] font-semibold uppercase tracking-[0.2em] text-[hsl(258_85%_68%)]"
+                    style="font-family: 'Outfit', system-ui, sans-serif;"
+                >
+                    {t("contact.title")}
+                </span>
+                <div class="w-8 h-px bg-[hsl(258_85%_68%/0.5)]"></div>
+            </div>
+
+            <!-- ═══ Title ═══ -->
+            <h2
+                class="text-[clamp(2.25rem,5.5vw,4.5rem)] font-bold leading-none tracking-tight text-[hsl(var(--color-foreground))] mb-6 reveal"
+                style="font-family: 'Syne', system-ui, sans-serif; transition-delay: 100ms;"
+            >
+                {
+                    lang === "en" ? (
+                        <>
+                            Let's build
+                            <>
+                                <br />
+                                <span class="gradient-text">
+                                    something great
+                                </span>
+                            </>
+                        </>
+                    ) : (
+                        <>
+                            Construyamos
+                            <>
+                                <br />
+                                <span class="gradient-text">
+                                    algo increíble
+                                </span>
+                            </>
+                        </>
+                    )
+                }
+            </h2>
+
+            <!-- ═══ Subtitle ═══ -->
+            <p
+                class="text-base md:text-lg leading-relaxed text-[hsl(var(--color-muted-foreground))] text-pretty mb-12 max-w-xl mx-auto reveal"
+                style="transition-delay: 200ms;"
+            >
+                {t("contact.subtitle")}
+            </p>
+
+            <!-- ═══ Email CTA ═══ -->
+            <div class="reveal" style="transition-delay: 300ms;">
+                <a
+                    href="#contacto"
+                    class="group relative inline-flex items-center gap-3.5 px-8 py-4 md:px-10 md:py-5 rounded-2xl overflow-hidden transition-all duration-500 hover:shadow-[0_0_60px_hsl(258_85%_68%/0.2)] js-email-link"
+                    data-user={emailUser}
+                    data-domain={emailDomain}
+                >
+                    <!-- Background gradient -->
+                    <div
+                        class="absolute inset-0 bg-linear-to-r from-[hsl(258_85%_68%)] to-[hsl(290_70%_60%)] transition-opacity duration-300"
+                    >
+                    </div>
+                    <div
+                        class="absolute inset-0 bg-linear-to-r from-[hsl(290_70%_60%)] to-[hsl(340_75%_62%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                    >
+                    </div>
+
+                    <!-- Inner border glow -->
+                    <div
+                        class="absolute inset-px rounded-[15px] bg-linear-to-r from-[hsl(258_85%_68%)] to-[hsl(290_70%_60%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                    >
+                    </div>
+                    <div
+                        class="absolute inset-px rounded-[15px] bg-linear-to-r from-[hsl(290_70%_60%)] to-[hsl(340_75%_62%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                    >
+                    </div>
+
+                    <!-- Icon -->
+                    <svg
+                        class="relative z-10 w-5 h-5 text-[hsl(var(--color-primary-foreground))] transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-6"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    >
+                        <path
+                            d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                        ></path>
+                        <polyline points="22,6 12,13 2,6"></polyline>
+                    </svg>
+
+                    <!-- Text -->
+                    <span
+                        class="relative z-10 text-sm md:text-base font-semibold text-[hsl(var(--color-primary-foreground))]"
+                        style="font-family: 'Outfit', system-ui, sans-serif; letter-spacing: 0.01em;"
+                    >
+                        {t("contact.email")}
+                    </span>
+
+                    <!-- Arrow -->
+                    <svg
+                        class="relative z-10 w-4 h-4 text-[hsl(var(--color-primary-foreground)/0.7)] transition-all duration-300 group-hover:translate-x-1 group-hover:text-[hsl(var(--color-primary-foreground))]"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    >
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                </a>
+            </div>
+
+            <!-- ═══ Email address display ═══ -->
+            <div class="mt-6 reveal" style="transition-delay: 380ms;">
+                <a
+                    href="#contacto"
+                    class="inline-block text-sm font-mono text-[hsl(var(--color-muted-foreground)/0.5)] hover:text-[hsl(var(--color-primary)/0.7)] transition-colors duration-300 tracking-wide js-email-link js-email-text"
+                    data-user={emailUser}
+                    data-domain={emailDomain}
+                    style="font-family: 'JetBrains Mono', monospace;"
+                >
+                    <span class="js-email-placeholder" aria-hidden="true"
+                        >contact&#8203;&#64;&#8203;angelito&#46;me</span
+                    >
+                </a>
+            </div>
+
+            <!-- ═══ Divider with "or" ═══ -->
+            <div
+                class="flex items-center gap-4 my-10 md:my-14 reveal"
+                style="transition-delay: 420ms;"
+            >
+                <div
+                    class="flex-1 h-px bg-linear-to-r from-transparent to-[hsl(225_10%_16%)]"
+                >
+                </div>
+                <span
+                    class="text-xs font-medium text-[hsl(var(--color-muted-foreground)/0.4)] uppercase tracking-[0.2em]"
+                    style="font-family: 'Outfit', system-ui, sans-serif;"
+                >
+                    {t("contact.or")}
+                </span>
+                <div
+                    class="flex-1 h-px bg-linear-to-l from-transparent to-[hsl(225_10%_16%)]"
+                >
+                </div>
+            </div>
+
+            <!-- ═══ Social Links ═══ -->
+            <div
+                class="flex items-center justify-center gap-4 reveal"
+                style="transition-delay: 500ms;"
+            >
+                {
+                    socials.map((social) => (
+                        <a
+                            href={social.href}
+                            target={
+                                social.icon === "mail" ? undefined : "_blank"
+                            }
+                            rel={
+                                social.icon === "mail"
+                                    ? undefined
+                                    : "noopener noreferrer"
+                            }
+                            class="group relative flex items-center gap-3 px-5 py-3.5 rounded-xl glass-card hover:border-[hsl(var(--color-primary)/0.2)]! transition-all duration-400"
+                            aria-label={social.name}
+                            {...(social.obfuscated
+                                ? {
+                                      "data-user": emailUser,
+                                      "data-domain": emailDomain,
+                                      class: `group relative flex items-center gap-3 px-5 py-3.5 rounded-xl glass-card hover:border-[hsl(var(--color-primary)/0.2)]! transition-all duration-400 js-email-link`,
+                                  }
+                                : {})}
+                        >
+                            {/* Icon */}
+                            {social.icon === "github" && (
+                                <svg
+                                    class="w-[18px] h-[18px] text-[hsl(var(--color-muted-foreground))] group-hover:text-[hsl(var(--color-foreground))] transition-colors duration-300"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="1.8"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                >
+                                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+                                </svg>
+                            )}
+                            {social.icon === "linkedin" && (
+                                <svg
+                                    class="w-[18px] h-[18px] text-[hsl(var(--color-muted-foreground))] group-hover:text-[hsl(var(--color-foreground))] transition-colors duration-300"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="1.8"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                >
+                                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                                    <rect x="2" y="9" width="4" height="12" />
+                                    <circle cx="4" cy="4" r="2" />
+                                </svg>
+                            )}
+                            {social.icon === "mail" && (
+                                <svg
+                                    class="w-[18px] h-[18px] text-[hsl(var(--color-muted-foreground))] group-hover:text-[hsl(var(--color-foreground))] transition-colors duration-300"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="1.8"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                >
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                                    <polyline points="22,6 12,13 2,6" />
+                                </svg>
+                            )}
+
+                            {/* Label */}
+                            <span
+                                class="text-sm font-medium text-[hsl(var(--color-muted-foreground))] group-hover:text-[hsl(var(--color-foreground))] transition-colors duration-300"
+                                style="font-family: 'Outfit', system-ui, sans-serif;"
+                            >
+                                {social.name}
+                            </span>
+
+                            {/* External indicator */}
+                            {social.icon !== "mail" && (
+                                <svg
+                                    class="w-3 h-3 text-[hsl(var(--color-muted-foreground)/0.3)] group-hover:text-[hsl(var(--color-muted-foreground)/0.6)] transition-all duration-300 group-hover:translate-x-px group-hover:-translate-y-px"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2.5"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                >
+                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                                    <polyline points="15 3 21 3 21 9" />
+                                    <line x1="10" y1="14" x2="21" y2="3" />
+                                </svg>
+                            )}
+                        </a>
+                    ))
+                }
+            </div>
+
+            <!-- ═══ Decorative bottom element ═══ -->
+            <div
+                class="mt-16 lg:mt-20 flex flex-col items-center gap-3 reveal"
+                style="transition-delay: 550ms;"
+            >
+                <!-- Geometric accent -->
+                <div class="relative" aria-hidden="true">
+                    <div
+                        class="w-12 h-12 border border-[hsl(258_85%_68%/0.12)] rounded-lg transform rotate-45"
+                    >
+                    </div>
+                    <div
+                        class="absolute inset-0 flex items-center justify-center"
+                    >
+                        <div
+                            class="w-2 h-2 rounded-full bg-[hsl(258_85%_68%/0.2)]"
+                        >
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    // Obfuscated email: assembled at runtime so bots can't scrape it
+    function initEmailLinks() {
+        document
+            .querySelectorAll<HTMLAnchorElement>(".js-email-link")
+            .forEach((link) => {
+                const u = link.dataset.user;
+                const d = link.dataset.domain;
+                if (!u || !d) return;
+                const addr = `${u}@${d}`;
+                link.href = `mailto:${addr}`;
+
+                // If the link also displays the email text, inject it
+                if (link.classList.contains("js-email-text")) {
+                    const placeholder = link.querySelector(
+                        ".js-email-placeholder",
+                    );
+                    if (placeholder) {
+                        placeholder.textContent = addr;
+                    }
+                }
+
+                // Clean up data attributes after hydration
+                link.removeAttribute("data-user");
+                link.removeAttribute("data-domain");
+            });
+    }
+
+    initEmailLinks();
+    document.addEventListener("astro:after-swap", initEmailLinks);
+</script>

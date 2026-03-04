@@ -1,0 +1,351 @@
+[
+  {
+    "id": "xitry-games",
+    "title": {
+      "es": "Xitry Games",
+      "en": "Xitry Games",
+      "fr": "Xitry Games"
+    },
+    "description": {
+      "es": "Sitio web oficial de Xitry Games, una empresa creativa especializada en desarrollo de videojuegos, modelado 3D, entornos virtuales y más. Showcase de servicios, proyectos destacados (NeoRift, MythosWorld, VirtualLab), testimonios de clientes, FAQs y animaciones interactivas. Construcción con Astro, HTML5, CSS3 y JavaScript para máximo rendimiento.",
+      "en": "Official website for Xitry Games, a creative tech company specializing in game development, 3D modeling, virtual environments, and more. Showcase of services, featured projects (NeoRift, MythosWorld, VirtualLab), client testimonies, FAQs, and smooth animations. Built with Astro, HTML5, CSS3, and JavaScript for optimal performance.",
+      "fr": "Site officiel de Xitry Games, une entreprise de technologie créative spécialisée dans le développement de jeux vidéo, la modélisation 3D, les environnements virtuels et bien plus. Présentation des services, projets phares (NeoRift, MythosWorld, VirtualLab), témoignages de clients, FAQ et animations fluides. Construit avec Astro, HTML5, CSS3 et JavaScript pour des performances optimales."
+    },
+    "image": "/images/projects/xitry-games.svg",
+    "tech": [
+      "Astro",
+      "HTML5",
+      "CSS3",
+      "JavaScript",
+      "Tailwind CSS",
+      "Node.js",
+      "pnpm",
+      "Game Development",
+      "3D Modeling",
+      "Responsive Design",
+      "Animations"
+    ],
+    "category": "web",
+    "featured": true,
+    "links": {
+      "github": null,
+      "demo": "https://xitry-game.com/"
+    },
+    "year": 2024
+  },
+  {
+    "id": "neorift-engine",
+    "title": {
+      "es": "NeoRift Engine",
+      "en": "NeoRift Engine",
+      "fr": "Moteur NeoRift"
+    },
+    "description": {
+      "es": "Motor de juegos 3D desarrollado con Unreal Engine 5. Videojuego de ciencia ficción con mecánicas de combate avanzadas, sistemas de física dinámicos y entornos visualmente impresionantes. Optimizado para PC y consolas con ray tracing en tiempo real.",
+      "en": "3D game engine developed with Unreal Engine 5. Science fiction game with advanced combat mechanics, dynamic physics systems and visually stunning environments. Optimized for PC and consoles with real-time ray tracing.",
+      "fr": "Moteur de jeu 3D développé avec Unreal Engine 5. Jeu de science-fiction avec des mécaniques de combat avancées, des systèmes de physique dynamiques et des environnements visuellement impressionnants. Optimisé pour PC et consoles avec ray tracing en temps réel."
+    },
+    "image": "/images/projects/neorift.svg",
+    "tech": [
+      "Unreal Engine 5",
+      "C++",
+      "Blueprint",
+      "3D Graphics",
+      "Physics",
+      "Ray Tracing",
+      "Game Design",
+      "Asset Management"
+    ],
+    "category": "game",
+    "featured": true,
+    "links": {
+      "github": null,
+      "demo": null
+    },
+    "year": 2024
+  },
+  {
+    "id": "mythos-world",
+    "title": {
+      "es": "MythosWorld",
+      "en": "MythosWorld",
+      "fr": "MythosWorld"
+    },
+    "description": {
+      "es": "RPG de mundo abierto desarrollado con Godot Engine. Explora un universo mitológico con sistemas de magia, inventario dinámico y NPCs con IA avanzada. Diseñado para multiplataforma con excelente rendimiento en dispositivos de gama media.",
+      "en": "Open-world RPG developed with Godot Engine. Explore a mythological universe with magic systems, dynamic inventory and NPCs with advanced AI. Designed for cross-platform with excellent performance on mid-range devices.",
+      "fr": "RPG en monde ouvert développé avec Godot Engine. Explorez un univers mythologique avec des systèmes de magie, un inventaire dynamique et des PNJ avec une IA avancée. Conçu pour multiplateforme avec d'excellentes performances sur les appareils d'entrée de gamme."
+    },
+    "image": "/images/projects/mythosworld.svg",
+    "tech": [
+      "Godot Engine",
+      "GDScript",
+      "2D/3D Graphics",
+      "AI Systems",
+      "Inventory Management",
+      "Cross-Platform",
+      "Quest System",
+      "Audio Design"
+    ],
+    "category": "game",
+    "featured": true,
+    "links": {
+      "github": "https://github.com/Angelito91/MythosWorld",
+      "demo": null
+    },
+    "year": 2024
+  },
+  {
+    "id": "virtuallab",
+    "title": {
+      "es": "VirtualLab",
+      "en": "VirtualLab",
+      "fr": "VirtualLab"
+    },
+    "description": {
+      "es": "Simulador educativo interactivo desarrollado con Godot. Entorno virtual para experimentar con física, química y biología. Interfaz intuitiva con herramientas de laboratorio realistas y retroalimentación visual inmediata para el aprendizaje práctico.",
+      "en": "Interactive educational simulator developed with Godot. Virtual environment to experiment with physics, chemistry and biology. Intuitive interface with realistic laboratory tools and immediate visual feedback for hands-on learning.",
+      "fr": "Simulateur éducatif interactif développé avec Godot. Environnement virtuel pour expérimenter la physique, la chimie et la biologie. Interface intuitive avec des outils de laboratoire réalistes et une rétroaction visuelle immédiate pour l'apprentissage pratique."
+    },
+    "image": "/images/projects/virtuallab.svg",
+    "tech": [
+      "Godot Engine",
+      "GDScript",
+      "Educational Tools",
+      "Physics Simulation",
+      "Interactive UI",
+      "Data Visualization",
+      "Web Export"
+    ],
+    "category": "game",
+    "featured": true,
+    "links": {
+      "github": "https://github.com/Angelito91/VirtualLab",
+      "demo": "https://angelito91.github.io/virtuallab/"
+    },
+    "year": 2024
+  },
+  {
+    "id": "halo",
+    "title": {
+      "es": "Halo Compiler",
+      "en": "Halo Compiler",
+      "fr": "Halo Compiler"
+    },
+    "description": {
+      "es": "Compilador educativo minimalista escrito en Rust. Un viaje práctico a través de las fases clásicas: lexing, parsing, AST, chequeo de tipos e interpretación. Ideal para aprender cómo funcionan los compiladores.",
+      "en": "Minimalist educational compiler written in Rust. A practical journey through classic phases: lexing, parsing, AST, type checking, and interpretation. Perfect for learning how compilers work.",
+      "fr": "Compilateur éducatif minimaliste écrit en Rust. Un voyage pratique à travers les phases classiques : lexing, parsing, AST, vérification des types et interprétation. Idéal pour apprendre le fonctionnement des compilateurs."
+    },
+    "image": "/images/projects/halo.svg",
+    "tech": [
+      "Rust",
+      "Cargo",
+      "Compiler Design",
+      "Parser",
+      "AST",
+      "Type Checking"
+    ],
+    "category": "tool",
+    "featured": true,
+    "links": {
+      "github": "https://github.com/Angelito91/halo",
+      "demo": null
+    },
+    "year": 2025
+  },
+  {
+    "id": "tasacubot",
+    "title": {
+      "es": "TasaCuBot",
+      "en": "TasaCuBot",
+      "fr": "TasaCuBot"
+    },
+    "description": {
+      "es": "Bot de Telegram para consultar tasas de cambio informales en Cuba en tiempo real. Integración con API de ElToque, caché local, actualización automática cada hora y manejo robusto de errores.",
+      "en": "Telegram bot for real-time informal exchange rates in Cuba. Integration with ElToque API, local caching, automatic hourly updates, and robust error handling.",
+      "fr": "Bot Telegram pour consulter les taux de change informels à Cuba en temps réel. Intégration avec l'API ElToque, cache local, mises à jour automatiques toutes les heures et gestion robuste des erreurs."
+    },
+    "image": "/images/projects/tasacubot.svg",
+    "tech": [
+      "Python",
+      "Telegram Bot API",
+      "Async Programming",
+      "API Integration",
+      "Caching"
+    ],
+    "category": "tool",
+    "featured": true,
+    "links": {
+      "github": "https://github.com/Angelito91/TasaCuBot",
+      "demo": "https://t.me/tasacubot"
+    },
+    "year": 2025
+  },
+  {
+    "id": "todo-cu",
+    "title": {
+      "es": "Todo CU",
+      "en": "Todo CU",
+      "fr": "Todo CU"
+    },
+    "description": {
+      "es": "Aplicación de escritorio para gestionar notas y tareas. Construida con Flet (framework multiplataforma basado en Flutter). Permite crear, editar, organizar y guardar tus notas de forma simple e intuitiva.",
+      "en": "Desktop note management application. Built with Flet (cross-platform framework based on Flutter). Create, edit, organize, and save your notes in a simple and intuitive way.",
+      "fr": "Application de gestion de notes pour bureau. Construite avec Flet (framework multiplateforme basé sur Flutter). Créez, modifiez, organisez et enregistrez vos notes de manière simple et intuitive."
+    },
+    "image": "/images/projects/todo-cu.svg",
+    "tech": ["Python", "Flet", "Flutter", "Desktop UI", "Cross-Platform"],
+    "category": "tool",
+    "featured": true,
+    "links": {
+      "github": "https://github.com/Angelito91/todo-cu",
+      "demo": null
+    },
+    "year": 2024
+  },
+  {
+    "id": "gh-profile",
+    "title": {
+      "es": "GitHub Profile Viewer",
+      "en": "GitHub Profile Viewer",
+      "fr": "Visionneur de Profil GitHub"
+    },
+    "description": {
+      "es": "Visor interactivo de perfiles de GitHub. Construido con Svelte y la GitHub REST API. Muestra estadísticas, repositorios, lenguajes y actividad de forma visualmente atractiva.",
+      "en": "Interactive GitHub profile viewer. Built with Svelte and GitHub REST API. Display statistics, repositories, languages, and activity in a visually appealing way.",
+      "fr": "Visionneur de profil GitHub interactif. Construit avec Svelte et l'API REST GitHub. Affiche les statistiques, les dépôts, les langages et l'activité de manière visuellement attrayante."
+    },
+    "image": "/images/projects/gh-profile.svg",
+    "tech": [
+      "Svelte",
+      "GitHub API",
+      "REST API",
+      "JavaScript",
+      "Responsive Design"
+    ],
+    "category": "web",
+    "featured": true,
+    "links": {
+      "github": "https://github.com/Angelito91/gh-profile",
+      "demo": "https://angelito91.github.io/gh-profile/"
+    },
+    "year": 2024
+  },
+  {
+    "id": "editor-markdown",
+    "title": {
+      "es": "Editor Markdown",
+      "en": "Markdown Editor",
+      "fr": "Éditeur Markdown"
+    },
+    "description": {
+      "es": "Editor de archivos Markdown con previsualizador en tiempo real. Permite crear, editar y guardar archivos .md con una interfaz limpia e intuitiva. Ideal para tomar notas y documentar proyectos.",
+      "en": "Markdown file editor with real-time preview. Create, edit, and save .md files with a clean and intuitive interface. Perfect for taking notes and documenting projects.",
+      "fr": "Éditeur de fichiers Markdown avec aperçu en temps réel. Créez, modifiez et enregistrez des fichiers .md avec une interface propre et intuitive. Parfait pour prendre des notes et documenter des projets."
+    },
+    "image": "/images/projects/editor-markdown.svg",
+    "tech": [
+      "JavaScript",
+      "Markdown",
+      "DOM API",
+      "File System API",
+      "Web APIs"
+    ],
+    "category": "tool",
+    "featured": true,
+    "links": {
+      "github": "https://github.com/Angelito91/editor-markdown",
+      "demo": "https://angelito91.github.io/editor-markdown/"
+    },
+    "year": 2024
+  },
+  {
+    "id": "pass-generator",
+    "title": {
+      "es": "Generador de Contraseñas",
+      "en": "Password Generator",
+      "fr": "Générateur de Mot de Passe"
+    },
+    "description": {
+      "es": "Aplicación web para generar contraseñas seguras y aleatorias. Controla la longitud, incluye mayúsculas, minúsculas, números y caracteres especiales. Copiar al portapapeles con un clic.",
+      "en": "Web application to generate secure and random passwords. Control length, include uppercase, lowercase, numbers, and special characters. Copy to clipboard with one click.",
+      "fr": "Application Web pour générer des mots de passe sécurisés et aléatoires. Contrôlez la longueur, incluez des majuscules, minuscules, chiffres et caractères spéciaux. Copier dans le presse-papiers d'un clic."
+    },
+    "image": "/images/projects/pass-generator.svg",
+    "tech": ["HTML", "CSS", "JavaScript", "Web Security", "Cryptography"],
+    "category": "tool",
+    "featured": false,
+    "links": {
+      "github": "https://github.com/Angelito91/pass-generator-js",
+      "demo": "https://angelito91.github.io/pass-generator-js/"
+    },
+    "year": 2024
+  },
+  {
+    "id": "node-api-rest",
+    "title": {
+      "es": "API REST Node.js",
+      "en": "Node.js REST API",
+      "fr": "API REST Node.js"
+    },
+    "description": {
+      "es": "API REST construida con Node.js y Express. Implementación de una API moderna con buenas prácticas de desarrollo, gestión de rutas, middleware y manejo robusto de errores.",
+      "en": "REST API built with Node.js and Express. Implementation of a modern API with development best practices, route management, middleware, and robust error handling.",
+      "fr": "API REST construite avec Node.js et Express. Implémentation d'une API moderne avec les meilleures pratiques de développement, gestion des routes, middleware et gestion robuste des erreurs."
+    },
+    "image": "/images/projects/node-api-rest.svg",
+    "tech": ["Node.js", "Express.js", "JavaScript", "REST API", "Middleware"],
+    "category": "backend",
+    "featured": false,
+    "links": {
+      "github": "https://github.com/Angelito91/node-api-rest",
+      "demo": null
+    },
+    "year": 2023
+  },
+  {
+    "id": "python-email",
+    "title": {
+      "es": "Aplicación Python Email",
+      "en": "Python Email Application",
+      "fr": "Application Python Email"
+    },
+    "description": {
+      "es": "Aplicación Python para enviar correos electrónicos. Demuestra integración con servicios SMTP, autenticación segura y automatización de tareas de correo.",
+      "en": "Python application for sending emails. Demonstrates SMTP service integration, secure authentication, and email task automation.",
+      "fr": "Application Python pour envoyer des e-mails. Démontre l'intégration du service SMTP, l'authentification sécurisée et l'automatisation des tâches de messagerie."
+    },
+    "image": "/images/projects/python-email.svg",
+    "tech": ["Python", "SMTP", "Email Integration", "Automation", "Security"],
+    "category": "tool",
+    "featured": false,
+    "links": {
+      "github": "https://github.com/Angelito91/python-email",
+      "demo": null
+    },
+    "year": 2024
+  },
+  {
+    "id": "text-voice",
+    "title": {
+      "es": "Convertidor Texto a Voz",
+      "en": "Text to Speech Converter",
+      "fr": "Convertisseur Texte en Parole"
+    },
+    "description": {
+      "es": "Aplicación Python que convierte texto a voz. Utiliza librerías de síntesis de voz para crear archivos de audio a partir de texto de forma rápida y eficiente.",
+      "en": "Python application that converts text to speech. Uses speech synthesis libraries to create audio files from text quickly and efficiently.",
+      "fr": "Application Python qui convertit le texte en parole. Utilise des bibliothèques de synthèse vocale pour créer des fichiers audio à partir de texte rapidement et efficacement."
+    },
+    "image": "/images/projects/text-voice.svg",
+    "tech": ["Python", "Text-to-Speech", "Audio Processing", "Libraries"],
+    "category": "tool",
+    "featured": false,
+    "links": {
+      "github": "https://github.com/Angelito91/text-voice",
+      "demo": null
+    },
+    "year": 2024
+  }
+]
