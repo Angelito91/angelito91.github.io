@@ -5,9 +5,9 @@ const lang = getLangFromUrl(Astro.url);
 
 <section id="contacto">
     <div class="relative rounded-xl border p-10">
+        <div class="section-label absolute -top-4 left-1/2 z-10 -translate-x-1/2">{lang === "es" ? "Contacto" : "Contact"}</div>
         <div class="absolute inset-x-0 top-0 h-1/2 opacity-20" style="background-image: radial-gradient(circle, currentColor 1px, transparent 1px); background-size: 12px 12px; mask-image: linear-gradient(to bottom, black, transparent);"></div>
         <div class="relative flex flex-col items-center gap-4 text-center">
-            <div class="section-label absolute -top-4 left-1/2 -translate-x-1/2">{lang === "es" ? "Contacto" : "Contact"}</div>
             <h2 class="text-balance text-3xl font-bold tracking-tighter sm:text-5xl">{lang === "es" ? "Hablemos" : "Get in touch"}</h2>
             <p class="max-w-[52ch] text-pretty text-muted-foreground">{lang === "es" ? "¿Tienes un proyecto en mente? Escríbeme y conversemos sobre desarrollo web, videojuegos o herramientas de software." : "Have a project in mind? Write to me and let's talk about web development, games, or software tools."}</p>
             <a href="mailto:portuondoangel@gmail.com" class="rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2">{lang === "es" ? "Escríbeme ↗" : "Write to me ↗"}</a>
