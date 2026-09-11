@@ -1,0 +1,29 @@
+---
+import { getLangFromUrl } from "@/i18n/utils";
+import { BriefcaseBusiness } from "lucide-astro";
+const lang = getLangFromUrl(Astro.url);
+const work = [
+    { company: "QvaLabs", title: lang === "es" ? "Fundador · Desarrollador de software" : "Founder · Software developer", dates: lang === "es" ? "2026 - Presente" : "2026 - Present", description: lang === "es" ? "Fundé QvaLabs para desarrollar software, automatización, IA e infraestructura para pymes, empresas y emprendedores. He participado en proyectos como 8Apera Fotografía, 8Apera Blog y el sitio corporativo de Xitry Games." : "I founded QvaLabs to build software, automation, AI, and infrastructure for businesses and entrepreneurs. I have contributed to projects such as 8Apera Photography, 8Apera Blog, and the Xitry Games corporate website.", logo: "/images/brands/qvalabs.svg" },
+    { company: "Xitry Games", title: lang === "es" ? "Desarrollador de videojuegos y web" : "Game and web developer", dates: lang === "es" ? "2026 - Presente" : "2026 - Present", description: lang === "es" ? "Creación de sistemas, herramientas y gameplay con Unreal Engine, además del desarrollo del sitio web oficial del estudio." : "Building systems, tools, and gameplay with Unreal Engine, together with the studio's official website.", logo: "/images/brands/xitry.ico" },
+];
+---
+
+<section id="experiencia">
+    <div class="flex min-h-0 flex-col gap-y-6">
+        <h2 class="blur-fade text-xl font-bold" style="--delay:200ms">{lang === "es" ? "Experiencia" : "Work Experience"}</h2>
+        <div class="grid gap-6">
+            {work.map((item, index) => (
+                <details class="blur-fade group grid gap-2" style={`--delay:${240 + index * 50}ms`}>
+                    <summary class="flex cursor-pointer list-none items-center justify-between gap-4 text-left [&::-webkit-details-marker]:hidden">
+                        <div class="flex min-w-0 flex-1 items-center gap-x-3">
+                            <span class="brand-mark grid size-10 shrink-0 place-items-center rounded-full border bg-muted p-2"><img src={item.logo} alt="" class="size-full object-contain" /></span>
+                            <div class="flex min-w-0 flex-col gap-1"><span class="flex items-center gap-2 font-semibold leading-none">{item.company}<span class="text-muted-foreground transition-transform group-open:rotate-90">›</span></span><span class="text-sm text-muted-foreground">{item.title}</span></div>
+                        </div>
+                        <time class="shrink-0 text-right text-xs tabular-nums text-muted-foreground">{item.dates}</time>
+                    </summary>
+                    <p class="ml-[52px] max-w-[68ch] text-pretty text-sm leading-7 text-muted-foreground">{item.description}</p>
+                </details>
+            ))}
+        </div>
+    </div>
+</section>

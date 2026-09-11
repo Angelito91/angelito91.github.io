@@ -4,12 +4,13 @@ import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "astro/config";
 
 import sitemap from "@astrojs/sitemap";
+import icon from "astro-icon";
 
 // https://astro.build/config
 export default defineConfig({
   site: "https://angelito91.github.io/",
   output: "static",
-  integrations: [sitemap()],
+  integrations: [sitemap(), icon()],
 
   vite: {
     plugins: [tailwindcss()],

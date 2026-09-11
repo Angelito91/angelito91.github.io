@@ -9,9 +9,9 @@ export const defaultLang: Language = "es";
 export const ui = {
   es: {
     // Meta
-    "meta.title": "Angel Portuondo — Desarrollador de Videojuegos",
+    "meta.title": "Angel Portuondo | Desarrollador Full Stack y videojuegos",
     "meta.description":
-      "Portafolio de Angel Alberto Portuondo Hierrezuelo. Desarrollador de videojuegos especializado en Unreal Engine y Godot. Experiencia en desarrollo web fullstack, sistemas y herramientas. Estudiante de Ciencias de la Computación.",
+      "Portafolio de Angel Portuondo, desarrollador Full Stack y de videojuegos, fundador de QvaLabs y estudiante de Ciencias de la Computación en Santiago de Cuba.",
 
     // Nav
     "nav.home": "Inicio",
@@ -101,9 +101,9 @@ export const ui = {
 
   en: {
     // Meta
-    "meta.title": "Angel Portuondo — Game Developer",
+    "meta.title": "Angel Portuondo | Full Stack & Game Developer",
     "meta.description":
-      "Portfolio of Angel Alberto Portuondo Hierrezuelo. Game Developer specializing in Unreal Engine and Godot. Fullstack web development, systems programming and game design. Computer Science student.",
+      "Portfolio of Angel Portuondo, Full Stack and game developer, founder of QvaLabs, and Computer Science student based in Santiago de Cuba.",
 
     // Nav
     "nav.home": "Home",

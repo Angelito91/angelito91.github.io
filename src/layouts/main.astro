@@ -21,7 +21,7 @@ const {
     noindex = false,
 } = Astro.props;
 
-const site = "https://angelito.me";
+const site = "https://angelito91.github.io";
 
 // Build canonical URL dynamically
 const canonical = canonicalPath
@@ -47,22 +47,39 @@ const ogImageAbsolute = ogImage.startsWith("http")
 // JSON-LD structured data
 const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "WebSite",
-    name: "Angel Portuondo",
-    alternateName: "angelito",
-    url: site,
-    description: t("meta.description"),
-    author: {
-        "@type": "Person",
-        name: "Angel Alberto Portuondo Hierrezuelo",
-        url: site,
-        jobTitle: "Fullstack Developer",
-        sameAs: [
-            "https://github.com/angelito91",
-            "https://linkedin.com/in/angelito91",
-        ],
-    },
-    inLanguage: lang,
+    "@graph": [
+        {
+            "@type": "ProfilePage",
+            "@id": `${canonical}#profile`,
+            url: canonical,
+            name: title,
+            description,
+            inLanguage: lang,
+            mainEntity: { "@id": `${site}/#person` },
+        },
+        {
+            "@type": "Person",
+            "@id": `${site}/#person`,
+            name: "Angel Alberto Portuondo Hierrezuelo",
+            alternateName: "Angel Portuondo",
+            url: site,
+            image: `${site}/og-image.svg`,
+            jobTitle: lang === "es" ? "Desarrollador Full Stack y de videojuegos" : "Full Stack and game developer",
+            description: t("meta.description"),
+            address: { "@type": "PostalAddress", addressLocality: "Santiago de Cuba", addressCountry: "CU" },
+            alumniOf: { "@type": "CollegeOrUniversity", name: "Universidad de Oriente", url: "https://www.uo.edu.cu/" },
+            worksFor: { "@type": "Organization", name: "QvaLabs", url: "https://qvalabs.com" },
+            sameAs: ["https://github.com/Angelito91", "https://linkedin.com/in/angelito91"],
+        },
+        {
+            "@type": "WebSite",
+            "@id": `${site}/#website`,
+            name: "Angel Portuondo",
+            url: site,
+            description: t("meta.description"),
+            inLanguage: lang,
+        },
+    ],
 };
 ---
 
@@ -75,7 +92,7 @@ const jsonLd = {
         <title>{title}</title>
         <meta name="description" content={description} />
         <meta name="author" content="Angel Alberto Portuondo Hierrezuelo" />
-        {noindex && <meta name="robots" content="noindex, nofollow" />}
+        <meta name="robots" content={noindex ? "noindex, nofollow" : "index, follow, max-image-preview:large"} />
 
         <!-- Open Graph -->
         <meta property="og:title" content={title} />
@@ -93,11 +110,11 @@ const jsonLd = {
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={description} />
         <meta name="twitter:image" content={ogImageAbsolute} />
+        <meta name="twitter:creator" content="@Angelito23756" />
 
         <!-- Alternate languages -->
         <link rel="alternate" hreflang="es" href={`${site}/`} />
         <link rel="alternate" hreflang="en" href={`${site}/en/`} />
-        <link rel="alternate" hreflang="fr" href={`${site}/fr/`} />
         <link rel="alternate" hreflang="x-default" href={`${site}/`} />
 
         <!-- Canonical -->
@@ -106,22 +123,23 @@ const jsonLd = {
         <!-- Favicon -->
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
-        <!-- Google Fonts: Syne (display) + Outfit (body) + JetBrains Mono (code) -->
+        <!-- Editorial type system -->
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
-            href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap"
             rel="stylesheet"
         />
 
         <!-- Theme color -->
-        <meta name="theme-color" content="#0e0f14" />
+        <meta name="theme-color" content="#f7f6f2" />
 
         <!-- JSON-LD Structured Data -->
         <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
     </head>
 
     <body class="grain-overlay">
+        <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-primary focus:px-4 focus:py-2 focus:text-sm focus:text-primary-foreground">{lang === "es" ? "Saltar al contenido" : "Skip to content"}</a>
         <div class="min-h-screen relative">
             <slot />
         </div>
@@ -146,7 +164,7 @@ const jsonLd = {
 
             function initRevealObserver() {
                 const revealElements = document.querySelectorAll(
-                    ".reveal, .reveal-left, .reveal-right, .reveal-scale",
+                    ".reveal, .reveal-left, .reveal-right, .reveal-scale, .blur-fade",
                 );
                 revealElements.forEach((el) => revealObserver.observe(el));
             }

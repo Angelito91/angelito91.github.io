@@ -65,7 +65,7 @@
   <circle cx="124" cy="475" r="3" fill="#8b5cf6" opacity="0.15"/>
 
   <!-- URL -->
-  <text x="96" y="560" font-family="'JetBrains Mono', 'Fira Code', monospace" font-size="16" font-weight="400" fill="#7a7a8e" fill-opacity="0.5" letter-spacing="0.08em">angelito.me</text>
+  <text x="96" y="560" font-family="'JetBrains Mono', 'Fira Code', monospace" font-size="16" font-weight="400" fill="#7a7a8e" fill-opacity="0.5" letter-spacing="0.08em">angelito91.github.io</text>
 
   <!-- Decorative geometric shape top-right -->
   <rect x="1040" y="60" width="48" height="48" rx="8" fill="none" stroke="#8b5cf6" stroke-opacity="0.15" stroke-width="1" transform="rotate(12, 1064, 84)"/>

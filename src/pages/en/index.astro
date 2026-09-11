@@ -4,6 +4,8 @@ import Layout from "@/layouts/main.astro";
 import Header from "@/components/Header.astro";
 import HeroSection from "@/components/HeroSection.astro";
 import AboutSection from "@/components/AboutSection.astro";
+import WorkSection from "@/components/WorkSection.astro";
+import EducationSection from "@/components/EducationSection.astro";
 import SkillSection from "@/components/SkillSection.astro";
 import ProjectSection from "@/components/ProjectSection.astro";
 import ContactSection from "@/components/ContactSection.astro";
@@ -13,9 +15,11 @@ import Footer from "@/components/Footer.astro";
 <Layout canonicalPath="/en/">
     <Header />
 
-    <main>
+    <main id="main" class="site-shell flex min-h-dvh flex-col gap-14 pb-28 pt-20">
         <HeroSection />
         <AboutSection />
+        <WorkSection />
+        <EducationSection />
         <ProjectSection />
         <SkillSection />
         <ContactSection />

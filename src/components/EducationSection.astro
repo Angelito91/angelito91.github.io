@@ -1,0 +1,18 @@
+---
+import { getLangFromUrl } from "@/i18n/utils";
+import { ArrowUpRight, University } from "lucide-astro";
+const lang = getLangFromUrl(Astro.url);
+---
+
+<section id="educacion">
+    <div class="flex min-h-0 flex-col gap-y-6">
+        <h2 class="blur-fade text-xl font-bold" style="--delay:320ms">{lang === "es" ? "Educación" : "Education"}</h2>
+        <a href="https://www.uo.edu.cu/" target="_blank" rel="noopener noreferrer" class="blur-fade group flex items-center justify-between gap-x-3" style="--delay:360ms">
+            <div class="flex min-w-0 flex-1 items-center gap-x-3">
+                <span class="brand-mark grid size-10 shrink-0 place-items-center rounded-full border bg-muted"><University size={18} strokeWidth={1.7} /></span>
+                <div class="flex min-w-0 flex-col gap-1"><span class="flex items-center gap-2 font-semibold">Universidad de Oriente <ArrowUpRight size={14} class="text-muted-foreground opacity-0 transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:opacity-100" /></span><span class="text-sm text-muted-foreground">{lang === "es" ? "Licenciatura en Ciencias de la Computación" : "Bachelor's Degree in Computer Science"}</span></div>
+            </div>
+            <span class="shrink-0 text-xs tabular-nums text-muted-foreground">{lang === "es" ? "En curso" : "In progress"}</span>
+        </a>
+    </div>
+</section>

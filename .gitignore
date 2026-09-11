@@ -30,3 +30,6 @@ bun.lock
 
 # AI skill prompts (not project content)
 skills/
+
+# Local design reference repositories
+reference/

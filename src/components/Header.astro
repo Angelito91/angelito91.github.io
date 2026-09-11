@@ -1,277 +1,64 @@
 ---
-import Logo from "@/components/Logo.astro";
-import CVDownloadButton from "@/components/CVDownloadButton.astro";
-import {
-    getLangFromUrl,
-    useTranslations,
-    getAlternateLanguages,
-} from "@/i18n/utils";
-
+import { getLangFromUrl, getAlternateLanguages } from "@/i18n/utils";
+import { BriefcaseBusiness, Github, House, Linkedin, Mail, Moon, Sparkles, Sun, UserRound } from "lucide-astro";
 const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
 const alternates = getAlternateLanguages(Astro.url.pathname, lang);
-
-const navItems = [
-    { href: "#inicio", label: t("nav.home") },
-    { href: "#sobre-mi", label: t("nav.about") },
-    { href: "#proyectos", label: t("nav.projects") },
-    { href: "#habilidades", label: t("nav.skills") },
-    { href: "#contacto", label: t("nav.contact") },
-];
-
-const allLangs = [
-    { code: "es", label: "ES" },
-    { code: "en", label: "EN" },
+const socials = [
+    { label: "GitHub", href: "https://github.com/Angelito91", icon: "github" },
+    { label: "LinkedIn", href: "https://linkedin.com/in/angelito91", icon: "linkedin" },
+    { label: "Email", href: "mailto:portuondoangel@gmail.com", icon: "mail" },
 ];
 ---
 
-<header
-    id="site-header"
-    class="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
-    style="--ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);"
->
-    <!-- Glass background — fades in on scroll -->
-    <div
-        class="absolute inset-0 bg-[hsl(225_15%_6%/0.65)] backdrop-blur-xl border-b border-[hsl(225_10%_16%/0)] transition-all duration-500 pointer-events-none"
-        id="header-glass"
-    >
-    </div>
-
-    <nav
-        class="relative max-w-6xl mx-auto flex items-center justify-between px-6 py-3 lg:py-4"
-    >
-        <!-- Logo -->
-        <Logo />
-
-        <!-- Desktop Navigation -->
-        <div class="hidden lg:flex items-center gap-1">
-            {
-                navItems.map((item) => (
-                    <a
-                        href={item.href}
-                        class="link-underline relative px-3.5 py-2 text-[0.8125rem] font-medium text-[hsl(var(--color-muted-foreground))] hover:text-[hsl(var(--color-foreground))] transition-colors duration-300"
-                        data-nav={item.href.substring(1)}
-                    >
-                        {item.label}
-                    </a>
-                ))
-            }
+<div class="pointer-events-none fixed inset-x-0 bottom-4 z-30">
+    <nav class="dock pointer-events-auto mx-auto flex h-14 w-fit items-end justify-center gap-2 rounded-full border bg-card/90 p-2 shadow-[0_0_10px_3px] shadow-primary/5 backdrop-blur-3xl" aria-label="Portfolio navigation">
+        <a href="#inicio" class="dock-link dock-item" aria-label="Inicio" title="Inicio"><House size={16} strokeWidth={1.8} /></a>
+        <a href="#sobre-mi" class="dock-link dock-item" aria-label="Sobre mí" title="Sobre mí"><UserRound size={16} strokeWidth={1.8} /></a>
+        <a href="#experiencia" class="dock-link dock-item" aria-label="Experiencia" title="Experiencia"><BriefcaseBusiness size={16} strokeWidth={1.8} /></a>
+        <a href="#proyectos" class="dock-link dock-item" aria-label="Proyectos" title="Proyectos"><Sparkles size={16} strokeWidth={1.8} /></a>
+        <a href="#contacto" class="dock-link dock-item" aria-label="Contacto" title="Contacto"><Mail size={16} strokeWidth={1.8} /></a>
+        <span class="mx-1 h-7 w-px self-center bg-border" aria-hidden="true"></span>
+        {socials.map((social) => (
+            <a href={social.href} target="_blank" rel="noopener noreferrer" class="dock-link dock-item" aria-label={social.label} title={social.label}>
+                {social.icon === "github" && <Github size={16} strokeWidth={1.8} />}
+                {social.icon === "linkedin" && <Linkedin size={16} strokeWidth={1.8} />}
+                {social.icon === "mail" && <Mail size={16} strokeWidth={1.8} />}
+            </a>
+        ))}
+        <span class="mx-1 h-7 w-px self-center bg-border" aria-hidden="true"></span>
+        <div class="flex items-center gap-1">
+            {["es", "en"].map((code) => {
+                const active = code === lang;
+                const alternate = alternates.find((item) => item.lang === code);
+                if (active) return <span aria-current="true" class="grid size-10 place-items-center rounded-3xl border border-foreground bg-muted text-[11px] font-semibold text-foreground">{code.toUpperCase()}</span>;
+                return <a href={alternate?.href || "/"} class="grid size-10 place-items-center rounded-3xl border border-border text-[11px] font-semibold text-muted-foreground">{code.toUpperCase()}</a>;
+            })}
         </div>
-
-        <!-- Right side: Lang switcher + CTA + Hamburger -->
-        <div class="flex items-center gap-3">
-            <!-- Language Switcher -->
-            <div class="lang-switcher hidden sm:inline-flex">
-                {
-                    allLangs.map((l) => {
-                        const isActive = l.code === lang;
-                        const alternate = alternates.find(
-                            (a) => a.lang === l.code,
-                        );
-                        const href = isActive ? "#" : alternate?.href || "/";
-                        return (
-                            <a
-                                href={href}
-                                class:list={[
-                                    "lang-option",
-                                    { active: isActive },
-                                ]}
-                                aria-current={isActive ? "true" : undefined}
-                            >
-                                {l.label}
-                            </a>
-                        );
-                    })
-                }
-            </div>
-
-            <!-- CTA Button (desktop) with CV options -->
-            <CVDownloadButton variant="desktop" />
-
-            <!-- Hamburger (mobile) -->
-            <button
-                id="hamburger-btn"
-                class="hamburger lg:hidden relative w-10 h-10 flex flex-col items-center justify-center gap-[5px] rounded-lg hover:bg-[hsl(225_10%_13%)] transition-colors focus-ring"
-                aria-label="Toggle menu"
-                aria-expanded="false"
-            >
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
-            </button>
-        </div>
+        <button id="theme-toggle" class="dock-link dock-item" type="button" aria-label="Cambiar tema" title="Cambiar tema"><span class="dark:hidden"><Moon size={16} strokeWidth={1.8} /></span><span class="hidden dark:inline"><Sun size={16} strokeWidth={1.8} /></span></button>
     </nav>
-
-    <!-- Mobile Menu -->
-    <div
-        id="mobile-menu"
-        class="mobile-menu lg:hidden absolute top-full left-0 right-0"
-    >
-        <div
-            class="mx-4 mt-2 p-4 rounded-2xl bg-[hsl(225_12%_9%/0.95)] backdrop-blur-2xl border border-[hsl(225_10%_16%/0.5)] shadow-lg"
-        >
-            <div class="flex flex-col gap-1">
-                {
-                    navItems.map((item) => (
-                        <a
-                            href={item.href}
-                            class="mobile-nav-link block px-4 py-3 text-[0.9375rem] font-medium text-[hsl(var(--color-muted-foreground))] hover:text-[hsl(var(--color-foreground))] hover:bg-[hsl(225_10%_13%)] rounded-xl transition-all duration-200"
-                            data-nav={item.href.substring(1)}
-                        >
-                            {item.label}
-                        </a>
-                    ))
-                }
-            </div>
-
-            <!-- Mobile lang + CTA -->
-            <div
-                class="mt-4 pt-4 border-t border-[hsl(225_10%_16%/0.5)] flex items-center justify-between"
-            >
-                <div class="lang-switcher">
-                    {
-                        allLangs.map((l) => {
-                            const isActive = l.code === lang;
-                            const alternate = alternates.find(
-                                (a) => a.lang === l.code,
-                            );
-                            const href = isActive
-                                ? "#"
-                                : alternate?.href || "/";
-                            return (
-                                <a
-                                    href={href}
-                                    class:list={[
-                                        "lang-option",
-                                        { active: isActive },
-                                    ]}
-                                    aria-current={isActive ? "true" : undefined}
-                                >
-                                    {l.label}
-                                </a>
-                            );
-                        })
-                    }
-                </div>
-
-                <CVDownloadButton variant="mobile" />
-            </div>
-        </div>
-    </div>
-</header>
+</div>
 
 <script>
-    // ── Header scroll effect ──
-    const header = document.getElementById("site-header")!;
-    const glass = document.getElementById("header-glass")!;
-    let lastScroll = 0;
-    let ticking = false;
-
-    function onScroll() {
-        const scrollY = window.scrollY;
-
-        // Glass morphism effect
-        if (scrollY > 50) {
-            glass.style.borderBottomColor = "hsl(225 10% 16% / 0.3)";
-            glass.style.background = "hsl(225 15% 6% / 0.82)";
-        } else {
-            glass.style.borderBottomColor = "hsl(225 10% 16% / 0)";
-            glass.style.background = "hsl(225 15% 6% / 0.65)";
-        }
-
-        // Hide on scroll down, show on scroll up
-        if (scrollY > 400) {
-            if (scrollY > lastScroll + 5) {
-                header.style.transform = "translateY(-100%)";
-            } else if (scrollY < lastScroll - 5) {
-                header.style.transform = "translateY(0)";
-            }
-        } else {
-            header.style.transform = "translateY(0)";
-        }
-
-        lastScroll = scrollY;
-        ticking = false;
-    }
-
-    window.addEventListener("scroll", () => {
-        if (!ticking) {
-            requestAnimationFrame(onScroll);
-            ticking = true;
-        }
+    const themeToggle = document.querySelector<HTMLButtonElement>("#theme-toggle");
+    themeToggle?.addEventListener("click", () => {
+        document.documentElement.classList.toggle("dark");
+        localStorage.setItem("theme", document.documentElement.classList.contains("dark") ? "dark" : "light");
     });
+    if (localStorage.getItem("theme") === "dark") document.documentElement.classList.add("dark");
 
-    // ── Active section tracking ──
-    const sections = document.querySelectorAll("section[id]");
-    const navLinks = document.querySelectorAll("a[data-nav]");
-
-    const observer = new IntersectionObserver(
-        (entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    const id = entry.target.getAttribute("id");
-                    navLinks.forEach((link) => {
-                        const isActive = link.getAttribute("data-nav") === id;
-                        if (isActive) {
-                            link.classList.add(
-                                "active",
-                                "text-[hsl(var(--color-foreground))]",
-                            );
-                            link.classList.remove(
-                                "text-[hsl(var(--color-muted-foreground))]",
-                            );
-                        } else {
-                            link.classList.remove(
-                                "active",
-                                "text-[hsl(var(--color-foreground))]",
-                            );
-                            link.classList.add(
-                                "text-[hsl(var(--color-muted-foreground))]",
-                            );
-                        }
-                    });
-                }
-            });
-        },
-        { threshold: 0.3, rootMargin: "-80px 0px -40% 0px" },
-    );
-
-    sections.forEach((section) => observer.observe(section));
-
-    // ── Mobile menu toggle ──
-    const hamburgerBtn = document.getElementById("hamburger-btn")!;
-    const mobileMenu = document.getElementById("mobile-menu")!;
-    let menuOpen = false;
-
-    hamburgerBtn.addEventListener("click", () => {
-        menuOpen = !menuOpen;
-        hamburgerBtn.classList.toggle("active", menuOpen);
-        hamburgerBtn.setAttribute("aria-expanded", String(menuOpen));
-        mobileMenu.classList.toggle("open", menuOpen);
-
-        // Prevent body scroll when menu is open
-        document.body.style.overflow = menuOpen ? "hidden" : "";
-    });
-
-    // Close mobile menu on nav link click
-    mobileMenu.querySelectorAll("a[data-nav]").forEach((link) => {
-        link.addEventListener("click", () => {
-            menuOpen = false;
-            hamburgerBtn.classList.remove("active");
-            hamburgerBtn.setAttribute("aria-expanded", "false");
-            mobileMenu.classList.remove("open");
-            document.body.style.overflow = "";
+    const dock = document.querySelector<HTMLElement>("nav");
+    const dockItems = [...document.querySelectorAll<HTMLElement>(".dock-item")];
+    dock?.addEventListener("pointermove", (event) => {
+        const pointer = event.pageX;
+        dockItems.forEach((item) => {
+            const distance = Math.abs(pointer - (item.getBoundingClientRect().left + item.offsetWidth / 2));
+            const size = Math.max(40, 60 - distance * 0.2);
+            item.style.setProperty("--dock-size", `${size.toFixed(1)}px`);
+            item.style.setProperty("--dock-icon-size", `${(size * 0.5).toFixed(1)}px`);
         });
     });
-
-    // Close mobile menu on escape
-    document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape" && menuOpen) {
-            menuOpen = false;
-            hamburgerBtn.classList.remove("active");
-            hamburgerBtn.setAttribute("aria-expanded", "false");
-            mobileMenu.classList.remove("open");
-            document.body.style.overflow = "";
-        }
-    });
+    dock?.addEventListener("pointerleave", () => dockItems.forEach((item) => {
+        item.style.setProperty("--dock-size", "40px");
+        item.style.setProperty("--dock-icon-size", "20px");
+    }));
 </script>
