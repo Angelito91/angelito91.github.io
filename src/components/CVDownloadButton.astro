@@ -13,8 +13,8 @@ const cvLink = lang === "es" ? t("cv.es") : t("cv.en");
     target="_blank"
     rel="noopener noreferrer"
     class:list={[
-        "inline-flex items-center justify-center gap-2 border border-[var(--ink)] bg-[var(--ink)] px-4 py-2 font-mono text-xs font-semibold uppercase tracking-[0.08em] text-white transition duration-300 hover:bg-[var(--accent)] hover:border-[var(--accent)]",
-        { "hidden md:inline-flex": variant === "desktop", "md:hidden": variant === "mobile", "px-5 py-3": variant === "about" },
+        "inline-flex items-center justify-center gap-2 rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+        { "hidden md:inline-flex": variant === "desktop", "md:hidden": variant === "mobile" },
     ]}
 >
     {t("nav.resume")}

@@ -1,5 +1,6 @@
 ---
 import { getLangFromUrl, useTranslations } from "@/i18n/utils";
+import CVDownloadButton from "@/components/CVDownloadButton.astro";
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
@@ -19,6 +20,9 @@ const t = useTranslations(lang);
                     <p class="max-w-[68ch] text-pretty">As the <strong class="key-term">founder of QvaLabs</strong>, I design, build, and deploy digital products including websites, blogs, automation, AI, and infrastructure. I enjoy understanding the full problem and creating <strong class="key-term">maintainable software</strong> that can grow with every project.</p>
                 </>
             )}
+        </div>
+        <div class="blur-fade" style="--delay:200ms">
+            <CVDownloadButton variant="about" />
         </div>
     </div>
 </section>

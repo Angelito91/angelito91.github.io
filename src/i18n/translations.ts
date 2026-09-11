@@ -22,11 +22,11 @@ export const ui = {
     "nav.resume": "Descargar CV",
     "cv.download": "Descargar CV",
     "cv.link":
-      "https://docs.google.com/document/d/1NaoBaaDtAc2L0FIMPwNHXwQSh7QI9WcQ/edit?usp=drive_link&ouid=109799712322136287398&rtpof=true&sd=true",
+      "/cv/cv-es.pdf",
     "cv.es":
-      "https://docs.google.com/document/d/1NaoBaaDtAc2L0FIMPwNHXwQSh7QI9WcQ/edit?usp=drive_link&ouid=109799712322136287398&rtpof=true&sd=true",
+      "/cv/cv-es.pdf",
     "cv.en":
-      "https://docs.google.com/document/d/1Sh-SpWT8JD3F4h_WDIcjj8un0KwDLMHb/edit?usp=drive_link&ouid=109799712322136287398&rtpof=true&sd=true",
+      "/cv/cv-en.pdf",
 
     // Hero
     "hero.greeting": "Hola, soy",
@@ -114,11 +114,11 @@ export const ui = {
     "nav.resume": "Download CV",
     "cv.download": "Download CV",
     "cv.link":
-      "https://docs.google.com/document/d/1Sh-SpWT8JD3F4h_WDIcjj8un0KwDLMHb/edit?usp=drive_link&ouid=109799712322136287398&rtpof=true&sd=true",
+      "/cv/cv-en.pdf",
     "cv.es":
-      "https://docs.google.com/document/d/1NaoBaaDtAc2L0FIMPwNHXwQSh7QI9WcQ/edit?usp=drive_link&ouid=109799712322136287398&rtpof=true&sd=true",
+      "/cv/cv-es.pdf",
     "cv.en":
-      "https://docs.google.com/document/d/1Sh-SpWT8JD3F4h_WDIcjj8un0KwDLMHb/edit?usp=drive_link&ouid=109799712322136287398&rtpof=true&sd=true",
+      "/cv/cv-en.pdf",
 
     // Hero
     "hero.greeting": "Hi, I'm",
