@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "@astrojs/sitemap": "3.6.0",
-    "@iconify-json/devicon": "^1.2.62",
     "@tailwindcss/vite": "4.1.13",
     "astro": "5.14.1",
     "astro-icon": "^1.2.0",

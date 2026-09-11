@@ -1,27 +1,28 @@
 ---
 import { getLangFromUrl } from "@/i18n/utils";
 import { Icon } from "astro-icon/components";
-import { CodeXml, Sparkles, Terminal } from "lucide-astro";
 const lang = getLangFromUrl(Astro.url);
-const skills: Array<[string, string | any]> = [
-    ["Astro", "devicon:astro"],
-    ["TypeScript", "devicon:typescript"],
-    ["React", "devicon:react"],
-    ["Svelte", "devicon:svelte"],
-    ["Tailwind CSS", "devicon:tailwindcss"],
-    ["Cloudflare", "devicon:cloudflare"],
-    ["Node.js", "devicon:nodejs"],
-    ["Python", "devicon:python"],
-    ["Rust", "devicon:rust"],
-    ["C++", "devicon:cplusplus"],
-    ["Unreal Engine", "devicon:unrealengine"],
-    ["Godot", "devicon:godot"],
-    ["Git", "devicon:git"],
-    ["Linux", "devicon:linux"],
-    ["Bun", "devicon:bun"],
-    ["OpenCode", Terminal],
-    ["Codex", CodeXml],
-    ["Claude", Sparkles],
+// Iconos locales desde svgl.app (src/icons/). Los monocromaticos usan
+// currentColor y se adaptan al tema claro/oscuro.
+const skills = [
+    ["Astro", "astro"],
+    ["TypeScript", "typescript"],
+    ["React", "react"],
+    ["Svelte", "svelte"],
+    ["Tailwind CSS", "tailwindcss"],
+    ["Cloudflare", "cloudflare"],
+    ["Node.js", "nodejs"],
+    ["Python", "python"],
+    ["Rust", "rust"],
+    ["C++", "cplusplus"],
+    ["Unreal Engine", "unrealengine"],
+    ["Godot", "godot"],
+    ["Git", "git"],
+    ["Linux", "linux"],
+    ["Bun", "bun"],
+    ["OpenCode", "opencode"],
+    ["Codex", "codex"],
+    ["Claude", "claude"],
 ];
 ---
 
@@ -29,10 +30,7 @@ const skills: Array<[string, string | any]> = [
     <div class="flex min-h-0 flex-col gap-y-4">
         <h2 class="blur-fade text-xl font-bold" style="--delay:380ms">{lang === "es" ? "Habilidades" : "Skills"}</h2>
         <div class="flex flex-wrap gap-2">
-            {skills.map(([skill, icon], index) => {
-                const LucideIcon = typeof icon === "string" ? null : icon;
-                return <span class="blur-fade tech-pill" style={`--delay:${420 + index * 25}ms`}>{LucideIcon ? <LucideIcon size={17} /> : <Icon name={icon as string} size={17} />}<span>{skill}</span></span>;
-            })}
+            {skills.map(([skill, icon], index) => <span class="blur-fade tech-pill" style={`--delay:${420 + index * 25}ms`}><Icon name={icon} size={17} /><span>{skill}</span></span>)}
         </div>
     </div>
 </section>
