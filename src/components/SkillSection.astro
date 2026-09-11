@@ -2,8 +2,9 @@
 import { getLangFromUrl } from "@/i18n/utils";
 import { Icon } from "astro-icon/components";
 const lang = getLangFromUrl(Astro.url);
-// Iconos locales desde svgl.app (src/icons/). Los monocromaticos usan
-// currentColor y se adaptan al tema claro/oscuro.
+// Iconos originales desde svgl.app (src/icons/). Los de doble tema
+// (light/dark) se alternan con el modo de la web.
+const dualTheme = ["astro", "rust", "unrealengine", "codex", "opencode"];
 const skills = [
     ["Astro", "astro"],
     ["TypeScript", "typescript"],
@@ -30,7 +31,19 @@ const skills = [
     <div class="flex min-h-0 flex-col gap-y-4">
         <h2 class="blur-fade text-xl font-bold" style="--delay:380ms">{lang === "es" ? "Habilidades" : "Skills"}</h2>
         <div class="flex flex-wrap gap-2">
-            {skills.map(([skill, icon], index) => <span class="blur-fade tech-pill" style={`--delay:${420 + index * 25}ms`}><Icon name={icon} size={17} /><span>{skill}</span></span>)}
+            {skills.map(([skill, icon], index) => (
+                <span class="blur-fade tech-pill" style={`--delay:${420 + index * 25}ms`}>
+                    {dualTheme.includes(icon) ? (
+                        <>
+                            <span class="grid place-items-center dark:hidden"><Icon name={icon} size={17} /></span>
+                            <span class="hidden place-items-center dark:grid"><Icon name={`${icon}-dark`} size={17} /></span>
+                        </>
+                    ) : (
+                        <Icon name={icon} size={17} />
+                    )}
+                    <span>{skill}</span>
+                </span>
+            ))}
         </div>
     </div>
 </section>

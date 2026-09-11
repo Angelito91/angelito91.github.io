@@ -144,6 +144,7 @@ const jsonLd = {
     <body class="grain-overlay">
         <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-primary focus:px-4 focus:py-2 focus:text-sm focus:text-primary-foreground">{lang === "es" ? "Saltar al contenido" : "Skip to content"}</a>
         <div class="min-h-screen relative">
+            <div class="flicker-top" aria-hidden="true"><canvas id="flicker-grid"></canvas></div>
             <slot />
         </div>
 
@@ -188,6 +189,84 @@ const jsonLd = {
 
             initRevealObserver();
             document.addEventListener("astro:after-swap", initRevealObserver);
+
+            // ── Flickering grid: patron superior como en references ──
+            // Rejilla de cuadros de 2px que parpadean (canvas, color del tema).
+            (function initFlickerGrid() {
+                const canvasEl = document.getElementById("flicker-grid");
+                if (!(canvasEl instanceof HTMLCanvasElement)) return;
+                const canvas: HTMLCanvasElement = canvasEl;
+                const container = canvas.parentElement as HTMLElement;
+                const ctx = canvas.getContext("2d");
+                if (!ctx) return;
+                const SQUARE = 2, GAP = 2, MAX_OP = 0.3, CHANCE = 0.3;
+                const reduceFlicker = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+                let fg = "0, 0, 0";
+                function resolveFg() {
+                    const tmp = document.createElement("div");
+                    tmp.style.color = "var(--foreground)";
+                    tmp.style.position = "absolute";
+                    tmp.style.visibility = "hidden";
+                    document.body.appendChild(tmp);
+                    const parts = window.getComputedStyle(tmp).color.match(/[\d.]+/g);
+                    document.body.removeChild(tmp);
+                    if (parts && parts.length >= 3) fg = `${parts[0]}, ${parts[1]}, ${parts[2]}`;
+                }
+                resolveFg();
+                new MutationObserver(resolveFg).observe(document.documentElement, {
+                    attributes: true,
+                    attributeFilter: ["class"],
+                });
+                let cols = 0, rows = 0, dpr = 1, raf = 0, visible = true, last = 0;
+                let squares = new Float32Array(0);
+                function draw() {
+                    ctx?.clearRect(0, 0, canvas.width, canvas.height);
+                    if (!ctx) return;
+                    for (let i = 0; i < cols; i++) {
+                        for (let j = 0; j < rows; j++) {
+                            ctx.fillStyle = `rgba(${fg},${squares[i * rows + j].toFixed(3)})`;
+                            ctx.fillRect(i * (SQUARE + GAP) * dpr, j * (SQUARE + GAP) * dpr, SQUARE * dpr, SQUARE * dpr);
+                        }
+                    }
+                }
+                function setup() {
+                    const w = container.clientWidth, h = container.clientHeight;
+                    dpr = window.devicePixelRatio || 1;
+                    canvas.width = w * dpr;
+                    canvas.height = h * dpr;
+                    cols = Math.floor(w / (SQUARE + GAP));
+                    rows = Math.floor(h / (SQUARE + GAP));
+                    squares = new Float32Array(cols * rows);
+                    for (let i = 0; i < squares.length; i++) squares[i] = Math.random() * MAX_OP;
+                    draw();
+                }
+                function tick(t: number) {
+                    if (!visible) return;
+                    const dt = (t - last) / 1000;
+                    last = t;
+                    for (let i = 0; i < squares.length; i++) {
+                        if (Math.random() < CHANCE * dt) squares[i] = Math.random() * MAX_OP;
+                    }
+                    draw();
+                    raf = requestAnimationFrame(tick);
+                }
+                function start() {
+                    cancelAnimationFrame(raf);
+                    last = performance.now();
+                    if (!reduceFlicker && visible) raf = requestAnimationFrame(tick);
+                }
+                new IntersectionObserver(
+                    ([entry]) => {
+                        visible = entry.isIntersecting;
+                        if (visible) start();
+                        else cancelAnimationFrame(raf);
+                    },
+                    { threshold: 0 },
+                ).observe(canvas);
+                new ResizeObserver(setup).observe(container);
+                setup();
+                start();
+            })();
 
             // ── Smooth Scroll for anchor links ──
             document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
