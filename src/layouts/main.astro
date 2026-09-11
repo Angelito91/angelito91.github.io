@@ -208,9 +208,18 @@ const jsonLd = {
                     tmp.style.position = "absolute";
                     tmp.style.visibility = "hidden";
                     document.body.appendChild(tmp);
-                    const parts = window.getComputedStyle(tmp).color.match(/[\d.]+/g);
+                    const computed = window.getComputedStyle(tmp).color;
                     document.body.removeChild(tmp);
-                    if (parts && parts.length >= 3) fg = `${parts[0]}, ${parts[1]}, ${parts[2]}`;
+                    // Convierte cualquier espacio de color (oklch, etc.) a rgb
+                    // pintando 1px en un canvas temporal.
+                    const tiny = document.createElement("canvas");
+                    tiny.width = tiny.height = 1;
+                    const tctx = tiny.getContext("2d");
+                    if (!tctx) return;
+                    tctx.fillStyle = computed;
+                    tctx.fillRect(0, 0, 1, 1);
+                    const [r, g, b] = Array.from(tctx.getImageData(0, 0, 1, 1).data);
+                    fg = `${r}, ${g}, ${b}`;
                 }
                 resolveFg();
                 new MutationObserver(resolveFg).observe(document.documentElement, {
