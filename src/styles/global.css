@@ -71,7 +71,7 @@
     .icon-link { @apply text-muted-foreground transition-transform duration-200 hover:rotate-12 hover:text-foreground; }
     .key-term { @apply font-semibold text-foreground decoration-foreground/30 decoration-2 underline-offset-4; }
     /* Patron superior estilo references: rejilla parpadeante (FlickeringGrid) */
-    .flicker-top { position: absolute; inset-inline: 0; top: 0; height: 100px; overflow: hidden; z-index: 0; pointer-events: none; -webkit-mask-image: linear-gradient(to bottom, black, transparent); mask-image: linear-gradient(to bottom, black, transparent); }
+    .flicker-top { position: absolute; top: 0; left: 0; right: 0; height: 100px; margin: 0; padding: 0; overflow: hidden; z-index: 0; pointer-events: none; -webkit-mask-image: linear-gradient(to bottom, black, transparent); mask-image: linear-gradient(to bottom, black, transparent); }
     .flicker-top canvas { display: block; width: 100%; height: 100%; }
 }
 
