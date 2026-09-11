@@ -17,7 +17,7 @@ const {
     title = t("meta.title"),
     description = t("meta.description"),
     canonicalPath,
-    ogImage = "/og-image.svg",
+    ogImage = "/og-image.png",
     noindex = false,
 } = Astro.props;
 
@@ -63,7 +63,7 @@ const jsonLd = {
             name: "Angel Alberto Portuondo Hierrezuelo",
             alternateName: "Angel Portuondo",
             url: site,
-            image: `${site}/og-image.svg`,
+            image: `${site}/og-image.png`,
             jobTitle: lang === "es" ? "Desarrollador Full Stack y de videojuegos" : "Full Stack and game developer",
             description: t("meta.description"),
             address: { "@type": "PostalAddress", addressLocality: "Santiago de Cuba", addressCountry: "CU" },
@@ -85,6 +85,7 @@ const jsonLd = {
 
 <html lang={lang}>
     <head>
+        <script is:inline>document.documentElement.classList.add("js")</script>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -100,6 +101,7 @@ const jsonLd = {
         <meta property="og:type" content="website" />
         <meta property="og:url" content={ogUrl} />
         <meta property="og:locale" content={ogLocale} />
+        <meta property="og:locale:alternate" content={lang === "es" ? "en_US" : "es_ES"} />
         <meta property="og:image" content={ogImageAbsolute} />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
@@ -132,10 +134,11 @@ const jsonLd = {
         />
 
         <!-- Theme color -->
-        <meta name="theme-color" content="#f7f6f2" />
+        <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f7f6f2" />
+        <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#17171c" />
 
         <!-- JSON-LD Structured Data -->
-        <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+        <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />
     </head>
 
     <body class="grain-overlay">
@@ -147,26 +150,40 @@ const jsonLd = {
         <!-- ═══ Global Scripts ═══ -->
         <script>
             // ── Scroll Reveal Observer ──
-            const revealObserver = new IntersectionObserver(
-                (entries) => {
-                    entries.forEach((entry) => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add("revealed");
-                            revealObserver.unobserve(entry.target);
-                        }
-                    });
-                },
-                {
-                    threshold: 0.08,
-                    rootMargin: "0px 0px -40px 0px",
-                },
-            );
+            // Pre-dispara 120px antes de entrar al viewport para que el fade
+            // termine cuando el usuario llega al contenido (sin parpadeos).
+            const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+            function revealElement(el: Element) {
+                el.classList.add("revealed");
+                el.addEventListener("animationend", () => el.classList.add("reveal-done"), { once: true });
+            }
 
             function initRevealObserver() {
                 const revealElements = document.querySelectorAll(
                     ".reveal, .reveal-left, .reveal-right, .reveal-scale, .blur-fade",
                 );
-                revealElements.forEach((el) => revealObserver.observe(el));
+                if (reduceMotion || !("IntersectionObserver" in window)) {
+                    revealElements.forEach(revealElement);
+                    return;
+                }
+                const revealObserver = new IntersectionObserver(
+                    (entries) => {
+                        entries.forEach((entry) => {
+                            if (entry.isIntersecting) {
+                                revealElement(entry.target);
+                                revealObserver.unobserve(entry.target);
+                            }
+                        });
+                    },
+                    {
+                        threshold: 0.1,
+                        rootMargin: "0px 0px 120px 0px",
+                    },
+                );
+                revealElements.forEach((el) => {
+                    if (!el.classList.contains("revealed")) revealObserver.observe(el);
+                });
             }
 
             initRevealObserver();

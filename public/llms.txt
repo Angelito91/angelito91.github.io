@@ -1,0 +1,38 @@
+# Angel Portuondo — angelito91.github.io
+
+> Portfolio of Angel Alberto Portuondo Hierrezuelo: Full Stack & game developer,
+> founder of QvaLabs, Computer Science student at Universidad de Oriente
+> (Santiago de Cuba).
+
+## Who is Angel?
+
+- Full Stack Developer (2+ years): Astro, React, Svelte, TypeScript, Node.js, Tailwind CSS.
+- Game Developer: Unreal Engine 5 (C++, Blueprints) and Godot (GDScript).
+- Tools & systems: Rust, Python, C++, Linux, Git, Cloudflare, Bun.
+- Founder of **QvaLabs**: software, automation, AI and infrastructure for businesses.
+- Game & web developer at **Xitry Games** (Unreal Engine + official studio website).
+- Languages: Spanish (native), English (intermediate B1).
+
+## Selected work
+
+- **8Apera Fotografía** (2026) — Professional website for a photography studio in
+  Santiago de Cuba. Astro, Tailwind CSS, GSAP. https://8apera.com
+- **8Apera Blog** (2026) — Documentary blog with headless Keystatic CMS.
+  Astro, React, Keystatic, Cloudflare. https://blog.8apera.com
+- **Xitry Games** (2026) — Trilingual corporate site for an indie game/3D studio.
+  Astro, Tailwind CSS, Splide, Cloudflare. https://xitry-game.com
+- **Halo Compiler** (2026) — Educational compiler/interpreter in Rust (lexing,
+  parsing, AST, type checking). https://github.com/Angelito91/halo
+- More repositories: https://github.com/Angelito91?tab=repositories
+
+## Contact
+
+- GitHub: https://github.com/Angelito91
+- LinkedIn: https://linkedin.com/in/angelito91
+- CV (ES): https://angelito91.github.io/cv/cv-es.pdf
+- CV (EN): https://angelito91.github.io/cv/cv-en.pdf
+
+## Site
+
+- URL: https://angelito91.github.io (ES default, EN at /en/)
+- Built with Astro + Tailwind CSS. Sitemap: /sitemap-index.xml

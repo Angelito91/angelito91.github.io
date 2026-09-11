@@ -5,7 +5,9 @@
     "**/*"
   ],
   "exclude": [
-    "dist"
+    "dist",
+    "node_modules",
+    "reference"
   ],
   "compilerOptions": {
     "baseUrl": ".",
