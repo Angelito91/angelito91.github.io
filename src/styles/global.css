@@ -59,8 +59,8 @@
     .dock-link svg { width: var(--dock-icon-size, 20px); height: var(--dock-icon-size, 20px); transition: width 180ms cubic-bezier(.22,1,.36,1), height 180ms cubic-bezier(.22,1,.36,1); }
     .section-label { @apply border bg-primary px-4 py-1 text-sm font-medium text-primary-foreground; border-radius: 0.75rem; }
     .tech-pill { @apply flex h-9 w-fit items-center gap-2 rounded-xl border border-border/80 bg-card/70 px-3 text-sm font-medium shadow-sm backdrop-blur-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-foreground/20 hover:bg-card hover:shadow-md; }
-    .avatar-wrap { @apply relative grid aspect-square size-24 place-items-center rounded-full p-[2px] md:size-32; background: linear-gradient(135deg, color-mix(in oklab, var(--foreground) 62%, transparent), color-mix(in oklab, var(--foreground) 10%, transparent) 48%, color-mix(in oklab, var(--foreground) 42%, transparent)); }
-    .avatar-wrap img { display: block; aspect-ratio: 1 / 1; width: 100%; height: 100%; border-radius: 9999px; }
+    .avatar-wrap { @apply relative grid aspect-square size-24 shrink-0 place-items-center overflow-hidden rounded-full p-[2px] shadow-lg ring-4 ring-muted md:size-32; background: linear-gradient(135deg, color-mix(in oklab, var(--foreground) 62%, transparent), color-mix(in oklab, var(--foreground) 10%, transparent) 48%, color-mix(in oklab, var(--foreground) 42%, transparent)); }
+    .avatar-wrap img { display: block; aspect-ratio: 1 / 1; width: 100%; height: 100%; border-radius: 9999px; object-fit: cover; }
     .project-image-link { @apply relative block overflow-hidden bg-muted; }
     .project-image-link::after { content: ""; position: absolute; inset: 0; background: linear-gradient(120deg, transparent 30%, color-mix(in oklab, white 35%, transparent), transparent 70%); transform: translateX(-120%); transition: transform 700ms ease; }
     .project-image-link:hover::after { transform: translateX(120%); }

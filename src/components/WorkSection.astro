@@ -16,7 +16,7 @@ const work = [
                 <details class="blur-fade group grid gap-2" style={`--delay:${240 + index * 50}ms`}>
                     <summary class="flex cursor-pointer list-none items-center justify-between gap-4 text-left [&::-webkit-details-marker]:hidden">
                         <div class="flex min-w-0 flex-1 items-center gap-x-3">
-                            <span class="brand-mark grid size-10 shrink-0 place-items-center rounded-full border bg-muted p-2"><img src={item.logo} alt="" class="size-full object-contain" /></span>
+                            <span class="brand-mark grid size-10 shrink-0 place-items-center overflow-hidden rounded-full border bg-muted p-1 shadow ring-2 ring-border"><img src={item.logo} alt="" class="size-full object-contain" /></span>
                             <div class="flex min-w-0 flex-col gap-1"><span class="flex items-center gap-2 font-semibold leading-none">{item.company}<span class="text-muted-foreground transition-transform group-open:rotate-90">›</span></span><span class="text-sm text-muted-foreground">{item.title}</span></div>
                         </div>
                         <time class="shrink-0 text-right text-xs tabular-nums text-muted-foreground">{item.dates}</time>
