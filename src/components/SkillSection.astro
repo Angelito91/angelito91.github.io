@@ -1,8 +1,9 @@
 ---
 import { getLangFromUrl } from "@/i18n/utils";
 import { Icon } from "astro-icon/components";
+import { CodeXml, Sparkles, Terminal } from "lucide-astro";
 const lang = getLangFromUrl(Astro.url);
-const skills = [
+const skills: Array<[string, string | any]> = [
     ["Astro", "devicon:astro"],
     ["TypeScript", "devicon:typescript"],
     ["React", "devicon:react"],
@@ -18,6 +19,9 @@ const skills = [
     ["Git", "devicon:git"],
     ["Linux", "devicon:linux"],
     ["Bun", "devicon:bun"],
+    ["OpenCode", Terminal],
+    ["Codex", CodeXml],
+    ["Claude", Sparkles],
 ];
 ---
 
@@ -25,7 +29,10 @@ const skills = [
     <div class="flex min-h-0 flex-col gap-y-4">
         <h2 class="blur-fade text-xl font-bold" style="--delay:380ms">{lang === "es" ? "Habilidades" : "Skills"}</h2>
         <div class="flex flex-wrap gap-2">
-            {skills.map(([skill, icon], index) => <span class="blur-fade tech-pill" style={`--delay:${420 + index * 25}ms`}><Icon name={icon} size={17} /><span>{skill}</span></span>)}
+            {skills.map(([skill, icon], index) => {
+                const LucideIcon = typeof icon === "string" ? null : icon;
+                return <span class="blur-fade tech-pill" style={`--delay:${420 + index * 25}ms`}>{LucideIcon ? <LucideIcon size={17} /> : <Icon name={icon as string} size={17} />}<span>{skill}</span></span>;
+            })}
         </div>
     </div>
 </section>
