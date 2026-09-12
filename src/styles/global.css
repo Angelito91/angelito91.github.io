@@ -13,8 +13,11 @@
     --color-primary: var(--primary);
     --color-primary-foreground: var(--primary-foreground);
     --color-ring: var(--ring);
+}
+
+@theme {
     --font-sans: "Geist", ui-sans-serif, system-ui, sans-serif;
-    --font-mono: "Geist Mono", ui-monospace, monospace;
+    --font-mono: "Geist Mono", ui-monospace, SFMono-Regular, monospace;
     --radius-lg: 0.625rem;
     --radius-xl: 0.75rem;
 }
