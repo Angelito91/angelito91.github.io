@@ -35,7 +35,6 @@ const ogUrl = canonical;
 const localeMap: Record<string, string> = {
     es: "es_ES",
     en: "en_US",
-    fr: "fr_FR",
 };
 const ogLocale = localeMap[lang] || "es_ES";
 
@@ -67,6 +66,7 @@ const jsonLd = {
             jobTitle: lang === "es" ? "Desarrollador Full Stack y de videojuegos" : "Full Stack and game developer",
             description: t("meta.description"),
             address: { "@type": "PostalAddress", addressLocality: "Santiago de Cuba", addressCountry: "CU" },
+            knowsAbout: ["Unreal Engine 5", "Godot Engine", "Astro", "TypeScript", "React", "Svelte", "Rust", "Python", "Tailwind CSS", "Cloudflare", "Video Game Development", "Full Stack Web Development"],
             alumniOf: { "@type": "CollegeOrUniversity", name: "Universidad de Oriente", url: "https://www.uo.edu.cu/" },
             worksFor: { "@type": "Organization", name: "QvaLabs", url: "https://qvalabs.com" },
             sameAs: ["https://github.com/Angelito91", "https://linkedin.com/in/angelito91"],
@@ -103,8 +103,10 @@ const jsonLd = {
         <meta property="og:locale" content={ogLocale} />
         <meta property="og:locale:alternate" content={lang === "es" ? "en_US" : "es_ES"} />
         <meta property="og:image" content={ogImageAbsolute} />
+        <meta property="og:image:type" content="image/png" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content={lang === "es" ? "Angel Portuondo, desarrollador Full Stack y de videojuegos" : "Angel Portuondo, Full Stack and game developer"} />
         <meta property="og:site_name" content="Angel Portuondo" />
 
         <!-- Twitter Card -->
@@ -124,12 +126,13 @@ const jsonLd = {
 
         <!-- Favicon -->
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
         <!-- Editorial type system -->
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
-            href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap"
             rel="stylesheet"
         />
 
