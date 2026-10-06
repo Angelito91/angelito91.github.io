@@ -59,9 +59,13 @@ Otros puntos generados automáticamente:
   (QvaLabs y Xitry Games), `ItemList` de proyectos y `WebSite`, enlazados entre sí
   por `@id`. Las páginas `noindex` (404) no llevan JSON-LD.
 - **Sitemap** con `lastmod` real desde git. Solo incluye `/` y `/en/`.
-- **Fuentes Geist auto-alojadas** vía `experimental.fonts` + `fontProviders.fontsource()`
-  en `astro.config.mjs`: sin peticiones a `fonts.googleapis.com` y con
-  fallbacks métricos (`size-adjust`) para evitar salto de texto.
+- **Fuentes Geist auto-alojadas** desde `node_modules` vía `experimental.fonts`
+  con `provider: "local"` en `astro.config.mjs`: sin peticiones a
+  `fonts.googleapis.com` ni a ningún otro CDN, y con fallbacks métricos
+  (`size-adjust`) para evitar salto de texto. **El build funciona sin red.**
+- **Gestión de dependencias siempre con Bun**: `bun install`, `bun add`,
+  `bun run build` / `bun run dev` / `bun run preview`. Nunca npm ni npx.
+  `bun.lock` está commiteado, de ahí que el workflow use `--frozen-lockfile`.
 - **Verificación de Search Console**: `google-site-verification` en el layout.
 
 Al cambiar textos visibles, revisa también `public/llms.txt` y `public/llms-full.txt`.

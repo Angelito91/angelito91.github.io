@@ -23,8 +23,6 @@ pnpm-debug.log*
 # jetbrains setting folder
 .idea/
 
-bun.lock
-
 # cloudflare wrangler local state
 .wrangler/
 
