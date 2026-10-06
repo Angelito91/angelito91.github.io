@@ -17,8 +17,11 @@ export const ui = {
     "nav.home": "Inicio",
     "nav.about": "Sobre mí",
     "nav.projects": "Proyectos",
+    "nav.experience": "Experiencia",
     "nav.skills": "Habilidades",
     "nav.contact": "Contacto",
+    "nav.label": "Navegación y redes sociales",
+    "nav.theme": "Cambiar tema",
     "nav.resume": "Descargar CV",
     "cv.download": "Descargar CV",
     "cv.link":
@@ -30,7 +33,7 @@ export const ui = {
 
     // Hero
     "hero.greeting": "Hola, soy",
-    "hero.name": "Angel Portuondo",
+    "hero.name": "Angel Alberto Portuondo Hierrezuelo",
     "hero.role": "Desarrollador de Videojuegos & Full Stack",
     "hero.description":
       "Desarrollador Full Stack con más de 2 años de experiencia. Especializado en Unreal Engine para desarrollo de juegos y herramientas. Experto en web con Astro, React y Svelte. Combino rendimiento, diseño y código limpio.",
@@ -109,8 +112,11 @@ export const ui = {
     "nav.home": "Home",
     "nav.about": "About",
     "nav.projects": "Projects",
+    "nav.experience": "Experience",
     "nav.skills": "Skills",
     "nav.contact": "Contact",
+    "nav.label": "Navigation and social links",
+    "nav.theme": "Toggle theme",
     "nav.resume": "Download CV",
     "cv.download": "Download CV",
     "cv.link":
@@ -122,7 +128,7 @@ export const ui = {
 
     // Hero
     "hero.greeting": "Hi, I'm",
-    "hero.name": "Angel Portuondo",
+    "hero.name": "Angel Alberto Portuondo Hierrezuelo",
     "hero.role": "Game Developer & Full Stack Developer",
     "hero.description":
       "Full Stack Developer with more than 2 years of experience. Specialized in Unreal Engine for game and tools development. Expert in web with Astro, React and Svelte. I combine performance, design and clean code.",

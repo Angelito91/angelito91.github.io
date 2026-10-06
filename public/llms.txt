@@ -4,6 +4,8 @@
 > founder of QvaLabs, Computer Science student at Universidad de Oriente
 > (Santiago de Cuba).
 
+For the full site content in Markdown, see [llms-full.txt](/llms-full.txt).
+
 ## Who is Angel?
 
 - Full Stack Developer (2+ years): Astro, React, Svelte, TypeScript, Node.js, Tailwind CSS.
@@ -29,6 +31,7 @@
 
 - GitHub: https://github.com/Angelito91
 - LinkedIn: https://linkedin.com/in/angelito91
+- Email: portuondoangel@gmail.com
 - CV (ES): https://angelito91.github.io/cv/cv-es.pdf
 - CV (EN): https://angelito91.github.io/cv/cv-en.pdf
 

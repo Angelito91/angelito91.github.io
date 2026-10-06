@@ -7,11 +7,14 @@ const lang = getLangFromUrl(Astro.url);
     <div class="flex flex-col gap-8">
         <div class="flex flex-col justify-between gap-6 md:flex-row">
             <div class="order-2 flex flex-col gap-2 md:order-1">
-                <h1 class="blur-fade text-3xl font-semibold tracking-tighter sm:text-4xl lg:text-5xl" style="--delay:40ms">{lang === "es" ? "Hola, soy Angel" : "Hi, I'm Angel"}</h1>
-                <p class="blur-fade max-w-[42rem] text-pretty leading-relaxed text-muted-foreground md:text-lg lg:text-xl" style="--delay:80ms">{lang === "es" ? "Desarrollador Full Stack y de videojuegos. Estudiante de Ciencias de la Computación y fundador de QvaLabs." : "Full Stack and game developer. Computer Science student and founder of QvaLabs."}</p>
+                <h1 class="blur-fade flex flex-col gap-2" style="--delay:40ms">
+                    <span class="block text-balance text-3xl font-semibold tracking-tighter sm:text-4xl lg:text-5xl">{lang === "es" ? "Hola, soy Angel Alberto Portuondo Hierrezuelo" : "Hi, I'm Angel Alberto Portuondo Hierrezuelo"}</span>
+                    <span class="block max-w-[42rem] text-pretty leading-relaxed text-muted-foreground md:text-lg lg:text-xl">{lang === "es" ? "Desarrollador Full Stack y de videojuegos." : "Full Stack and game developer."}</span>
+                </h1>
+                <p class="blur-fade max-w-[42rem] text-pretty leading-relaxed text-muted-foreground md:text-lg lg:text-xl" style="--delay:80ms">{lang === "es" ? "Estudiante de Ciencias de la Computación y fundador de QvaLabs." : "Computer Science student and founder of QvaLabs."}</p>
             </div>
             <div class="blur-fade order-1 md:order-2" style="--delay:40ms">
-                <div class="avatar-wrap"><img src="https://avatars.githubusercontent.com/u/111069220?v=4" alt="Angel Portuondo" width="128" height="128" fetchpriority="high" class="object-cover" /></div>
+                <div class="avatar-wrap"><img src="https://avatars.githubusercontent.com/u/111069220?v=4" alt="Angel Alberto Portuondo Hierrezuelo" width="128" height="128" fetchpriority="high" class="object-cover" /></div>
             </div>
         </div>
     </div>

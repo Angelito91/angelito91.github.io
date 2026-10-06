@@ -1,8 +1,34 @@
 ---
-import { getLangFromUrl } from "@/i18n/utils";
+import { getLangFromUrl, useTranslations } from "@/i18n/utils";
 const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+// Enlaces internos a las secciones de la página. Además de UX, dan a los
+// crawlers anclas con texto descriptivo hacia cada bloque de contenido.
+const navItems = [
+    { href: "#inicio", label: t("nav.home") },
+    { href: "#sobre-mi", label: t("nav.about") },
+    { href: "#experiencia", label: t("nav.experience") },
+    { href: "#proyectos", label: t("nav.projects") },
+    { href: "#habilidades", label: t("nav.skills") },
+    { href: "#contacto", label: t("nav.contact") },
+];
 ---
 
 <footer class="site-shell border-t pb-28 pt-8 text-center text-xs text-muted-foreground">
+    <nav aria-label={t("footer.nav")} class="mb-4">
+        <ul class="flex flex-wrap items-center justify-center gap-x-4 gap-y-2">
+            {navItems.map((item) => (
+                <li>
+                    <a
+                        href={item.href}
+                        class="rounded-sm transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                    >
+                        {item.label}
+                    </a>
+                </li>
+            ))}
+        </ul>
+    </nav>
     <p>{lang === "es" ? "Construido con Astro, Tailwind CSS y mucho código." : "Built with Astro, Tailwind CSS, and lots of code."}</p>
 </footer>

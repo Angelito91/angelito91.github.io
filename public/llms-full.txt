@@ -1,0 +1,178 @@
+# Angel Alberto Portuondo Hierrezuelo — Contenido completo del sitio (llms-full.txt)
+
+> Versión Markdown del contenido de https://angelito91.github.io
+> Mantener sincronizada con `src/i18n/translations.ts`, `src/components/*.astro`
+> y `src/data/featured-projects.ts` cuando cambie el contenido del sitio.
+
+---
+
+## Español (idioma principal) — https://angelito91.github.io/
+
+### Angel Portuondo | Desarrollador Full Stack y videojuegos
+
+**¿Quién es Angel Alberto Portuondo Hierrezuelo?**
+
+Hola, soy Angel Alberto Portuondo Hierrezuelo. Desarrollador Full Stack y de videojuegos.
+Estudiante de Ciencias de la Computación y fundador de QvaLabs.
+
+Portafolio de Angel Portuondo, desarrollador Full Stack y de videojuegos,
+fundador de QvaLabs y estudiante de Ciencias de la Computación en
+Santiago de Cuba.
+
+#### Sobre mí
+
+Más de 2 años de experiencia como **Desarrollador Full Stack**. En **Xitry Games**
+trabajé con **Unreal Engine** creando herramientas, gameplay y la web oficial del
+estudio. He construido soluciones frontend y backend combinando diseño,
+rendimiento y funcionalidad. Actualmente estudio **Ciencias de la Computación**
+en la **Universidad de Oriente**.
+
+Como **fundador de QvaLabs**, participo en el diseño, desarrollo y despliegue de
+productos digitales: sitios web, blogs, automatización, IA e infraestructura.
+Me gusta entender el problema completo y construir **software mantenible** que
+pueda crecer con cada proyecto.
+
+#### Experiencia
+
+- **QvaLabs** — Fundador · Desarrollador de software (2026 - Presente)
+  Fundé QvaLabs para desarrollar software, automatización, IA e infraestructura
+  para pymes, empresas y emprendedores. He participado en proyectos como 8Apera
+  Fotografía, 8Apera Blog y el sitio corporativo de Xitry Games.
+- **Xitry Games** — Desarrollador de videojuegos y web (2026 - Presente)
+  Creación de sistemas, herramientas y gameplay con Unreal Engine, además del
+  desarrollo del sitio web oficial del estudio.
+
+#### Educación
+
+- **Universidad de Oriente** — Licenciatura en Ciencias de la Computación
+  (En curso)
+
+#### Proyectos destacados
+
+Trabajo real para clientes reales. Una selección de proyectos construidos desde
+QvaLabs y mi laboratorio personal.
+
+1. **8Apera Fotografía** (2026) — Sitio web profesional para un estudio
+   fotográfico en Santiago de Cuba, con galería filtrable y una estética paper.
+   Astro, Tailwind CSS, GSAP. https://8apera.com
+2. **8Apera Blog** (2026) — Blog documental con CMS headless Keystatic, para que
+   el cliente publique contenido sin tocar código.
+   Astro, React, Keystatic, Cloudflare. https://blog.8apera.com
+3. **Xitry Games** (2026) — Web corporativa trilingüe para un estudio indie de
+   videojuegos y 3D, con sliders interactivos.
+   Astro, Tailwind CSS, Splide, Cloudflare. https://xitry-game.com
+4. **Halo Compiler** (2026) — Compilador e intérprete educativo escrito en Rust
+   para explorar lexing, parsing, AST y chequeo de tipos.
+   Rust, Compiler Design, AST. https://github.com/Angelito91/halo
+
+Más repositorios: https://github.com/Angelito91?tab=repositories
+
+#### Habilidades
+
+Astro, TypeScript, React, Svelte, Tailwind CSS, Cloudflare, Node.js, Python,
+Rust, C++, Unreal Engine, Godot, Git, Linux, Bun, OpenCode, Codex, Claude.
+
+#### Contacto
+
+¿Tienes un proyecto en mente? Escríbeme y conversemos sobre desarrollo web,
+videojuegos o herramientas de software.
+
+- Email: portuondoangel@gmail.com
+- GitHub: https://github.com/Angelito91
+- LinkedIn: https://linkedin.com/in/angelito91
+- CV (PDF): https://angelito91.github.io/cv/cv-es.pdf
+
+Disponible para trabajar.
+
+---
+
+## English — https://angelito91.github.io/en/
+
+### Angel Portuondo | Full Stack & Game Developer
+
+**Who is Angel Alberto Portuondo Hierrezuelo?**
+
+Hi, I'm Angel Alberto Portuondo Hierrezuelo. Full Stack and game developer.
+Computer Science student and founder of QvaLabs.
+
+Portfolio of Angel Portuondo, Full Stack and game developer, founder of QvaLabs,
+and Computer Science student based in Santiago de Cuba.
+
+#### About me
+
+More than 2 years of experience as a **Full Stack Developer**. At **Xitry Games**,
+I worked with **Unreal Engine** on tools, gameplay, and the studio's official
+website. I build frontend and backend solutions that combine design,
+performance, and functionality. I am currently studying **Computer Science** at
+**Universidad de Oriente**.
+
+As the **founder of QvaLabs**, I design, build, and deploy digital products
+including websites, blogs, automation, AI, and infrastructure. I enjoy
+understanding the full problem and creating **maintainable software** that can
+grow with every project.
+
+#### Work Experience
+
+- **QvaLabs** — Founder · Software developer (2026 - Present)
+  I founded QvaLabs to build software, automation, AI, and infrastructure for
+  businesses and entrepreneurs. I have contributed to projects such as 8Apera
+  Photography, 8Apera Blog, and the Xitry Games corporate website.
+- **Xitry Games** — Game and web developer (2026 - Present)
+  Building systems, tools, and gameplay with Unreal Engine, together with the
+  studio's official website.
+
+#### Education
+
+- **Universidad de Oriente** — Bachelor's Degree in Computer Science
+  (In progress)
+
+#### Featured projects
+
+Real work for real clients. A selection of projects built through QvaLabs and my
+personal lab.
+
+1. **8Apera Fotografía** (2026) — Professional website for a photography studio in
+   Santiago de Cuba, with a filterable gallery and a paper-inspired visual
+   identity. Astro, Tailwind CSS, GSAP. https://8apera.com
+2. **8Apera Blog** (2026) — Documentary blog powered by a headless Keystatic CMS,
+   so the client can publish content without touching code.
+   Astro, React, Keystatic, Cloudflare. https://blog.8apera.com
+3. **Xitry Games** (2026) — Trilingual corporate site for an indie video game and
+   3D studio, with interactive sliders.
+   Astro, Tailwind CSS, Splide, Cloudflare. https://xitry-game.com
+4. **Halo Compiler** (2026) — Educational compiler and interpreter in Rust
+   exploring lexing, parsing, ASTs, and type checking.
+   Rust, Compiler Design, AST. https://github.com/Angelito91/halo
+
+More repositories: https://github.com/Angelito91?tab=repositories
+
+#### Skills
+
+Astro, TypeScript, React, Svelte, Tailwind CSS, Cloudflare, Node.js, Python,
+Rust, C++, Unreal Engine, Godot, Git, Linux, Bun, OpenCode, Codex, Claude.
+
+#### Contact
+
+Have a project in mind? Write to me and let's talk about web development, games,
+or software tools.
+
+- Email: portuondoangel@gmail.com
+- GitHub: https://github.com/Angelito91
+- LinkedIn: https://linkedin.com/in/angelito91
+- CV (PDF): https://angelito91.github.io/cv/cv-en.pdf
+
+Available for work.
+
+---
+
+## Datos de la entidad (JSON-LD del sitio)
+
+- Nombre completo: Angel Alberto Portuondo Hierrezuelo
+- Nombre alternativo: Angel Portuondo
+- Cargo: Desarrollador Full Stack y de videojuegos / Full Stack and game developer
+- Ubicación: Santiago de Cuba, CU
+- Idiomas: español (nativo), inglés (intermedio B1)
+- Educación: Universidad de Oriente — Licenciatura en Ciencias de la Computación
+- Organizaciones: QvaLabs (fundador), Xitry Games (empleado)
+- Perfiles: https://github.com/Angelito91 · https://linkedin.com/in/angelito91
+- Web: https://angelito91.github.io (ES por defecto, EN en /en/)

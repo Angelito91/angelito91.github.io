@@ -26,6 +26,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          # Historial completo: src/lib/git-dates.ts lee el primer y último
+          # commit para datePublished (JSON-LD) y lastmod (sitemap).
+          fetch-depth: 0
 
       - name: Setup Bun
         uses: oven-sh/setup-bun@v1

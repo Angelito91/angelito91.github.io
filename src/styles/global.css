@@ -16,8 +16,8 @@
 }
 
 @theme {
-    --font-sans: "Geist", ui-sans-serif, system-ui, sans-serif;
-    --font-mono: "Geist Mono", ui-monospace, SFMono-Regular, monospace;
+    --font-sans: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
+    --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace;
     --radius-lg: 0.625rem;
     --radius-xl: 0.75rem;
 }
